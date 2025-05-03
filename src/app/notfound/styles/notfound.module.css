@@ -1,0 +1,33 @@
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;
+  }
+  
+  .content {
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .message {
+    font-size: 1.25rem;
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+  
+  .link {
+    color: #3b82f6;
+    text-decoration: underline;
+  }
+  
+  .link:hover {
+    color: #2563eb;
+  }

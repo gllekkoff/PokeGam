@@ -1,0 +1,157 @@
+
+.container {
+    min-height: 100vh;
+    background-color: #f9fafb;
+  }
+  
+  .main {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .tabsContainer {
+    width: 100%;
+  }
+  
+  .tabsList {
+    display: grid;
+    width: 100%;
+    max-width: 400px;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+  }
+  
+  .tabsContent {
+    margin-top: 1.5rem;
+  }
+  
+  .packGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .packGrid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .packGrid {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+  
+  .pack {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  
+  .pack:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .packImage {
+    aspect-ratio: 4/3;
+    background-image: linear-gradient(to bottom right, #8b5cf6, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .packIcon {
+    width: 4rem;
+    height: 4rem;
+    color: white;
+  }
+  
+  .packContent {
+    padding: 1.5rem;
+  }
+  
+  .packTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .packFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .packPrice {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .diamond {
+    color: #3b82f6;
+  }
+  
+  .priceText {
+    font-weight: 600;
+  }
+  
+  .cardGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .cardGrid {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .cardGrid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    padding: 0.75rem;
+    transition: box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cardImage {
+    aspect-ratio: 3/4;
+    background-color: #f3f4f6;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cardFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .cardPrice {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }

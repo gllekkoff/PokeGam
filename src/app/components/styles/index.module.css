@@ -1,0 +1,131 @@
+
+.container {
+    min-height: 100vh;
+  }
+  
+  .content {
+    min-height: calc(100vh - 73px);
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  @media (min-width: 768px) {
+    .content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .redSection {
+    background-color: #cf4040;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .redContent {
+    max-width: 36rem;
+    color: white;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .redContent {
+      text-align: left;
+    }
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .graySection {
+    background-color: #f3f4f6;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .grayContent {
+    max-width: 36rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .grayContent {
+      text-align: left;
+    }
+  }
+  
+  .card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cardTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+  
+  .cardText {
+    color: #4b5563;
+  }
+  
+  .pokeball {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+  
+  .outerCircle {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 20px solid black;
+  }
+  
+  .innerCircle {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 10px solid black;
+  }
+  
+  .button {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
