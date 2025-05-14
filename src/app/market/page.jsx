@@ -1,8 +1,10 @@
-import style from "./styles/market.module.css"
+import styles from "./styles/market.module.css"
+import {Header } from "../components/header"
 export default function Market() {
     return (
-      <main>
+      <div className={styles.market}>
+        <Header />
         {/* Your content here */}
-      </main>
+      </div>
     );
   }

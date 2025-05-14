@@ -1,8 +1,8 @@
 import style from "./styles/notfound.module.css"
 export default function Page() {
     return (
-      <main>
+      <div className={style.notfound}>
         {/* Your content here */}
-      </main>
+      </div>
     );
   }

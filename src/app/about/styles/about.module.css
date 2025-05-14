@@ -1,47 +1,48 @@
-
 .container {
-    min-height: 100vh;
-    background-color: #f9fafb;
-  }
-  
-  .main {
-    max-width: 48rem;
-    margin: 0 auto;
-    padding: 1.5rem;
-  }
-  
-  .title {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .content {
-    background-color: white;
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-  }
-  
-  .intro {
-    font-size: 1.125rem;
-    color: #4b5563;
-    margin-bottom: 1.5rem;
-  }
-  
-  .sections {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .sectionTitle {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  
-  .sectionText {
-    color: #4b5563;
-  }
+  min-height: 100vh;
+}
+
+.main {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--foreground);
+}
+
+.content {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border: 1px solid var(--border);
+}
+
+.intro {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+.sectionText {
+  color: var(--muted-foreground);
+}
