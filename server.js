@@ -7,26 +7,22 @@ const path = require('path');
 
 const app = express();
 const PORT = 8000;
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'; // In production, use environment variable
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Read user data
 const getUserData = () => {
   const filePath = path.join(__dirname, 'user_info.json');
   const rawData = fs.readFileSync(filePath);
   return JSON.parse(rawData);
 };
 
-// Write user data
 const saveUserData = (data) => {
   const filePath = path.join(__dirname, 'user_info.json');
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 };
 
-// Auth routes
 app.post('/auth/register', async (req, res) => {
   try {
     const { email, password, username } = req.body;
@@ -42,7 +38,7 @@ app.post('/auth/register', async (req, res) => {
       email,
       username,
       password: hashedPassword,
-      diamonds: 1000
+      diamonds: 100
     };
 
     users.push(newUser);
@@ -69,12 +65,7 @@ app.post('/auth/login', async (req, res) => {
     const users = getUserData().users || [];
     const user = users.find(u => u.email === email);
 
-    if (!user) {
-      return res.status(401).json({ message: 'Invalid credentials' });
-    }
-
-    const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) {
+    if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
@@ -89,12 +80,10 @@ app.post('/auth/login', async (req, res) => {
       token
     });
   } catch (error) {
-    console.error('Login error:', error);
     res.status(500).json({ message: 'Error logging in' });
   }
 });
 
-// Auth middleware
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -112,29 +101,7 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-// Basic routes
-app.get('/', (req, res) => {
-  res.json({ message: 'PokéGam API is running' });
-});
-
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
-
-// Protected routes
-app.get('/users/profile', authenticateToken, (req, res) => {
-  const users = getUserData().users || [];
-  const user = users.find(u => u.id === req.user.id);
-  
-  if (!user) {
-    return res.status(404).json({ message: 'User not found' });
-  }
-
-  res.json({ ...user, password: undefined });
-});
-
-// Protected routes with authentication
-app.get('/api/user-data', authenticateToken, (req, res) => {
+app.get('/api/user/profile', authenticateToken, (req, res) => {
   const users = getUserData().users || [];
   const user = users.find(u => u.id === req.user.id);
   
@@ -156,11 +123,6 @@ app.get('/api/packs', authenticateToken, (req, res) => {
     { id: 2, name: 'Premium Pack', price: 200 },
     { id: 3, name: 'Ultra Pack', price: 500 }
   ]);
-});
-
-// Error handling middleware
-app.use((req, res) => {
-  res.status(404).json({ message: 'Route not found' });
 });
 
 app.use((err, req, res, next) => {
