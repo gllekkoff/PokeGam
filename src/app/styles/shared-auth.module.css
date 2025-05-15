@@ -1,0 +1,21 @@
+.grayContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.input,
+.passwordWrapper {
+  margin-bottom: 1.5rem;
+}
+
+.error {
+  color: var(--destructive);
+  margin-top: -0.5rem;
+  font-size: 0.875rem;
+}
+
+.button {
+  margin-top: 1rem;
+}

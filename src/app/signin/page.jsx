@@ -1,15 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useAuth } from '../context/auth-context';
-
-import Header from '../components/header';
+import { Header } from '../components/header';
+import { PasswordInput } from '../components/ui/password-input';
+import Link from 'next/link';
 import styles from './styles/signin.module.css';
+import { LogIn } from 'lucide-react';
 
 export default function SignInPage() {
-  const { setUser } = useAuth();
-  const router = useRouter();
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -17,19 +17,7 @@ export default function SignInPage() {
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8000/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!res.ok) {
-        throw new Error('Invalid email or password');
-      }
-
-      const data = await res.json();
-      setUser({ email: data.email, token: data.accessToken, id: data.user.id });
-      router.push('/profile');
+      await login(email, password);
     } catch (err) {
       setError(err.message);
     }
@@ -50,21 +38,19 @@ export default function SignInPage() {
               required
               className={styles.input}
             />
-            <input
-              type="password"
-              placeholder="******"
+            <PasswordInput
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="******"
               required
-              className={styles.input}
             />
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p className={styles.error}>{error}</p>}
             <button type="submit" className={styles.button}>
-              <span>🔐</span> Sign In
+              <LogIn /> Sign In
             </button>
           </form>
-          <p style={{ marginTop: '1rem' }}>
-            Don’t have an account? <a href="/signup">Sign Up</a>
+          <p className={styles.switchText}>
+            Don't have an account? <Link href="/signup">Sign Up</Link>
           </p>
         </div>
       </div>

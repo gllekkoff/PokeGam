@@ -1,3 +1,11 @@
 {
-    "users": []
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "username": "admin",
+      "password": "$2b$10$U5.UGSNy2qTCbx8L6sjj4eChnQA3lN4BmIj1MqFrjaGea3w980FH6",
+      "diamonds": 1000
+    }
+  ]
 }

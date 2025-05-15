@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useAuth } from '../context/auth-context';
-import Header from '../components/header';
+import { Header } from '../components/header';
+import { PasswordInput } from '../components/ui/password-input';
+import Link from 'next/link';
 import styles from './styles/signup.module.css';
+import { UserPlus } from 'lucide-react';
 
 export default function SignUpPage() {
-  const { setUser } = useAuth();
-  const router = useRouter();
+  const { register } = useAuth();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,19 +25,7 @@ export default function SignUpPage() {
     }
 
     try {
-      const res = await fetch('http://localhost:8000/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, username }),
-      });
-
-      if (!res.ok) {
-        throw new Error('Registration failed');
-      }
-
-      const data = await res.json();
-      setUser({ email: data.email, id: data.user.id, token: data.accessToken });
-      router.push('/profile');
+      await register(email, password, username);
     } catch (err) {
       setError(err.message);
     }
@@ -65,29 +54,25 @@ export default function SignUpPage() {
               required
               className={styles.input}
             />
-            <input
-              type="password"
-              placeholder="*******"
+            <PasswordInput
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="******"
               required
-              className={styles.input}
             />
-            <input
-              type="password"
-              placeholder="Confirm password"
+            <PasswordInput
               value={confirm}
               onChange={(e) => setConfirm(e.target.value)}
+              placeholder="Confirm password"
               required
-              className={styles.input}
             />
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p className={styles.error}>{error}</p>}
             <button type="submit" className={styles.button}>
-              <span>👤</span> Create Account
+              <UserPlus /> Create Account
             </button>
           </form>
-          <p style={{ marginTop: '1rem' }}>
-            Already have an account? <a href="/signin">Sign In</a>
+          <p className={styles.switchText}>
+            Already have an account? <Link href="/signin">Sign In</Link>
           </p>
         </div>
       </div>
