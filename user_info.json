@@ -4,14 +4,22 @@
       "id": 0,
       "email": "dizhak.pn@ucu.edu.ua",
       "username": "yopsa_matb",
-      "password": "$2b$10$NZmaBsW4RYxz6xETcY8Riu/i2sVEjVcqXJoY4IuzVJkPtDZ4Is.5W",
+      "password": "...",
       "diamonds": 100,
       "cards": [
         {
           "id": 1,
           "name": "Rowlet",
           "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
-        }]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "email": "andrey.krav4uk@gmail.com",
+      "username": "movchun",
+      "password": "$2b$10$/lNicigCGxw5JHErdow9suiHwydpEHEConWs.kgS9aK35p5RFNfbK",
+      "diamonds": 100
     }
   ]
 }
