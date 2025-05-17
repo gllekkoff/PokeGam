@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Header from '../components/header';
 import PokemonCard from '../components/PokemonCard';
 import styles from './styles/profile.module.css';
+import { Diamond } from 'lucide-react';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -52,7 +53,10 @@ export default function ProfilePage() {
         <section className={styles.banner}>
           <div className={styles.avatar}>👤</div>
           <h2 className={styles.title}>{user.username}</h2>
-          <div className={styles.gems}>💎 {user.diamonds ?? 0}</div>
+          <div className={styles.gems}>
+            <Diamond className={styles.diamondIcon} />
+            {user.diamonds ?? 0}
+          </div>
         </section>
 
         <section className={styles.tabs}>
@@ -93,7 +97,7 @@ export default function ProfilePage() {
             <div className={styles.statCard}>
               <h3>Collection Value</h3>
               <p className={styles.statValueBlue}>
-                💎 2400
+              <Diamond className={styles.diamondIcon} /> 2400
               </p>
             </div>
           </section>

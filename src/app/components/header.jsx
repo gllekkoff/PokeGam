@@ -2,11 +2,13 @@
 
 import Link from 'next/link';
 import styles from './header.module.css';
-import { Diamond, Info, Package, ShoppingCart, User, LogIn } from 'lucide-react';
+import { Diamond, Info, Package, ShoppingCart, User, LogIn, LogOut } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { useAuth } from '../context/auth-context';
 
 export const Header = () => {
-  const { user } = useAuth();
+  const pathname = usePathname();
+  const { user, logout } = useAuth();
 
   return (
     <header className={styles.header}>
@@ -39,10 +41,17 @@ export const Header = () => {
           )}
           
           {user ? (
-            <Link href="/profile" className={styles.navLink}>
-              <User className="w-5 h-5" />
-              <span>Profile</span>
-            </Link>
+            pathname === '/profile' ? (
+              <button className={styles.navButton} onClick={logout}>
+                <LogOut className="w-5 h-5" />
+                <span>Sign Out</span>
+              </button>
+            ) : (
+              <Link href="/profile" className={styles.navLink}>
+                <User className="w-5 h-5" />
+                <span>Profile</span>
+              </Link>
+            )
           ) : (
             <Link href="/signin" className={styles.navLink}>
               <LogIn className="w-5 h-5" />
