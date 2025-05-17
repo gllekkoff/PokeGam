@@ -38,7 +38,11 @@ app.post('/auth/register', async (req, res) => {
       email,
       username,
       password: hashedPassword,
-      diamonds: 100
+      diamonds: 100,
+      "cards": [],
+      packs_opened: 0,
+      rare_cards: 0,
+      collection_value: 0
     };
 
     users.push(newUser);
@@ -115,6 +119,9 @@ app.get('/api/user/profile', authenticateToken, (req, res) => {
     username: user.username,
     diamonds: user.diamonds, 
     cards: user.cards || [],
+    packs_opened: user.packs_opened,
+    rare_cards: user.rare_cards,
+    collection_value: user.collection_value
   });
 });
 

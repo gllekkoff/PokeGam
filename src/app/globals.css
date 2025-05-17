@@ -111,3 +111,15 @@ textarea {
     max-width: 1536px;
   }
 }
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.h-5 {
+  height: 1.25rem;
+}
+
+.diamond {
+  color: var(--sidebar-ring);
+}

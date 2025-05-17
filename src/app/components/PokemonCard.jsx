@@ -8,7 +8,7 @@ export default function PokemonCard({ card }) {
       <img src={card.imageUrl} alt={card.name} className={styles.image} />
       <div className={styles.info}>
         <strong>{card.name}</strong>
-        <p>Card #{card.id}</p>
+        <p>Card №{card.id}</p>
       </div>
     </div>
   );

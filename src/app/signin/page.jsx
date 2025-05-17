@@ -7,7 +7,7 @@ import { PasswordInput } from '../components/ui/password-input';
 import Link from 'next/link';
 import styles from './styles/signin.module.css';
 import { LogIn } from 'lucide-react';
-
+import { Button } from '../components/ui/button';
 export default function SignInPage() {
   const { login } = useAuth();
   const [email, setEmail] = useState('');
@@ -45,9 +45,9 @@ export default function SignInPage() {
               required
             />
             {error && <p className={styles.error}>{error}</p>}
-            <button type="submit" className={styles.button}>
+            <Button variant="default" type="submit" className={styles.button} size="lg">
               <LogIn /> Sign In
-            </button>
+            </Button>
           </form>
           <p className={styles.switchText}>
             Don't have an account? <Link href="/signup">Sign Up</Link>

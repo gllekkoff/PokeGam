@@ -7,7 +7,7 @@ import { PasswordInput } from '../components/ui/password-input';
 import Link from 'next/link';
 import styles from './styles/signup.module.css';
 import { UserPlus } from 'lucide-react';
-
+import { Button } from '../components/ui/button';
 export default function SignUpPage() {
   const { register } = useAuth();
   const [username, setUsername] = useState('');
@@ -67,9 +67,9 @@ export default function SignUpPage() {
               required
             />
             {error && <p className={styles.error}>{error}</p>}
-            <button type="submit" className={styles.button}>
+            <Button variant="default" type="submit" className={styles.button} size="lg">
               <UserPlus /> Create Account
-            </button>
+            </Button>
           </form>
           <p className={styles.switchText}>
             Already have an account? <Link href="/signin">Sign In</Link>

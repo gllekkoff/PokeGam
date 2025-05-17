@@ -5,12 +5,13 @@ import { useRouter } from 'next/navigation';
 import Header from '../components/header';
 import PokemonCard from '../components/PokemonCard';
 import styles from './styles/profile.module.css';
+import { Diamond, UserRound } from 'lucide-react';
 
 export default function ProfilePage() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [cards, setCards] = useState([]);
-  const [activeTab, setActiveTab] = useState('collection');
+  const [activeTab, setActiveTab] = useState('stats');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -46,59 +47,70 @@ export default function ProfilePage() {
   if (!user) return null;
 
   return (
-    <div className={styles.main}>
+    <div className={styles.container}>
       <Header />
-      <div className={styles.content}>
-        <section className={styles.banner}>
-          <div className={styles.avatar}>👤</div>
-          <h2 className={styles.title}>{user.username}</h2>
-          <div className={styles.gems}>💎 {user.diamonds ?? 0}</div>
-        </section>
-
-        <section className={styles.tabs}>
-          <button
-            onClick={() => setActiveTab('collection')}
-            className={`${styles.tab} ${activeTab === 'collection' ? styles.activeTab : ''}`}
-          >
-            Collection
-          </button>
-          <button
-            onClick={() => setActiveTab('stats')}
-            className={`${styles.tab} ${activeTab === 'stats' ? styles.activeTab : ''}`}
-          >
-            Stats
-          </button>
-        </section>
-
-        {activeTab === 'collection' && (
-          <section className={styles.cardGrid}>
-            {cards.map((card) => (
-              <PokemonCard key={card.id} card={card} />
-            ))}
-          </section>
-        )}
-
-        {activeTab === 'stats' && (
-          <section className={styles.statsGrid}>
-            <div className={styles.statCard}>
-              <h3>Packs Opened</h3>
-              <p className={styles.statValueRed}>24</p>
+      <div className={styles.topSection}>
+        <div className={styles.profileContainer}>
+          <div className={styles.profileHeader}>
+            <div className={styles.avatar}><UserRound color="#cf4040" size={54}/></div>
+            <div className={styles.profileInfo}>
+              <h1 className={styles.profileTitle}>{user.username}</h1>
+              <div className={styles.diamondTag}>
+                <Diamond size={24} />
+                <span className={styles.diamondCount}>{user.diamonds ?? 1000}</span>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div className={styles.statCard}>
-              <h3>Rare Cards</h3>
-              <p className={styles.statValueRed}>8</p>
+      <div className={styles.mainContent}>
+        <div className={styles.contentCard}>
+          <div className={styles.tabsList}>
+            <button
+              onClick={() => setActiveTab('collection')}
+              className={`${styles.tab} ${activeTab === 'collection' ? styles.activeTab : ''}`}
+            >
+              Collection
+            </button>
+            <button
+              onClick={() => setActiveTab('stats')}
+              className={`${styles.tab} ${activeTab === 'stats' ? styles.activeTab : ''}`}
+            >
+              Stats
+            </button>
+          </div>
+
+          {activeTab === 'stats' && (
+            <div className={styles.statsGrid}>
+              <div className={styles.statCard}>
+                <h3 className={styles.statLabel}>Packs Opened</h3>
+                <p className={styles.statValue}>{user.packs_opened}</p>
+              </div>
+
+              <div className={styles.statCard}>
+                <h3 className={styles.statLabel}>Rare Cards</h3>
+                <p className={styles.statValue}>{user.rare_cards}</p>
+              </div>
+
+              <div className={styles.statCard}>
+                <h3 className={styles.statLabel}>Collection Value</h3>
+                <p className={styles.collectionValue}>
+                  <Diamond className={styles.valueDiamond} size={24} />
+                  {user.collection_value}
+                </p>
+              </div>
             </div>
+          )}
 
-            <div className={styles.statCard}>
-              <h3>Collection Value</h3>
-              <p className={styles.statValueBlue}>
-                💎 2400
-              </p>
+          {activeTab === 'collection' && (
+            <div className={styles.cardGrid}>
+              {cards.map((card) => (
+                <PokemonCard key={card.id} card={card} />
+              ))}
             </div>
-          </section>
-        )}
-
+          )}
+        </div>
       </div>
     </div>
   );

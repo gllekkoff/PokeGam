@@ -5,12 +5,15 @@
   gap: 0.5rem;
   border-radius: var(--radius);
   font-weight: 500;
-  transition: all 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
   cursor: pointer;
   border: 1px solid transparent;
 }
 
-/* Variants */
 .default {
   background-color: var(--primary);
   color: var(--primary-foreground);
@@ -65,7 +68,6 @@
   padding: 0;
 }
 
-/* Sizes */
 .default-size {
   height: 40px;
   padding: 0 16px;
@@ -78,7 +80,7 @@
 }
 
 .lg {
-  height: 48px;
+  height: 46px;
   padding: 0 24px;
   font-size: 16px;
 }
@@ -89,8 +91,11 @@
   padding: 0;
 }
 
-/* Disabled state */
 .button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.button:hover {
+  transform: translateY(-3px);
 }

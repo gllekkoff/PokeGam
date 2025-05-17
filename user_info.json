@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 0,
+      "id": 1,
       "email": "dizhak.pn@ucu.edu.ua",
       "username": "yopsa_matb",
       "password": "$2b$10$NZmaBsW4RYxz6xETcY8Riu/i2sVEjVcqXJoY4IuzVJkPtDZ4Is.5W",
@@ -11,7 +11,19 @@
           "id": 1,
           "name": "Rowlet",
           "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
-        }]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "email": "1@gmail.com",
+      "username": "gllekk",
+      "password": "$2b$10$Doi8V03n6uNz71wEJsEEs.40v2aAi1QaScK07qRJGZJHcZi4MtnZG",
+      "diamonds": 100,
+      "cards": [],
+      "packs_opened": 0,
+      "rare_cards": 0,
+      "collection_value": 0
     }
   ]
 }
