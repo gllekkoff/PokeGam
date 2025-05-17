@@ -72,6 +72,39 @@
   width: 100%;
 }
 
+.navButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  position: relative;
+  padding: 0;
+  transition: color 0.3s;
+}
+
+.navButton:before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #cf4040;
+  transition: width 0.3s ease;
+}
+
+.navButton:hover {
+  color: var(--destructive);
+}
+
+.navButton:hover:before {
+  width: 100%;
+}
+
 .diamondBox {
   display: flex;
   align-items: center;
