@@ -119,11 +119,9 @@ app.get('/api/user/profile', authenticateToken, (req, res) => {
 });
 
 app.get('/api/packs', authenticateToken, (req, res) => {
-  res.json([
-    { id: 1, name: 'Basic Pack', price: 100 },
-    { id: 2, name: 'Premium Pack', price: 200 },
-    { id: 3, name: 'Ultra Pack', price: 500 }
-  ]);
+  const data = getUserData();
+  const packs = data.packs || [];
+  res.json(packs);
 });
 
 app.use((err, req, res, next) => {

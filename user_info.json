@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "id": 0,
+      "id": 1,
       "email": "dizhak.pn@ucu.edu.ua",
       "username": "yopsa_matb",
-      "password": "...",
+      "password": "$2b$10$1qkxfHM4e/bipQ2vFZzayuWt2rx/YmTnDvrWNOaBKIHxMo7kaDh.y",
       "diamonds": 100,
       "cards": [
         {
@@ -16,10 +16,25 @@
     },
     {
       "id": 2,
-      "email": "kravcka@gmail.com",
+      "email": "andrey.krav4uk@gmail.com",
       "username": "movchun",
-      "password": "$2b$10$6Pym6nSkBJ/zFjzJBfSYgeY.eS3yMtlSAcAjap33CpR9B2YCJ6.vu",
+      "password": "$2b$10$/lNicigCGxw5JHErdow9suiHwydpEHEConWs.kgS9aK35p5RFNfbK",
       "diamonds": 100
+    }
+  ],
+  "packs": [
+    {
+      "id": 1,
+      "name": "Regular Pack",
+      "price": 100,
+      "image": "/images/basic-pack.png",
+      "tag": "Free"
+    },
+    {
+      "id": 2,
+      "name": "Premium Pack",
+      "price": 200,
+      "image": "/images/premium-pack.png"
     }
   ]
 }
