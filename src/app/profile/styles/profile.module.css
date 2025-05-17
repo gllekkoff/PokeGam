@@ -247,4 +247,46 @@
     gap: 1rem;
     justify-content: center;
   }
+
+  .stats {
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  
+  .statsGrid {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .statCard {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    min-width: 200px;
+  }
+  
+  .statCard h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+  }
+  
+  .statValueRed {
+    font-size: 1.75rem;
+    color: #cf4040;
+    font-weight: bold;
+  }
+  
+  .statValueBlue {
+    font-size: 1.75rem;
+    color: #2563eb;
+    font-weight: bold;
+  }
   

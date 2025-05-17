@@ -31,10 +31,12 @@ export const Header = () => {
             <span>About Us</span>
           </Link>
           
-          <div className={styles.diamondBox}>
-            <Diamond className={`${styles.diamond} w-5 h-5`} />
-            <span className={styles.diamondCount}>1000</span>
-          </div>
+          {user && (
+            <div className={styles.diamondBox}>
+              <Diamond className={`${styles.diamond} w-5 h-5`} />
+              <span className={styles.diamondCount}>{user.diamonds ?? 0}</span>
+            </div>
+          )}
           
           {user ? (
             <Link href="/profile" className={styles.navLink}>
