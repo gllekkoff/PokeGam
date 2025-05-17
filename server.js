@@ -113,7 +113,8 @@ app.get('/api/user/profile', authenticateToken, (req, res) => {
     id: user.id,
     email: user.email,
     username: user.username,
-    diamonds: user.diamonds
+    diamonds: user.diamonds, 
+    cards: user.cards || [],
   });
 });
 

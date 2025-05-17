@@ -1,11 +1,17 @@
 {
   "users": [
     {
-      "id": 1,
-      "email": "admin@gmail.com",
-      "username": "admin",
-      "password": "$2b$10$U5.UGSNy2qTCbx8L6sjj4eChnQA3lN4BmIj1MqFrjaGea3w980FH6",
-      "diamonds": 1000
+      "id": 0,
+      "email": "dizhak.pn@ucu.edu.ua",
+      "username": "yopsa_matb",
+      "password": "$2b$10$NZmaBsW4RYxz6xETcY8Riu/i2sVEjVcqXJoY4IuzVJkPtDZ4Is.5W",
+      "diamonds": 100,
+      "cards": [
+        {
+          "id": 1,
+          "name": "Rowlet",
+          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
+        }]
     }
   ]
 }
