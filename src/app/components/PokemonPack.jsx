@@ -10,6 +10,12 @@ export default function PokemonPack({ pack, onAction }) {
   const [error, setError] = useState('');
   const isFree = pack.tag === 'Free';
 
+  const handlePackAction = () => {
+    if (isFree) {
+      onAction(pack);
+    }
+  };
+
   const handleBuyPack = async () => {
     const token = localStorage.getItem('token');
     try {
@@ -39,12 +45,12 @@ export default function PokemonPack({ pack, onAction }) {
         alert(`🎉 You got ${result.card.name}!`);
       }
 
-      setShowConfirm(false);
       if (result.updatedUser) {
         localStorage.setItem('user', JSON.stringify(result.updatedUser));
       }
+
     } catch (err) {
-      console.error('❌ Buy pack failed:', err);
+      console.error('❌ Failed to buy pack:', err);
       setError('Failed to buy pack');
     }
   };

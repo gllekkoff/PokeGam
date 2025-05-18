@@ -116,17 +116,23 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;  /* Changed from background to all */
+  transition: all 0.2s ease;
 }
 
 .openButton:hover {
-  background-color: #5F71F6 !important;  /* Changed hover color */
+  background-color: #5F71F6 !important;
 }
 
-/* Price wrapper styles */
 .priceWrapper {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  padding-left: 0;  /* Remove any default padding */
+  padding-left: 0;
+}
+
+.error {
+  color: #ef4444;
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: 500;
 }
