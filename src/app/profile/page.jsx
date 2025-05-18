@@ -7,18 +7,20 @@ import PokemonCard from '../components/PokemonCard/PokemonCard';
 import styles from './styles/profile.module.css';
 import { Diamond, UserRound } from 'lucide-react';
 import { useAuth } from '../components/AuthorizationModule/AuthContext';
+import LogoutConfirmation from '../components/LogoutConfirmation/LogoutConfirmation';
 
 export default function ProfilePage() {
   const router = useRouter();
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, logout } = useAuth();
   const [cards, setCards] = useState([]);
   const [activeTab, setActiveTab] = useState('collection');
   const [starredCards, setStarredCards] = useState(new Set());
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      router.push('/signin');
+      router.push('/');
       return;
     }
 
@@ -47,7 +49,6 @@ export default function ProfilePage() {
   }, [router, updateUser]);
 
   useEffect(() => {
-    // Load starred cards from localStorage
     const savedStarred = localStorage.getItem('starredCards');
     if (savedStarred) {
       setStarredCards(new Set(JSON.parse(savedStarred)));
@@ -62,7 +63,6 @@ export default function ProfilePage() {
       } else {
         newStarred.add(cardId);
       }
-      // Save to localStorage
       localStorage.setItem('starredCards', JSON.stringify([...newStarred]));
       return newStarred;
     });
@@ -76,11 +76,24 @@ export default function ProfilePage() {
     });
   }, [cards, starredCards]);
 
+  const handleLogoutClick = () => {
+    setShowLogoutConfirm(true);
+  };
+
+  const handleLogoutConfirm = () => {
+    setShowLogoutConfirm(false);
+    logout();
+  };
+
+  const handleLogoutCancel = () => {
+    setShowLogoutConfirm(false);
+  };
+
   if (!user) return null;
 
   return (
     <div className={styles.container}>
-      <Header />
+      <Header onLogoutClick={handleLogoutClick} />
       <div className={styles.topSection}>
         <div className={styles.profileContainer}>
           <div className={styles.profileHeader}>
@@ -151,6 +164,13 @@ export default function ProfilePage() {
           )}
         </div>
       </div>
+
+      {showLogoutConfirm && (
+        <LogoutConfirmation
+          onConfirm={handleLogoutConfirm}
+          onCancel={handleLogoutCancel}
+        />
+      )}
     </div>
   );
 }

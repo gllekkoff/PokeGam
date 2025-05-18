@@ -7,6 +7,7 @@ const AuthContext = createContext(undefined);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -16,6 +17,7 @@ export function AuthProvider({ children }) {
     if (token && savedUser) {
       try {
         setUser(JSON.parse(savedUser));
+        setIsAuthenticated(true);
       } catch (err) {
         console.error('❌ Failed to parse user from localStorage:', err);
         localStorage.removeItem('token');
@@ -26,6 +28,7 @@ export function AuthProvider({ children }) {
 
   const updateUser = (userData) => {
     setUser(userData);
+    setIsAuthenticated(true);
     localStorage.setItem('user', JSON.stringify(userData));
   };
 
@@ -46,6 +49,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       setUser(data.user);
+      setIsAuthenticated(true);
       router.push('/profile');
     } catch (error) {
       throw new Error(error.message);
@@ -69,21 +73,28 @@ export function AuthProvider({ children }) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       setUser(data.user);
+      setIsAuthenticated(true);
       router.push('/profile');
     } catch (error) {
       throw error;
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('starredCards');
+    
     setUser(null);
-    router.push('/signin');
+    setIsAuthenticated(false);
+    
+    router.push('/');
+
+    window.location.reload();
   };
 
   return (
-    <AuthContext.Provider value={{ user, updateUser, login, register, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, updateUser, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

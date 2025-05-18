@@ -5,10 +5,13 @@ import styles from './Header.module.css';
 import { Diamond, Info, Package, ShoppingCart, User, LogIn, LogOut } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../AuthorizationModule/AuthContext';
+import { useState } from 'react';
 
-export const Header = () => {
+export const Header = ({ onLogoutClick }) => {
   const pathname = usePathname();
-  const { user, logout } = useAuth();
+  const { user, isAuthenticated } = useAuth();
+
+  const showAuthContent = isAuthenticated && user !== null;
 
   return (
     <header className={styles.header}>
@@ -33,16 +36,16 @@ export const Header = () => {
             <span>About Us</span>
           </Link>
           
-          {user && (
+          {showAuthContent && (
             <div className={styles.diamondBox}>
               <Diamond className={`${styles.diamond} w-5 h-5`} />
-              <span className={styles.diamondCount}>{user?.diamonds ?? 0}</span>
+              <span className={styles.diamondCount}>{user.diamonds ?? 0}</span>
             </div>
           )}
           
-          {user ? (
+          {showAuthContent ? (
             pathname === '/profile' ? (
-              <button className={styles.navButton} onClick={logout}>
+              <button className={styles.navButton} onClick={onLogoutClick}>
                 <LogOut className="w-5 h-5" />
                 <span>Sign Out</span>
               </button>
