@@ -139,3 +139,68 @@
   font-weight: 600;
   margin: 1rem 0;
 }
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.modalCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.modalCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalCardImage {
+  width: 100px;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modalCardName {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.duplicateCard {
+  border: 2px solid red;
+  padding: 0.25rem;
+  border-radius: 0.75rem;
+}
+
+.modalCloseButton {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+}

@@ -22,7 +22,7 @@
       "email": "dizhak.pn@ucu.edu.ua",
       "username": "yopsa_matb",
       "password": "$2b$10$TMaOPbAybfXv3HUBEhTjru9XbamnFkz0fivk7dxNE7LLh86SJMBIq",
-      "diamonds": 620,
+      "diamonds": 720,
       "cards": [
         {
           "id": 1747580125716,
@@ -30,12 +30,27 @@
           "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
         },
         {
-          "id": 1747580125718,
-          "name": "Rowlet",
-          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
+          "id": 1747585587130,
+          "name": "Charmander",
+          "imageUrl": "https://images.pokemontcg.io/base1/46.png"
+        },
+        {
+          "id": 1747585591641,
+          "name": "Bulbasaur",
+          "imageUrl": "https://images.pokemontcg.io/base1/44.png"
+        },
+        {
+          "id": 1747585593914,
+          "name": "Squirtle",
+          "imageUrl": "https://images.pokemontcg.io/base1/63.png"
+        },
+        {
+          "id": 1747585614655,
+          "name": "Pikachu",
+          "imageUrl": "https://images.pokemontcg.io/base1/58.png"
         }
       ],
-      "packs_opened": 21,
+      "packs_opened": 65,
       "rare_cards": 0,
       "collection_value": 0
     }
@@ -79,6 +94,30 @@
       "imageUrl": "https://images.pokemontcg.io/sm9/1.png",
       "price": 80,
       "forSale": true
+    },
+    {
+      "id": 2,
+      "name": "Pikachu",
+      "price": 80,
+      "imageUrl": "https://images.pokemontcg.io/base1/58.png"
+    },
+    {
+      "id": 3,
+      "name": "Charmander",
+      "price": 90,
+      "imageUrl": "https://images.pokemontcg.io/base1/46.png"
+    },
+    {
+      "id": 4,
+      "name": "Bulbasaur",
+      "price": 95,
+      "imageUrl": "https://images.pokemontcg.io/base1/44.png"
+    },
+    {
+      "id": 5,
+      "name": "Squirtle",
+      "price": 92,
+      "imageUrl": "https://images.pokemontcg.io/base1/63.png"
     }
   ]
 }
