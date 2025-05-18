@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import styles from './header.module.css';
+import styles from './Header.module.css';
 import { Diamond, Info, Package, ShoppingCart, User, LogIn, LogOut } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { useAuth } from '../context/auth-context';
+import { useAuth } from '../AuthorizationModule/AuthContext';
 
 export const Header = () => {
   const pathname = usePathname();

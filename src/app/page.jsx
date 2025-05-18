@@ -1,11 +1,11 @@
 'use client';
 
-import { useAuth } from './context/auth-context';
-import Header from './components/header';
+import { useAuth } from './components/AuthorizationModule/AuthContext';
+import Header from './components/Header/Header';
 import styles from './styles/index.module.css';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { Button } from './components/ui/button';
+import { Button } from './components/Button/Button';
 export default function Index() {
   const { user } = useAuth();
 

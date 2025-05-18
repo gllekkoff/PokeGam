@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Header from '../components/header';
-import PokemonPack from '../components/PokemonPack';
+import Header from '../components/Header/Header';
+import PokemonPack from '../components/PokemonPack/PokemonPack';
 import styles from './styles/packs.module.css';
 
 export default function PacksPage() {

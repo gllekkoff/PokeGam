@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Package, Diamond } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '../Button/Button';
 import styles from './PokemonPack.module.css';
 
 export default function PokemonPack({ pack, onAction }) {

@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import PokemonPack from '../components/PokemonPack';
-import Header from '../components/header';
+import PokemonPack from '../components/PokemonPack/PokemonPack';
+import Header from '../components/Header/Header';
 import styles from './styles/market.module.css';
 import { Diamond } from 'lucide-react';
-import { Button } from '../components/ui/button';
+import { Button } from '../components/Button/Button';
 
 export default function MarketPage() {
   const router = useRouter();

@@ -1,13 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { useAuth } from '../context/auth-context';
-import { Header } from '../components/header';
-import { PasswordInput } from '../components/ui/password-input';
+import { useAuth } from '../components/AuthorizationModule/AuthContext';
+import { Header } from '../components/Header/Header';
+import { PasswordInput } from '../components/PasswordInput/PasswordInput';
 import Link from 'next/link';
 import styles from './styles/signup.module.css';
 import { UserPlus } from 'lucide-react';
-import { Button } from '../components/ui/button';
+import { Button } from '../components/Button/Button';
 export default function SignUpPage() {
   const { register } = useAuth();
   const [username, setUsername] = useState('');

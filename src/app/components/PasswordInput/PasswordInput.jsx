@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import styles from './password-input.module.css';
+import styles from './PasswordInput.module.css';
 
 export function PasswordInput({ value, onChange, placeholder, required }) {
   const [showPassword, setShowPassword] = useState(false);

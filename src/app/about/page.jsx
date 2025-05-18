@@ -1,5 +1,5 @@
 import styles from './styles/about.module.css';
-import {Header } from "../components/header"
+import {Header } from "../components/Header/Header"
 export default function About() {
   return (
     <div className={styles.container}>

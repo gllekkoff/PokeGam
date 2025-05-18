@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Header from '../components/header';
-import PokemonCard from '../components/PokemonCard';
+import Header from '../components/Header/Header';
+import PokemonCard from '../components/PokemonCard/PokemonCard';
 import styles from './styles/profile.module.css';
 import { Diamond, UserRound } from 'lucide-react';
-import { useAuth } from '../context/auth-context';
+import { useAuth } from '../components/AuthorizationModule/AuthContext';
 
 export default function ProfilePage() {
   const router = useRouter();
