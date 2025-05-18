@@ -36,7 +36,7 @@ export const Header = () => {
           {user && (
             <div className={styles.diamondBox}>
               <Diamond className={`${styles.diamond} w-5 h-5`} />
-              <span className={styles.diamondCount}>{user.diamonds ?? 0}</span>
+              <span className={styles.diamondCount}>{user?.diamonds ?? 0}</span>
             </div>
           )}
           

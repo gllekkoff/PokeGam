@@ -4,12 +4,15 @@ import { useState } from 'react';
 import { Package, Diamond } from 'lucide-react';
 import { Button } from '../Button/Button';
 import styles from './PokemonPack.module.css';
+import { useAuth } from '../AuthorizationModule/AuthContext';
 
-export default function PokemonPack({ pack, setUser }) {
+export default function PokemonPack({ pack }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState('');
   const [resultModal, setResultModal] = useState(null);
   const isFree = pack.tag === 'Free';
+
+  const { updateUser } = useAuth();
 
   const handleBuyPack = async () => {
     const token = localStorage.getItem('token');
@@ -43,7 +46,7 @@ export default function PokemonPack({ pack, setUser }) {
 
       if (result.updatedUser) {
         localStorage.setItem('user', JSON.stringify(result.updatedUser));
-        setUser?.(result.updatedUser);
+        updateUser(result.updatedUser); // ✅ Update global context so header re-renders
       }
     } catch (err) {
       console.error('❌ Buy pack failed:', err);
@@ -114,7 +117,6 @@ export default function PokemonPack({ pack, setUser }) {
           </div>
         </div>
       )}
-
 
       {resultModal && (
         <div className={styles.modalOverlay} onClick={() => setResultModal(null)}>

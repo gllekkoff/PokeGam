@@ -16,13 +16,35 @@
       "packs_opened": 12,
       "rare_cards": 0,
       "collection_value": 0
+    },
+    {
+      "id": 2,
+      "email": "dizhak.pn@ucu.edu.ua",
+      "username": "yopsa_matb",
+      "password": "$2b$10$TMaOPbAybfXv3HUBEhTjru9XbamnFkz0fivk7dxNE7LLh86SJMBIq",
+      "diamonds": 620,
+      "cards": [
+        {
+          "id": 1747580125716,
+          "name": "Rowlet",
+          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
+        },
+        {
+          "id": 1747580125718,
+          "name": "Rowlet",
+          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
+        }
+      ],
+      "packs_opened": 21,
+      "rare_cards": 0,
+      "collection_value": 0
     }
   ],
   "packs": [
     {
       "id": 1,
       "name": "Regular Pack",
-      "price": 100,
+      "price": 0,
       "tag": "Free"
     },
     {
