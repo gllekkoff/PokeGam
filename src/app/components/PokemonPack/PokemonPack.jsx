@@ -6,12 +6,11 @@ import { Button } from '../Button/Button';
 import styles from './PokemonPack.module.css';
 import { useAuth } from '../AuthorizationModule/AuthContext';
 
-export default function PokemonPack({ pack }) {
+export default function PokemonPack({ pack, setUser }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState('');
   const [resultModal, setResultModal] = useState(null);
   const isFree = pack.tag === 'Free';
-
   const { updateUser } = useAuth();
 
   const handleBuyPack = async () => {
@@ -34,19 +33,16 @@ export default function PokemonPack({ pack }) {
       }
 
       setResultModal({
-        type: result.reward === 'duplicate_sold' ? 'duplicate' : 'new',
-        card: result.card,
-        message:
-          result.reward === 'duplicate_sold'
-            ? `💰 You already had ${result.card.name}. Sold for 10 diamonds!`
-            : `🎉 You got ${result.card.name}!`,
+        cards: [...(result.newCards || []), ...(result.duplicates || [])],
+        duplicates: (result.duplicates || []).map((c) => c.name),
+        packName: pack.name,
       });
 
       setShowConfirm(false);
 
       if (result.updatedUser) {
         localStorage.setItem('user', JSON.stringify(result.updatedUser));
-        updateUser(result.updatedUser); // ✅ Update global context so header re-renders
+        updateUser(result.updatedUser);
       }
     } catch (err) {
       console.error('❌ Buy pack failed:', err);
@@ -120,19 +116,32 @@ export default function PokemonPack({ pack }) {
 
       {resultModal && (
         <div className={styles.modalOverlay} onClick={() => setResultModal(null)}>
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <img
-              src={resultModal.card.imageUrl}
-              alt={resultModal.card.name}
-              className={styles.modalImage}
-            />
-            <p className={styles.resultText}>{resultModal.message}</p>
-            <div className={styles.modalActions}>
-              <Button onClick={() => setResultModal(null)}>Close</Button>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <h3 className={styles.modalTitle}>You opened {resultModal.packName}!</h3>
+            <div className={styles.modalCardGrid}>
+              {resultModal.cards.map((card, idx) => (
+                <div
+                  key={idx}
+                  className={`${styles.modalCard} ${
+                    resultModal.duplicates.includes(card.name) ? styles.duplicateCard : ''
+                  }`}
+                >
+                  <img
+                    src={card.imageUrl}
+                    alt={card.name}
+                    className={styles.modalCardImage}
+                  />
+                  <p className={styles.modalCardName}>{card.name}</p>
+                </div>
+              ))}
             </div>
+            <Button className={styles.modalCloseButton} onClick={() => setResultModal(null)}>
+              Close
+            </Button>
           </div>
         </div>
       )}
+
     </>
   );
 }
