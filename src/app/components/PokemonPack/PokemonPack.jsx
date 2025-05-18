@@ -6,10 +6,11 @@ import { Button } from '../Button/Button';
 import styles from './PokemonPack.module.css';
 import { useAuth } from '../AuthorizationModule/AuthContext';
 
-export default function PokemonPack({ pack, setUser }) {
-  const [showConfirm, setShowConfirm] = useState(false);
+export default function PokemonPack({ pack, setUser, onAction }) {
   const [error, setError] = useState('');
   const [resultModal, setResultModal] = useState(null);
+  const [showUnifiedModal, setShowUnifiedModal] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const isFree = pack.tag === 'Free';
   const { updateUser } = useAuth();
 
@@ -37,8 +38,6 @@ export default function PokemonPack({ pack, setUser }) {
         duplicates: (result.duplicates || []).map((c) => c.name),
         packName: pack.name,
       });
-
-      setShowConfirm(false);
 
       if (result.updatedUser) {
         localStorage.setItem('user', JSON.stringify(result.updatedUser));
@@ -74,13 +73,70 @@ export default function PokemonPack({ pack, setUser }) {
               className={!isFree ? styles.buyButton : undefined}
               size="sm"
               variant={isFree ? 'destructive' : 'default'}
-              onClick={() => setShowConfirm(true)}
+              onClick={() => {
+                if (isFree) {
+                  setShowUnifiedModal(true);
+                } else {
+                  setShowConfirm(true);
+                }
+              }}
             >
               {isFree ? 'Open' : 'Buy'}
             </Button>
           </div>
         </div>
       </div>
+
+      {showUnifiedModal && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <h3 className={styles.modalTitle}>Possible Cards in {pack.name}</h3>
+
+            <div className={styles.previewTopRow}>
+              {pack.cards.map((card) => (
+                <img
+                  key={card.id}
+                  src={card.imageUrl}
+                  alt={card.name}
+                  className={styles.cardImage}
+                />
+              ))}
+            </div>
+
+            <div className={styles.previewBottomRow}>
+              {pack.cards.map((card) => {
+                const chance = Math.max(1, Math.floor(100 / pack.cards.length));
+                return (
+                  <div key={card.id} className={styles.previewCard}>
+                    <img
+                      src={card.imageUrl}
+                      alt={card.name}
+                      className={styles.modalCardImage}
+                    />
+                    <p className={styles.previewCardName}>{chance}%</p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {error && <p className={styles.error}>{error}</p>}
+            <div className={styles.modalActions}>
+              <Button variant="outline" onClick={() => setShowUnifiedModal(false)}>
+                Cancel
+              </Button>
+              <Button
+                className={styles.buyButton}
+                onClick={async () => {
+                  await handleBuyPack();
+                  setShowUnifiedModal(false);
+                }}
+              >
+                Open
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showConfirm && (
         <div className={styles.modalOverlay}>
@@ -105,7 +161,10 @@ export default function PokemonPack({ pack, setUser }) {
               <Button
                 className={!isFree ? styles.buyButton : undefined}
                 variant={isFree ? 'destructive' : 'default'}
-                onClick={handleBuyPack}
+                onClick={async () => {
+                  await handleBuyPack();
+                  setShowConfirm(false);
+                }}
               >
                 {isFree ? 'Open' : 'Buy'}
               </Button>
@@ -141,7 +200,6 @@ export default function PokemonPack({ pack, setUser }) {
           </div>
         </div>
       )}
-
     </>
   );
 }

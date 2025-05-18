@@ -103,12 +103,11 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
   const { packId } = req.body;
   const data = getUserData();
   const users = data.users || [];
-  const cards = data.cards || [];
 
   const user = users.find(u => u.id === req.user.id);
   const pack = data.packs.find(p => p.id === packId);
+
   if (!user || !pack) return res.status(404).json({ message: 'Not found' });
-  if (!cards.length) return res.status(404).json({ message: 'No cards available' });
 
   if (pack.tag === 'Market' && user.diamonds < pack.price) {
     return res.status(400).json({ message: 'Not enough diamonds' });
@@ -118,28 +117,23 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
     user.diamonds -= pack.price;
   }
 
-  user.cards = user.cards || [];
-  const drawnCards = [];
-
-  for (let i = 0; i < 3; i++) {
-    const card = cards[Math.floor(Math.random() * cards.length)];
-    if (!card || !card.name) continue;
-
-    drawnCards.push(card);
-  }
-
+  const drawn = [...pack.cards].sort(() => 0.5 - Math.random()).slice(0, 3);
   const newCards = [];
   const duplicates = [];
 
-  for (const card of drawnCards) {
-    const isDuplicate = user.cards.some(c => c.name.toLowerCase() === card.name.toLowerCase());
+  user.cards = user.cards || [];
+
+  for (const card of drawn) {
+    const isDuplicate = user.cards.some(
+      c => c.name.toLowerCase() === card.name.toLowerCase()
+    );
 
     if (isDuplicate) {
       user.diamonds += 10;
       duplicates.push(card);
     } else {
       const instance = {
-        id: Date.now() + Math.floor(Math.random() * 1000),
+        id: Date.now() + Math.floor(Math.random() * 10000),
         name: card.name,
         imageUrl: card.imageUrl
       };
@@ -166,6 +160,7 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
     }
   });
 });
+
 
 
 // Buy Single Card
