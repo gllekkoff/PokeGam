@@ -8,23 +8,34 @@ const AuthContext = createContext(undefined);
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const savedUser = localStorage.getItem('user');
+    const initializeAuth = async () => {
+      const token = localStorage.getItem('token');
+      const savedUser = localStorage.getItem('user');
 
-    if (token && savedUser) {
-      try {
-        setUser(JSON.parse(savedUser));
-        setIsAuthenticated(true);
-      } catch (err) {
-        console.error('❌ Failed to parse user from localStorage:', err);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+      if (token && savedUser) {
+        try {
+          const userData = JSON.parse(savedUser);
+          setUser(userData);
+          setIsAuthenticated(true);
+        } catch (err) {
+          console.error('❌ Failed to parse user from localStorage:', err);
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+        }
       }
-    }
+      setIsLoading(false);
+    };
+
+    initializeAuth();
   }, []);
+
+  if (isLoading) {
+    return null;
+  }
 
   const updateUser = (userData) => {
     setUser(userData);

@@ -37,6 +37,7 @@ export default function ProfilePage() {
         const data = await res.json();
         updateUser(data);
         setCards(data.cards || []);
+        setStarredCards(new Set(data.starredCards || []));
       } catch (err) {
         console.error('Failed to load profile:', err);
         localStorage.removeItem('token');
@@ -48,24 +49,36 @@ export default function ProfilePage() {
     loadProfile();
   }, [router, updateUser]);
 
-  useEffect(() => {
-    const savedStarred = localStorage.getItem('starredCards');
-    if (savedStarred) {
-      setStarredCards(new Set(JSON.parse(savedStarred)));
-    }
-  }, []);
-
-  const handleToggleStar = (cardId) => {
-    setStarredCards(prev => {
-      const newStarred = new Set(prev);
+  const handleToggleStar = async (cardId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const newStarred = new Set(starredCards);
+      
       if (newStarred.has(cardId)) {
         newStarred.delete(cardId);
       } else {
         newStarred.add(cardId);
       }
+
+      const response = await fetch('http://localhost:8000/api/user/starred-cards', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          starredCards: [...newStarred]
+        })
+      });
+
+      if (!response.ok) throw new Error('Failed to update starred cards');
+
+      // Update local state
+      setStarredCards(newStarred);
       localStorage.setItem('starredCards', JSON.stringify([...newStarred]));
-      return newStarred;
-    });
+    } catch (err) {
+      console.error('Failed to update starred cards:', err);
+    }
   };
 
   const sortedCards = useMemo(() => {

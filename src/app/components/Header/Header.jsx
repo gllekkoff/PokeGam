@@ -5,14 +5,12 @@ import styles from './Header.module.css';
 import { Diamond, Info, Package, ShoppingCart, User, LogIn, LogOut } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../AuthorizationModule/AuthContext';
-import { useState } from 'react';
 
-export const Header = ({ onLogoutClick }) => {
+export const Header = () => {
   const pathname = usePathname();
-  const { user, isAuthenticated } = useAuth();
+  const { user, logout } = useAuth();
 
-  const showAuthContent = isAuthenticated && user !== null;
-
+  const showAuthContent = !!user;
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -30,7 +28,7 @@ export const Header = ({ onLogoutClick }) => {
             <ShoppingCart className="w-5 h-5" />
             <span>Market</span>
           </Link>
-          
+
           <Link href="/about" className={styles.navLink}>
             <Info className="w-5 h-5" />
             <span>About Us</span>
@@ -39,13 +37,13 @@ export const Header = ({ onLogoutClick }) => {
           {showAuthContent && (
             <div className={styles.diamondBox}>
               <Diamond className={`${styles.diamond} w-5 h-5`} />
-              <span className={styles.diamondCount}>{user.diamonds ?? 0}</span>
+              <span className={styles.diamondCount}>{user?.diamonds ?? 0}</span>
             </div>
           )}
           
           {showAuthContent ? (
             pathname === '/profile' ? (
-              <button className={styles.navButton} onClick={onLogoutClick}>
+              <button className={styles.navButton} onClick={logout}>
                 <LogOut className="w-5 h-5" />
                 <span>Sign Out</span>
               </button>

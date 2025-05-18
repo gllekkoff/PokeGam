@@ -1,4 +1,3 @@
-
 .main {
   min-height: 100vh;
   display: flex;
@@ -69,4 +68,59 @@
 
 .switchText a:hover {
   color: var(--destructive);
+}
+
+.inputGroup {
+  width: 100%;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.input.error {
+  border-color: var(--destructive);
+}
+
+.errorText {
+  color: var(--destructive);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  animation: slideDown 0.2s ease-out;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  color: var(--destructive);
+  background-color: rgb(254 242 242);
+  border: 1px solid rgb(254 226 226);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
