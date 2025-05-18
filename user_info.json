@@ -1,18 +1,62 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "username": "admin",
+      "password": "$2b$10$KRPZWZqNmcIFIdfC6EuIs.oJZODJx5W6l.gc/O9v.c7Q1c.m5Vo26",
+      "diamonds": 99999995310,
+      "cards": [
+        {
+          "id": 1747575233561,
+          "name": "Rowlet",
+          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
+        },
+        {
+          "id": 1747575243543,
+          "name": "Rowlet",
+          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
+        },
+        {
+          "id": 1747575298106,
+          "name": "Rowlet",
+          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
+        }
+      ],
+      "packs_opened": 11,
+      "rare_cards": 0,
+      "collection_value": 0
+    }
+  ],
   "packs": [
     {
       "id": 1,
       "name": "Regular Pack",
       "price": 100,
-      "image": "/images/basic-pack.png",
       "tag": "Free"
     },
     {
       "id": 2,
       "name": "Premium Pack",
-      "price": 20,
-      "image": "/images/premium-pack.png",
+      "price": 500,
+      "tag": "Market"
+    },
+    {
+      "id": 3,
+      "name": "Ultra Pack",
+      "price": 1000,
+      "tag": "Market"
+    },
+    {
+      "id": 4,
+      "name": "Legendary Pack",
+      "price": 2000,
+      "tag": "Market"
+    },
+    {
+      "id": 5,
+      "name": "Ancient Pack",
+      "price": 3000,
       "tag": "Market"
     }
   ],
@@ -20,8 +64,9 @@
     {
       "id": 1,
       "name": "Rowlet",
+      "imageUrl": "https://images.pokemontcg.io/sm9/1.png",
       "price": 80,
-      "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
+      "forSale": true
     }
   ]
 }

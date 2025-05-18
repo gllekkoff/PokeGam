@@ -6,10 +6,11 @@ import Header from '../components/header';
 import PokemonCard from '../components/PokemonCard';
 import styles from './styles/profile.module.css';
 import { Diamond, UserRound } from 'lucide-react';
+import { useAuth } from '../context/auth-context';
 
 export default function ProfilePage() {
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  const { user, updateUser } = useAuth();
   const [cards, setCards] = useState([]);
   const [activeTab, setActiveTab] = useState('stats');
 
@@ -31,7 +32,7 @@ export default function ProfilePage() {
         if (!res.ok) throw new Error('Unauthorized');
 
         const data = await res.json();
-        setUser(data);
+        updateUser(data);
         setCards(data.cards || []);
       } catch (err) {
         console.error('Failed to load profile:', err);
@@ -42,7 +43,7 @@ export default function ProfilePage() {
     };
 
     loadProfile();
-  }, [router]);
+  }, [router, updateUser]);
 
   if (!user) return null;
 

@@ -23,12 +23,12 @@ const saveUserData = (data) => {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 };
 
-// ✅ FIXED: register route — preserves entire JSON structure
+
 app.post('/auth/register', async (req, res) => {
   try {
     const { email, password, username } = req.body;
 
-    const data = getUserData(); // full structure: { users, packs }
+    const data = getUserData();
     const users = data.users || [];
 
     if (users.find((u) => u.email === email)) {
@@ -51,7 +51,7 @@ app.post('/auth/register', async (req, res) => {
 
     users.push(newUser);
 
-    saveUserData({ ...data, users }); // ✅ preserve existing packs
+    saveUserData({ ...data, users });
 
     const token = jwt.sign(
       { id: newUser.id, email: newUser.email },
@@ -114,32 +114,42 @@ const authenticateToken = (req, res, next) => {
 app.post('/api/user/open-pack', authenticateToken, (req, res) => {
   const data = getUserData();
   const users = data.users || [];
+  const cards = data.cards || [];
+
   const user = users.find(u => u.id === req.user.id);
+  if (!user) return res.status(404).json({ message: 'User not found' });
+  if (!cards.length) return res.status(404).json({ message: 'No cards available' });
 
-  if (!user) {
-    return res.status(404).json({ message: 'User not found' });
-  }
-
-  const card = {
-    id: Date.now(),
-    name: 'Rowlet',
-    imageUrl: 'https://images.pokemontcg.io/sm9/1.png'
-  };
+  // Pick random card
+  const card = cards[Math.floor(Math.random() * cards.length)];
 
   user.cards = user.cards || [];
-  user.cards.push(card);
-  user.packs_opened = (user.packs_opened || 0) + 1; // ✅ increment here
+  const alreadyOwned = user.cards.some(c => c.name === card.name);
+
+  user.packs_opened = (user.packs_opened || 0) + 1;
+
+  if (alreadyOwned) {
+    user.diamonds += 10; // reward for duplicate
+  } else {
+    user.cards.push({
+      id: Date.now(), // assign new local ID
+      name: card.name,
+      imageUrl: card.imageUrl
+    });
+  }
 
   saveUserData({ ...data, users });
 
   res.json({
     success: true,
     card,
+    reward: alreadyOwned ? 'duplicate_sold' : 'new_card',
     updatedUser: {
       id: user.id,
       email: user.email,
       username: user.username,
       diamonds: user.diamonds,
+      cards: user.cards,
       packs_opened: user.packs_opened
     }
   });
@@ -150,40 +160,56 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
   const { packId } = req.body;
   const data = getUserData();
   const users = data.users || [];
+  const cards = data.cards || [];
+
   const user = users.find(u => u.id === req.user.id);
   const pack = data.packs.find(p => p.id === packId);
-
   if (!user || !pack) return res.status(404).json({ message: 'Not found' });
+  if (!cards.length) return res.status(404).json({ message: 'No cards available' });
+
   if (user.diamonds < pack.price) {
     return res.status(400).json({ message: 'Not enough diamonds' });
   }
 
-  user.diamonds -= pack.price;
-  user.packs_opened = (user.packs_opened || 0) + 1; // ✅ increment here
+  const card = cards[Math.floor(Math.random() * cards.length)];
 
-  const card = {
-    id: Date.now(),
-    name: 'Rowlet',
-    imageUrl: 'https://images.pokemontcg.io/sm9/1.png'
-  };
+  if (!card || !card.name) {
+    return res.status(500).json({ message: 'Invalid card drawn' });
+  }
 
   user.cards = user.cards || [];
-  user.cards.push(card);
+  const alreadyOwned = user.cards.some(c => c.name.trim().toLowerCase() === card.name.trim().toLowerCase());
+
+  user.packs_opened = (user.packs_opened || 0) + 1;
+  user.diamonds -= pack.price;
+
+  if (alreadyOwned) {
+    user.diamonds += 10; // reward for duplicate
+  } else {
+    user.cards.push({
+      id: Date.now(), // unique instance ID
+      name: card.name,
+      imageUrl: card.imageUrl
+    });
+  }
 
   saveUserData({ ...data, users });
 
   res.json({
     success: true,
     card,
+    reward: alreadyOwned ? 'duplicate_sold' : 'new_card',
     updatedUser: {
       id: user.id,
       email: user.email,
       username: user.username,
       diamonds: user.diamonds,
+      cards: user.cards,
       packs_opened: user.packs_opened
     }
   });
 });
+
 
 app.get('/api/cards', authenticateToken, (req, res) => {
   const data = getUserData();
@@ -210,7 +236,7 @@ app.post('/api/user/buy-card', authenticateToken, (req, res) => {
   user.cards = user.cards || [];
 
   user.cards.push({
-    id: Date.now(), // allow duplicates by timestamp ID
+    id: Date.now(),
     name: card.name,
     imageUrl: card.imageUrl
   });
@@ -250,10 +276,28 @@ app.get('/api/user/profile', authenticateToken, (req, res) => {
   });
 });
 
-app.get('/api/packs', authenticateToken, (req, res) => {
-  const data = getUserData();
-  const packs = data.packs || [];
-  res.json(packs);
+app.get('/api/packs', (req, res) => {
+  try {
+    const data = getUserData();
+    const packs = data.packs || [];
+    res.json(packs);
+  } catch (error) {
+    console.error('Error fetching packs:', error);
+    res.status(500).json({ message: 'Error fetching packs' });
+  }
+});
+
+app.get('/api/market', (req, res) => {
+  try {
+    const data = getUserData();
+    res.json({
+      packs: data.packs.filter(pack => pack.tag === 'Market'),
+      cards: data.cards.filter(card => card.forSale)
+    });
+  } catch (error) {
+    console.error('Error fetching market items:', error);
+    res.status(500).json({ message: 'Error fetching market items' });
+  }
 });
 
 app.use((err, req, res, next) => {

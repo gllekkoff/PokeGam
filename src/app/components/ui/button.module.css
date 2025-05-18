@@ -5,31 +5,27 @@
   gap: 0.5rem;
   border-radius: var(--radius);
   font-weight: 500;
-  transition:
-    background-color 0.2s,
-    color 0.2s,
-    border-color 0.2s,
-    transform 0.2s;
+  transition: all 0.2s ease;
   cursor: pointer;
   border: 1px solid transparent;
 }
 
 .default {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
+  background-color: #111827;
+  color: white;
 }
 
 .default:hover {
-  background-color: rgba(var(--primary-rgb), 0.9);
+  background-color: #1f2937;
 }
 
 .destructive {
-  background-color: var(--destructive);
-  color: var(--destructive-foreground);
+  background-color: #111827;
+  color: white;
 }
 
 .destructive:hover {
-  background-color: rgba(var(--destructive-rgb), 0.9);
+  background-color: #cf4040;
 }
 
 .outline {
@@ -75,8 +71,9 @@
 
 .sm {
   height: 36px;
-  padding: 0 12px;
+  padding: 0 16px;
   font-size: 14px;
+  border-radius: 8px;
 }
 
 .lg {
@@ -97,5 +94,5 @@
 }
 
 .button:hover {
-  transform: translateY(-3px);
+  transform: translateY(-1px);
 }

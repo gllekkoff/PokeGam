@@ -7,10 +7,8 @@ const AuthContext = createContext(undefined);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  // ✅ Hydrate user from localStorage on initial mount
   useEffect(() => {
     const token = localStorage.getItem('token');
     const savedUser = localStorage.getItem('user');
@@ -24,9 +22,12 @@ export function AuthProvider({ children }) {
         localStorage.removeItem('user');
       }
     }
-
-    setLoading(false);
   }, []);
+
+  const updateUser = (userData) => {
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
+  };
 
   const register = async (email, password, username) => {
     try {
@@ -81,11 +82,8 @@ export function AuthProvider({ children }) {
     router.push('/signin');
   };
 
-  // Optional: wait for hydration
-  if (loading) return null;
-
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={{ user, updateUser, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
