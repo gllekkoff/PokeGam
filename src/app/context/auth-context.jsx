@@ -7,7 +7,26 @@ const AuthContext = createContext(undefined);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
+
+  // ✅ Hydrate user from localStorage on initial mount
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const savedUser = localStorage.getItem('user');
+
+    if (token && savedUser) {
+      try {
+        setUser(JSON.parse(savedUser));
+      } catch (err) {
+        console.error('❌ Failed to parse user from localStorage:', err);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      }
+    }
+
+    setLoading(false);
+  }, []);
 
   const register = async (email, password, username) => {
     try {
@@ -39,9 +58,9 @@ export function AuthProvider({ children }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
-      
+
       const data = await res.json();
-      
+
       if (!res.ok) {
         throw new Error(data.message || 'Invalid credentials');
       }
@@ -61,6 +80,9 @@ export function AuthProvider({ children }) {
     setUser(null);
     router.push('/signin');
   };
+
+  // Optional: wait for hydration
+  if (loading) return null;
 
   return (
     <AuthContext.Provider value={{ user, login, register, logout }}>

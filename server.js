@@ -14,7 +14,7 @@ app.use(express.json());
 
 const getUserData = () => {
   const filePath = path.join(__dirname, 'user_info.json');
-  const rawData = fs.readFileSync(filePath);
+  const rawData = fs.readFileSync(filePath, 'utf-8');
   return JSON.parse(rawData);
 };
 
@@ -23,30 +23,35 @@ const saveUserData = (data) => {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 };
 
+// ✅ FIXED: register route — preserves entire JSON structure
 app.post('/auth/register', async (req, res) => {
   try {
     const { email, password, username } = req.body;
-    const users = getUserData().users || [];
 
-    if (users.find(u => u.email === email)) {
+    const data = getUserData(); // full structure: { users, packs }
+    const users = data.users || [];
+
+    if (users.find((u) => u.email === email)) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = {
       id: users.length + 1,
       email,
       username,
       password: hashedPassword,
       diamonds: 100,
-      "cards": [],
+      cards: [],
       packs_opened: 0,
       rare_cards: 0,
       collection_value: 0
     };
 
     users.push(newUser);
-    saveUserData({ users });
+
+    saveUserData({ ...data, users }); // ✅ preserve existing packs
 
     const token = jwt.sign(
       { id: newUser.id, email: newUser.email },
@@ -59,6 +64,7 @@ app.post('/auth/register', async (req, res) => {
       token
     });
   } catch (error) {
+    console.error('❌ Registration error:', error);
     res.status(500).json({ message: 'Error creating user' });
   }
 });
@@ -67,7 +73,7 @@ app.post('/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const users = getUserData().users || [];
-    const user = users.find(u => u.email === email);
+    const user = users.find((u) => u.email === email);
 
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
@@ -107,17 +113,17 @@ const authenticateToken = (req, res, next) => {
 
 app.get('/api/user/profile', authenticateToken, (req, res) => {
   const users = getUserData().users || [];
-  const user = users.find(u => u.id === req.user.id);
-  
+  const user = users.find((u) => u.id === req.user.id);
+
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
 
-  res.json({ 
+  res.json({
     id: user.id,
     email: user.email,
     username: user.username,
-    diamonds: user.diamonds, 
+    diamonds: user.diamonds,
     cards: user.cards || [],
     packs_opened: user.packs_opened,
     rare_cards: user.rare_cards,
@@ -132,10 +138,10 @@ app.get('/api/packs', authenticateToken, (req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error('💥 Uncaught error:', err.stack);
   res.status(500).json({ message: 'Something went wrong!' });
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

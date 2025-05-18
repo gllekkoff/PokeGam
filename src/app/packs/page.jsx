@@ -47,12 +47,13 @@ export default function PacksPage() {
       <main className={styles.main}>
         <h1 className={styles.title}>Open Pokémon Packs</h1>
         <div className={styles.packGrid}>
-          {packs.map((pack) => (
-            <PokemonPack key={pack.id} pack={pack} />
-          ))}
+          {packs
+            .filter((pack) => pack.tag === 'Free')
+            .map((pack) => (
+              <PokemonPack key={pack.id} pack={pack} />
+            ))}
         </div>
       </main>
     </div>
   );
-  
 }
