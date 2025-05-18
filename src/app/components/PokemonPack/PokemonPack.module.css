@@ -126,3 +126,16 @@
   background-color: #5F71F6 !important;
   color: white !important;
 }
+
+.modalImage {
+  width: 150px;
+  height: auto;
+  margin: 1rem auto;
+}
+
+.resultText {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}

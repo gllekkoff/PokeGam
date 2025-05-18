@@ -5,16 +5,11 @@ import { Package, Diamond } from 'lucide-react';
 import { Button } from '../Button/Button';
 import styles from './PokemonPack.module.css';
 
-export default function PokemonPack({ pack, onAction }) {
+export default function PokemonPack({ pack, setUser }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState('');
+  const [resultModal, setResultModal] = useState(null);
   const isFree = pack.tag === 'Free';
-
-  const handlePackAction = () => {
-    if (isFree) {
-      onAction(pack);
-    }
-  };
 
   const handleBuyPack = async () => {
     const token = localStorage.getItem('token');
@@ -31,26 +26,27 @@ export default function PokemonPack({ pack, onAction }) {
       const result = await res.json();
 
       if (!res.ok) {
-        if (result.message === 'Not enough diamonds') {
-          setError('Not enough diamonds');
-        } else {
-          setError(result.message || 'Something went wrong');
-        }
+        setError(result.message || 'Something went wrong');
         return;
       }
 
-      if (result.reward === 'duplicate_sold') {
-        alert(`💰 You already had ${result.card.name}. Sold for 10 diamonds!`);
-      } else {
-        alert(`🎉 You got ${result.card.name}!`);
-      }
+      setResultModal({
+        type: result.reward === 'duplicate_sold' ? 'duplicate' : 'new',
+        card: result.card,
+        message:
+          result.reward === 'duplicate_sold'
+            ? `💰 You already had ${result.card.name}. Sold for 10 diamonds!`
+            : `🎉 You got ${result.card.name}!`,
+      });
+
+      setShowConfirm(false);
 
       if (result.updatedUser) {
         localStorage.setItem('user', JSON.stringify(result.updatedUser));
+        setUser?.(result.updatedUser);
       }
-
     } catch (err) {
-      console.error('❌ Failed to buy pack:', err);
+      console.error('❌ Buy pack failed:', err);
       setError('Failed to buy pack');
     }
   };
@@ -58,7 +54,11 @@ export default function PokemonPack({ pack, onAction }) {
   return (
     <>
       <div className={styles.card}>
-        <div className={`${styles.imageContainer} ${isFree ? styles.freeGradient : styles.premiumGradient}`}>
+        <div
+          className={`${styles.imageContainer} ${
+            isFree ? styles.freeGradient : styles.premiumGradient
+          }`}
+        >
           <Package size={64} color="white" />
         </div>
         <div className={styles.content}>
@@ -74,7 +74,7 @@ export default function PokemonPack({ pack, onAction }) {
             <Button
               className={!isFree ? styles.buyButton : undefined}
               size="sm"
-              variant={isFree ? "destructive" : "default"}
+              variant={isFree ? 'destructive' : 'default'}
               onClick={() => setShowConfirm(true)}
             >
               {isFree ? 'Open' : 'Buy'}
@@ -86,28 +86,47 @@ export default function PokemonPack({ pack, onAction }) {
       {showConfirm && (
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
-            <p>Are you sure you want to {isFree ? 'open' : 'buy'}:</p>
-            <p><strong>{pack.name}</strong></p>
+            <p>
+              Are you sure you want to {isFree ? 'open' : 'buy'}:
+              <br />
+              <strong>{pack.name}</strong>
+            </p>
             {!isFree && (
-              <p><strong>Price: {pack.price} <Diamond size={16} /></strong></p>
+              <p>
+                <strong>
+                  Price: {pack.price} <Diamond size={16} />
+                </strong>
+              </p>
             )}
-            {error && (
-              <p className={styles.error}>{error}</p>
-            )}
+            {error && <p className={styles.error}>{error}</p>}
             <div className={styles.modalActions}>
-              <Button
-                variant="outline"
-                onClick={() => setShowConfirm(false)}
-              >
+              <Button variant="outline" onClick={() => setShowConfirm(false)}>
                 Cancel
               </Button>
               <Button
                 className={!isFree ? styles.buyButton : undefined}
-                variant={isFree ? "destructive" : "default"}
-                onClick={() => isFree ? onAction(pack) : handleBuyPack()}
+                variant={isFree ? 'destructive' : 'default'}
+                onClick={handleBuyPack}
               >
                 {isFree ? 'Open' : 'Buy'}
               </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
+      {resultModal && (
+        <div className={styles.modalOverlay} onClick={() => setResultModal(null)}>
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <img
+              src={resultModal.card.imageUrl}
+              alt={resultModal.card.name}
+              className={styles.modalImage}
+            />
+            <p className={styles.resultText}>{resultModal.message}</p>
+            <div className={styles.modalActions}>
+              <Button onClick={() => setResultModal(null)}>Close</Button>
             </div>
           </div>
         </div>

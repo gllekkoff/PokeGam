@@ -178,16 +178,19 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
   }
 
   user.cards = user.cards || [];
-  const alreadyOwned = user.cards.some(c => c.name.trim().toLowerCase() === card.name.trim().toLowerCase());
+  user.cards = user.cards || [];
+  const alreadyOwned = user.cards.some(
+    c => c.name.trim().toLowerCase() === card.name.trim().toLowerCase()
+  );
 
   user.packs_opened = (user.packs_opened || 0) + 1;
   user.diamonds -= pack.price;
 
   if (alreadyOwned) {
-    user.diamonds += 10; // reward for duplicate
+    user.diamonds += 10;
   } else {
     user.cards.push({
-      id: Date.now(), // unique instance ID
+      id: Date.now(),
       name: card.name,
       imageUrl: card.imageUrl
     });

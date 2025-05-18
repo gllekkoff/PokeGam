@@ -5,25 +5,15 @@
       "email": "admin@gmail.com",
       "username": "admin",
       "password": "$2b$10$KRPZWZqNmcIFIdfC6EuIs.oJZODJx5W6l.gc/O9v.c7Q1c.m5Vo26",
-      "diamonds": 99999984060,
+      "diamonds": 99999978900,
       "cards": [
         {
-          "id": 1747575233561,
-          "name": "Rowlet",
-          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
-        },
-        {
-          "id": 1747575243543,
-          "name": "Rowlet",
-          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
-        },
-        {
-          "id": 1747575298106,
+          "id": 1747576987296,
           "name": "Rowlet",
           "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
         }
       ],
-      "packs_opened": 46,
+      "packs_opened": 12,
       "rare_cards": 0,
       "collection_value": 0
     }

@@ -12,7 +12,7 @@ export default function ProfilePage() {
   const router = useRouter();
   const { user, updateUser } = useAuth();
   const [cards, setCards] = useState([]);
-  const [activeTab, setActiveTab] = useState('stats');
+  const [activeTab, setActiveTab] = useState('collection');
 
   useEffect(() => {
     const token = localStorage.getItem('token');

@@ -317,3 +317,18 @@ button[type="button"]:hover {
 .ownedCard .cardInfo {
   opacity: 0.5;
 }
+
+
+.resultText {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: red;
+  margin: 1rem 0;
+}
