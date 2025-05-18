@@ -73,35 +73,107 @@
 .modalOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 50;
+  align-items: center;
+  z-index: 1000;
 }
 
-.modal {
+.modalContent {
   background: white;
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 1rem;
+  max-width: 800px;
   width: 90%;
-  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Preview Modal Rows */
+.previewTopRow {
+  background: linear-gradient(to right, #f87171, #f97316);
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.previewTopRow img {
+  width: 100px;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.previewBottomRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  margin-bottom: 2rem;
+}
+
+.previewCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.modal p {
-  margin: 0;
+.previewCardName {
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
   color: #111827;
 }
 
-.modal strong {
-  display: block;
-  margin-top: 0.5rem;
+/* Result Modal Grid */
+.modalCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
-.error {
-  color: #ef4444;
-  margin: 1rem 0;
+.modalCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 2px solid transparent;
+}
+
+.modalCardImage,
+.cardImage {
+  width: 100px;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modalCardName {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.duplicateCard {
+  border-color: red;
 }
 
 .modalActions {
@@ -109,6 +181,11 @@
   gap: 1rem;
   margin-top: 2rem;
   justify-content: center;
+}
+
+.modalCloseButton {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
 }
 
 .buyButton {
@@ -127,10 +204,9 @@
   color: white !important;
 }
 
-.modalImage {
-  width: 150px;
-  height: auto;
-  margin: 1rem auto;
+.error {
+  color: #ef4444;
+  margin: 1rem 0;
 }
 
 .resultText {
@@ -138,69 +214,4 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin: 1rem 0;
-}
-
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modalContent {
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 600px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.modalTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.modalCardGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.modalCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.modalCardImage {
-  width: 100px;
-  height: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.modalCardName {
-  margin-top: 0.5rem;
-  font-weight: 500;
-}
-
-.duplicateCard {
-  border: 2px solid red;
-  padding: 0.25rem;
-  border-radius: 0.75rem;
-}
-
-.modalCloseButton {
-  margin-top: 1.5rem;
-  padding: 0.5rem 1rem;
 }

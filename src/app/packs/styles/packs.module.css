@@ -1,6 +1,7 @@
 .container {
   min-height: 100vh;
   background-color: var(--background);
+  padding-top: 4.5rem;
 }
 
 .main {
@@ -135,4 +136,51 @@
   text-align: center;
   margin: 1rem 0;
   font-weight: 500;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.popup {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cardRow {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardImage {
+  height: 180px;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.confirmButton {
+  background: #111827;
+  color: white;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+.confirmButton:hover {
+  background: #5f71f6;
 }

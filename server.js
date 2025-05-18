@@ -30,11 +30,7 @@ app.post('/auth/register', async (req, res) => {
     const users = data.users || [];
 
     if (users.find(u => u.email === email)) {
-      return res.status(400).json({ message: 'Email already registered' });
-    }
-
-    if (users.find(u => u.username.toLowerCase() === username.toLowerCase())) {
-      return res.status(400).json({ message: 'Username already taken' });
+      return res.status(400).json({ message: 'User already exists' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -71,22 +67,13 @@ app.post('/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const users = getUserData().users || [];
-    
-    const user = users.find(u => 
-      u.email === email || 
-      u.username.toLowerCase() === email.toLowerCase()
-    );
+    const user = users.find(u => u.email === email);
 
-    if (!user) {
-      return res.status(401).json({ message: 'User not found' });
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) {
-      return res.status(401).json({ message: 'Invalid password' });
-    }
-
-    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
+    const token = jwt.sign({ id: user.id, email }, JWT_SECRET, {
       expiresIn: '24h',
       algorithm: 'HS256'
     });
@@ -95,8 +82,7 @@ app.post('/auth/login', async (req, res) => {
       user: { ...user, password: undefined },
       token
     });
-  } catch (err) {
-    console.error('Login error:', err);
+  } catch {
     res.status(500).json({ message: 'Error logging in' });
   }
 });
@@ -112,16 +98,16 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+// Buy Pack (3 cards, duplicates reward)
 app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
   const { packId } = req.body;
   const data = getUserData();
   const users = data.users || [];
-  const cards = data.cards || [];
 
   const user = users.find(u => u.id === req.user.id);
   const pack = data.packs.find(p => p.id === packId);
+
   if (!user || !pack) return res.status(404).json({ message: 'Not found' });
-  if (!cards.length) return res.status(404).json({ message: 'No cards available' });
 
   if (pack.tag === 'Market' && user.diamonds < pack.price) {
     return res.status(400).json({ message: 'Not enough diamonds' });
@@ -131,28 +117,23 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
     user.diamonds -= pack.price;
   }
 
-  user.cards = user.cards || [];
-  const drawnCards = [];
-
-  for (let i = 0; i < 3; i++) {
-    const card = cards[Math.floor(Math.random() * cards.length)];
-    if (!card || !card.name) continue;
-
-    drawnCards.push(card);
-  }
-
+  const drawn = [...pack.cards].sort(() => 0.5 - Math.random()).slice(0, 3);
   const newCards = [];
   const duplicates = [];
 
-  for (const card of drawnCards) {
-    const isDuplicate = user.cards.some(c => c.name.toLowerCase() === card.name.toLowerCase());
+  user.cards = user.cards || [];
+
+  for (const card of drawn) {
+    const isDuplicate = user.cards.some(
+      c => c.name.toLowerCase() === card.name.toLowerCase()
+    );
 
     if (isDuplicate) {
       user.diamonds += 10;
       duplicates.push(card);
     } else {
       const instance = {
-        id: Date.now() + Math.floor(Math.random() * 1000),
+        id: Date.now() + Math.floor(Math.random() * 10000),
         name: card.name,
         imageUrl: card.imageUrl
       };
@@ -181,6 +162,8 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
 });
 
 
+
+// Buy Single Card
 app.post('/api/user/buy-card', authenticateToken, (req, res) => {
   const { cardId } = req.body;
   const data = getUserData();
@@ -220,42 +203,22 @@ app.post('/api/user/buy-card', authenticateToken, (req, res) => {
   });
 });
 
-app.post('/api/user/starred-cards', authenticateToken, (req, res) => {
-  try {
-    const { starredCards } = req.body;
-    const data = getUserData();
-    const user = data.users.find(u => u.id === req.user.id);
-    
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    // Add starredCards field if it doesn't exist
-    user.starredCards = starredCards;
-    saveUserData(data);
-
-    res.json({ message: 'Starred cards updated' });
-  } catch (err) {
-    res.status(500).json({ message: 'Error updating starred cards' });
-  }
-});
-
 app.get('/api/user/profile', authenticateToken, (req, res) => {
-  try {
-    const data = getUserData();
-    const user = data.users.find(u => u.id === req.user.id);
-    
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
+  const users = getUserData().users || [];
+  const user = users.find(u => u.id === req.user.id);
 
-    res.json({
-      ...user,
-      starredCards: user.starredCards || []
-    });
-  } catch (err) {
-    res.status(500).json({ message: 'Error fetching profile' });
-  }
+  if (!user) return res.status(404).json({ message: 'User not found' });
+
+  res.json({
+    id: user.id,
+    email: user.email,
+    username: user.username,
+    diamonds: user.diamonds,
+    cards: user.cards || [],
+    packs_opened: user.packs_opened,
+    rare_cards: user.rare_cards,
+    collection_value: user.collection_value
+  });
 });
 
 app.get('/api/cards', authenticateToken, (req, res) => {
