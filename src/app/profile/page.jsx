@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '../components/Header/Header';
 import PokemonCard from '../components/PokemonCard/PokemonCard';
@@ -13,6 +13,7 @@ export default function ProfilePage() {
   const { user, updateUser } = useAuth();
   const [cards, setCards] = useState([]);
   const [activeTab, setActiveTab] = useState('collection');
+  const [starredCards, setStarredCards] = useState(new Set());
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -44,6 +45,36 @@ export default function ProfilePage() {
 
     loadProfile();
   }, [router, updateUser]);
+
+  useEffect(() => {
+    // Load starred cards from localStorage
+    const savedStarred = localStorage.getItem('starredCards');
+    if (savedStarred) {
+      setStarredCards(new Set(JSON.parse(savedStarred)));
+    }
+  }, []);
+
+  const handleToggleStar = (cardId) => {
+    setStarredCards(prev => {
+      const newStarred = new Set(prev);
+      if (newStarred.has(cardId)) {
+        newStarred.delete(cardId);
+      } else {
+        newStarred.add(cardId);
+      }
+      // Save to localStorage
+      localStorage.setItem('starredCards', JSON.stringify([...newStarred]));
+      return newStarred;
+    });
+  };
+
+  const sortedCards = useMemo(() => {
+    return [...cards].sort((a, b) => {
+      const aStarred = starredCards.has(a.id) ? 1 : 0;
+      const bStarred = starredCards.has(b.id) ? 1 : 0;
+      return bStarred - aStarred;
+    });
+  }, [cards, starredCards]);
 
   if (!user) return null;
 
@@ -106,8 +137,15 @@ export default function ProfilePage() {
 
           {activeTab === 'collection' && (
             <div className={styles.cardGrid}>
-              {cards.map((card) => (
-                <PokemonCard key={card.id} card={card} />
+              {sortedCards.map((card) => (
+                <PokemonCard 
+                  key={card.id} 
+                  card={{
+                    ...card,
+                    isStarred: starredCards.has(card.id)
+                  }}
+                  onToggleStar={handleToggleStar}
+                />
               ))}
             </div>
           )}
