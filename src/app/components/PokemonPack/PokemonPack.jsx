@@ -55,7 +55,9 @@ export default function PokemonPack({ pack, setUser, onAction }) {
   };
 
   const handleConfirmFromUnified = () => {
-    if (!isFree && user?.diamonds < pack.price) {
+    if (isFree) {
+      handleBuyPack();
+    } else if (user?.diamonds < pack.price) {
       setNotEnoughDiamonds(true);
     } else {
       setShowConfirmModal(true);
@@ -75,15 +77,18 @@ export default function PokemonPack({ pack, setUser, onAction }) {
         <div className={styles.content}>
           <h3 className={styles.title}>{pack.name}</h3>
           <div className={styles.footer}>
-            {!isFree && (
-              <span className={styles.price}>
-                <Diamond size={16} />
-                {pack.price}
-              </span>
-            )}
-            {isFree && <span className={styles.freeTag}>Free</span>}
+            <div className={styles.leftTag}>
+              {isFree ? (
+                <span className={styles.freeTag}>Free</span>
+              ) : (
+                <span className={styles.price}>
+                  <Diamond size={16} />
+                  {pack.price}
+                </span>
+              )}
+            </div>
             <Button
-              className={!isFree ? styles.buyButton : undefined}
+              className={styles.buyButton}
               size="sm"
               variant={isFree ? 'destructive' : 'default'}
               onClick={handleBuyClick}
@@ -99,7 +104,7 @@ export default function PokemonPack({ pack, setUser, onAction }) {
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <h3 className={styles.modalTitle}>Possible Cards in {pack.name}</h3>
 
-            <div className={styles.previewTopRow}>
+            <div className={`${styles.previewTopRow} ${isFree ? styles.free : styles.market}`}>
               {pack.cards.map((card) => (
                 <img
                   key={card.id}
