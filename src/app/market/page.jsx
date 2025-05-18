@@ -7,20 +7,18 @@ import Header from '../components/Header/Header';
 import styles from './styles/market.module.css';
 import { Diamond } from 'lucide-react';
 import { Button } from '../components/Button/Button';
+import { useAuth } from '../components/AuthorizationModule/AuthContext';
 
 export default function MarketPage() {
   const router = useRouter();
+  const { user, updateUser } = useAuth();
   const [activeTab, setActiveTab] = useState('packs');
   const [packs, setPacks] = useState([]);
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [purchaseResult, setPurchaseResult] = useState(null);
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem('user'));
-    setUser(userData);
-
     const token = localStorage.getItem('token');
     if (!token) {
       router.push('/signin');
@@ -85,11 +83,10 @@ export default function MarketPage() {
           card: result.card,
           message: `🎉 Successfully bought ${result.card.name}!`,
         });
-
         setSelectedCard(null);
+
         if (result.updatedUser) {
-          localStorage.setItem('user', JSON.stringify(result.updatedUser));
-          setUser(result.updatedUser);
+          updateUser(result.updatedUser);
         }
       }
     } catch (err) {
@@ -130,11 +127,10 @@ export default function MarketPage() {
           </div>
         </div>
 
-
         {activeTab === 'packs' && (
           <div className={styles.grid}>
             {marketPacks.map((pack) => (
-              <PokemonPack key={pack.id} pack={pack} setUser={setUser} />
+              <PokemonPack key={pack.id} pack={pack} setUser={updateUser} />
             ))}
           </div>
         )}
