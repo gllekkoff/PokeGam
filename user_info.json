@@ -22,7 +22,7 @@
       "email": "dizhak.pn@ucu.edu.ua",
       "username": "yopsa_matb",
       "password": "$2b$10$TMaOPbAybfXv3HUBEhTjru9XbamnFkz0fivk7dxNE7LLh86SJMBIq",
-      "diamonds": 720,
+      "diamonds": 760,
       "cards": [
         {
           "id": 1747580125716,
@@ -48,9 +48,49 @@
           "id": 1747585614655,
           "name": "Pikachu",
           "imageUrl": "https://images.pokemontcg.io/base1/58.png"
+        },
+        {
+          "id": 1747594633202,
+          "name": "Celebi",
+          "imageUrl": "https://images.pokemontcg.io/hgss4/3.png"
+        },
+        {
+          "id": 1747594633671,
+          "name": "Aerodactyl",
+          "imageUrl": "https://images.pokemontcg.io/ex12/1.png"
+        },
+        {
+          "id": 1747594639996,
+          "name": "Cradily δ",
+          "imageUrl": "https://images.pokemontcg.io/ex13/2.png"
+        },
+        {
+          "id": 1747594640316,
+          "name": "Blaziken FB",
+          "imageUrl": "https://images.pokemontcg.io/pl3/2.png"
+        },
+        {
+          "id": 1747594644026,
+          "name": "Dialga",
+          "imageUrl": "https://images.pokemontcg.io/dp1/1.png"
+        },
+        {
+          "id": 1747594643825,
+          "name": "Brock's Rhydon",
+          "imageUrl": "https://images.pokemontcg.io/gym1/2.png"
+        },
+        {
+          "id": 1747594649035,
+          "name": "Ampharos",
+          "imageUrl": "https://images.pokemontcg.io/ecard2/H1.png"
+        },
+        {
+          "id": 1747594649777,
+          "name": "Blastoise",
+          "imageUrl": "https://images.pokemontcg.io/dp3/2.png"
         }
       ],
-      "packs_opened": 65,
+      "packs_opened": 69,
       "rare_cards": 0,
       "collection_value": 0
     }
@@ -58,66 +98,104 @@
   "packs": [
     {
       "id": 1,
-      "name": "Regular Pack",
-      "price": 0,
-      "tag": "Free"
-    },
-    {
-      "id": 2,
-      "name": "Premium Pack",
-      "price": 500,
-      "tag": "Market"
-    },
-    {
-      "id": 3,
-      "name": "Ultra Pack",
-      "price": 1000,
-      "tag": "Market"
-    },
-    {
-      "id": 4,
-      "name": "Legendary Pack",
-      "price": 2000,
-      "tag": "Market"
-    },
-    {
-      "id": 5,
-      "name": "Ancient Pack",
-      "price": 3000,
-      "tag": "Market"
+      "name": "Legacy Pack",
+      "price": 100,
+      "image": "/images/basic-pack.png",
+      "tag": "Free",
+      "cards": [
+        "ex13-2",
+        "ex12-1",
+        "dp1-1",
+        "pl3-2",
+        "swsh35-1",
+        "dp3-2",
+        "ecard2-H1",
+        "gym1-2",
+        "hgss4-3",
+        "ex14-1"
+      ]
     }
   ],
   "cards": [
     {
-      "id": 1,
-      "name": "Rowlet",
-      "imageUrl": "https://images.pokemontcg.io/sm9/1.png",
-      "price": 80,
+      "id": "ex13-2",
+      "name": "Cradily δ",
+      "imageUrl": "https://images.pokemontcg.io/ex13/2.png",
+      "rarity": "Rare Holo",
+      "price": 50,
       "forSale": true
     },
     {
-      "id": 2,
-      "name": "Pikachu",
-      "price": 80,
-      "imageUrl": "https://images.pokemontcg.io/base1/58.png"
+      "id": "ex12-1",
+      "name": "Aerodactyl",
+      "imageUrl": "https://images.pokemontcg.io/ex12/1.png",
+      "rarity": "Rare Holo",
+      "price": 50,
+      "forSale": true
     },
     {
-      "id": 3,
-      "name": "Charmander",
-      "price": 90,
-      "imageUrl": "https://images.pokemontcg.io/base1/46.png"
+      "id": "dp1-1",
+      "name": "Dialga",
+      "imageUrl": "https://images.pokemontcg.io/dp1/1.png",
+      "rarity": "Rare Holo",
+      "price": 50,
+      "forSale": true
     },
     {
-      "id": 4,
-      "name": "Bulbasaur",
-      "price": 95,
-      "imageUrl": "https://images.pokemontcg.io/base1/44.png"
+      "id": "pl3-2",
+      "name": "Blaziken FB",
+      "imageUrl": "https://images.pokemontcg.io/pl3/2.png",
+      "rarity": "Rare Holo",
+      "price": 50,
+      "forSale": true
     },
     {
-      "id": 5,
-      "name": "Squirtle",
-      "price": 92,
-      "imageUrl": "https://images.pokemontcg.io/base1/63.png"
+      "id": "swsh35-1",
+      "name": "Venusaur V",
+      "imageUrl": "https://images.pokemontcg.io/swsh35/1.png",
+      "rarity": "Rare Holo V",
+      "price": 50,
+      "forSale": true
+    },
+    {
+      "id": "dp3-2",
+      "name": "Blastoise",
+      "imageUrl": "https://images.pokemontcg.io/dp3/2.png",
+      "rarity": "Rare Holo",
+      "price": 50,
+      "forSale": true
+    },
+    {
+      "id": "ecard2-H1",
+      "name": "Ampharos",
+      "imageUrl": "https://images.pokemontcg.io/ecard2/H1.png",
+      "rarity": "Rare Holo",
+      "price": 50,
+      "forSale": true
+    },
+    {
+      "id": "gym1-2",
+      "name": "Brock's Rhydon",
+      "imageUrl": "https://images.pokemontcg.io/gym1/2.png",
+      "rarity": "Rare Holo",
+      "price": 50,
+      "forSale": true
+    },
+    {
+      "id": "hgss4-3",
+      "name": "Celebi",
+      "imageUrl": "https://images.pokemontcg.io/hgss4/3.png",
+      "rarity": "Rare Holo",
+      "price": 50,
+      "forSale": true
+    },
+    {
+      "id": "ex14-1",
+      "name": "Banette",
+      "imageUrl": "https://images.pokemontcg.io/ex14/1.png",
+      "rarity": "Rare Holo",
+      "price": 50,
+      "forSale": true
     }
   ]
 }
