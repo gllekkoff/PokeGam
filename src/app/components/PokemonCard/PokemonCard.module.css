@@ -1,18 +1,65 @@
-.card {
-    width: 160px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    text-align: center;
+.cardWrapper {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .cardWrapper:hover {
+    transform: translateY(-8px);
   }
   
   .image {
     width: 100%;
-    border-radius: 6px;
+    height: auto;
+    display: block;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: white;
+    border-top: 1px solid #f3f4f6;
   }
   
   .info {
-    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
   
+  .info strong {
+    font-size: 14px;
+    color: #1f2937;
+  }
+  
+  .info p {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 0;
+  }
+  
+  .favoriteButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: all 0.2s ease;
+  }
+  
+  .favoriteButton:hover {
+    color: #f59e0b;
+    transform: scale(1.1);
+  }
+  
+  .favoriteButton.starred {
+    color: #f59e0b;
+  }
