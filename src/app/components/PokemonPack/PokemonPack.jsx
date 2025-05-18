@@ -10,9 +10,10 @@ export default function PokemonPack({ pack, setUser, onAction }) {
   const [error, setError] = useState('');
   const [resultModal, setResultModal] = useState(null);
   const [showUnifiedModal, setShowUnifiedModal] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [notEnoughDiamonds, setNotEnoughDiamonds] = useState(false);
   const isFree = pack.tag === 'Free';
-  const { updateUser } = useAuth();
+  const { updateUser, user } = useAuth();
 
   const handleBuyPack = async () => {
     const token = localStorage.getItem('token');
@@ -49,12 +50,24 @@ export default function PokemonPack({ pack, setUser, onAction }) {
     }
   };
 
+  const handleBuyClick = () => {
+    setShowUnifiedModal(true);
+  };
+
+  const handleConfirmFromUnified = () => {
+    if (!isFree && user?.diamonds < pack.price) {
+      setNotEnoughDiamonds(true);
+    } else {
+      setShowConfirmModal(true);
+    }
+  };
+
   return (
     <>
       <div className={styles.card}>
         <div
           className={`${styles.imageContainer} ${
-            isFree ? styles.freeGradient : styles.premiumGradient
+            pack.tag === 'Free' ? styles.freeGradient : pack.tag === 'Market' ? styles.marketGradient : ''
           }`}
         >
           <Package size={64} color="white" />
@@ -73,13 +86,7 @@ export default function PokemonPack({ pack, setUser, onAction }) {
               className={!isFree ? styles.buyButton : undefined}
               size="sm"
               variant={isFree ? 'destructive' : 'default'}
-              onClick={() => {
-                if (isFree) {
-                  setShowUnifiedModal(true);
-                } else {
-                  setShowConfirm(true);
-                }
-              }}
+              onClick={handleBuyClick}
             >
               {isFree ? 'Open' : 'Buy'}
             </Button>
@@ -126,48 +133,53 @@ export default function PokemonPack({ pack, setUser, onAction }) {
               </Button>
               <Button
                 className={styles.buyButton}
-                onClick={async () => {
-                  await handleBuyPack();
+                onClick={() => {
                   setShowUnifiedModal(false);
+                  handleConfirmFromUnified();
                 }}
               >
-                Open
+                {isFree ? 'Open' : 'Buy'}
               </Button>
             </div>
           </div>
         </div>
       )}
 
-      {showConfirm && (
+      {showConfirmModal && (
         <div className={styles.modalOverlay}>
-          <div className={styles.modal}>
-            <p>
-              Are you sure you want to {isFree ? 'open' : 'buy'}:
-              <br />
-              <strong>{pack.name}</strong>
-            </p>
-            {!isFree && (
-              <p>
-                <strong>
-                  Price: {pack.price} <Diamond size={16} />
-                </strong>
-              </p>
-            )}
-            {error && <p className={styles.error}>{error}</p>}
+          <div className={styles.modalContent}>
+            <h3 className={styles.modalTitle}>
+              Are you sure you want to buy:<br />
+              “{pack.name}” for {pack.price}?
+            </h3>
             <div className={styles.modalActions}>
-              <Button variant="outline" onClick={() => setShowConfirm(false)}>
-                Cancel
+              <Button variant="outline" onClick={() => setShowConfirmModal(false)}>
+                No
               </Button>
               <Button
-                className={!isFree ? styles.buyButton : undefined}
-                variant={isFree ? 'destructive' : 'default'}
+                className={styles.buyButton}
                 onClick={async () => {
                   await handleBuyPack();
-                  setShowConfirm(false);
+                  setShowConfirmModal(false);
                 }}
               >
-                {isFree ? 'Open' : 'Buy'}
+                Yes
               </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {notEnoughDiamonds && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <h3 className={styles.modalTitle}>
+              Are you sure you want to buy:<br />
+              “{pack.name}” for {pack.price}?
+            </h3>
+            <p className={styles.error}>You don’t have enough Diamonds</p>
+            <div className={styles.modalActions}>
+              <Button onClick={() => setNotEnoughDiamonds(false)}>Close</Button>
             </div>
           </div>
         </div>

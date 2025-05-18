@@ -29,6 +29,10 @@
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
 }
 
+.marketGradient {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+}
+
 .content {
   padding: 1rem;
 }
@@ -98,7 +102,7 @@
 
 /* Preview Modal Rows */
 .previewTopRow {
-  background: linear-gradient(to right, #f87171, #f97316);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
   border-radius: 1.5rem;
   padding: 1.25rem;
   display: flex;
