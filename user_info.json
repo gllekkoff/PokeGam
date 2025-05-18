@@ -1,6 +1,5 @@
 {
-  "users": [
-  ],
+  "users": [],
   "packs": [
     {
       "id": 1,
@@ -12,8 +11,17 @@
     {
       "id": 2,
       "name": "Premium Pack",
-      "price": 200,
-      "image": "/images/premium-pack.png"
+      "price": 20,
+      "image": "/images/premium-pack.png",
+      "tag": "Market"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "name": "Rowlet",
+      "price": 80,
+      "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
     }
   ]
 }

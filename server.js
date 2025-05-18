@@ -111,6 +111,125 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+app.post('/api/user/open-pack', authenticateToken, (req, res) => {
+  const data = getUserData();
+  const users = data.users || [];
+  const user = users.find(u => u.id === req.user.id);
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  const card = {
+    id: Date.now(),
+    name: 'Rowlet',
+    imageUrl: 'https://images.pokemontcg.io/sm9/1.png'
+  };
+
+  user.cards = user.cards || [];
+  user.cards.push(card);
+  user.packs_opened = (user.packs_opened || 0) + 1; // ✅ increment here
+
+  saveUserData({ ...data, users });
+
+  res.json({
+    success: true,
+    card,
+    updatedUser: {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+      diamonds: user.diamonds,
+      packs_opened: user.packs_opened
+    }
+  });
+});
+
+
+app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
+  const { packId } = req.body;
+  const data = getUserData();
+  const users = data.users || [];
+  const user = users.find(u => u.id === req.user.id);
+  const pack = data.packs.find(p => p.id === packId);
+
+  if (!user || !pack) return res.status(404).json({ message: 'Not found' });
+  if (user.diamonds < pack.price) {
+    return res.status(400).json({ message: 'Not enough diamonds' });
+  }
+
+  user.diamonds -= pack.price;
+  user.packs_opened = (user.packs_opened || 0) + 1; // ✅ increment here
+
+  const card = {
+    id: Date.now(),
+    name: 'Rowlet',
+    imageUrl: 'https://images.pokemontcg.io/sm9/1.png'
+  };
+
+  user.cards = user.cards || [];
+  user.cards.push(card);
+
+  saveUserData({ ...data, users });
+
+  res.json({
+    success: true,
+    card,
+    updatedUser: {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+      diamonds: user.diamonds,
+      packs_opened: user.packs_opened
+    }
+  });
+});
+
+app.get('/api/cards', authenticateToken, (req, res) => {
+  const data = getUserData();
+  const cards = data.cards || [];
+  res.json(cards);
+});
+
+app.post('/api/user/buy-card', authenticateToken, (req, res) => {
+  const { cardId } = req.body;
+  const data = getUserData();
+  const users = data.users || [];
+  const user = users.find(u => u.id === req.user.id);
+  const card = data.cards.find(c => c.id === cardId);
+
+  if (!user || !card) {
+    return res.status(404).json({ message: 'Not found' });
+  }
+
+  if (user.diamonds < card.price) {
+    return res.status(400).json({ message: 'Not enough diamonds' });
+  }
+
+  user.diamonds -= card.price;
+  user.cards = user.cards || [];
+
+  user.cards.push({
+    id: Date.now(), // allow duplicates by timestamp ID
+    name: card.name,
+    imageUrl: card.imageUrl
+  });
+
+  saveUserData({ ...data, users });
+
+  res.json({
+    success: true,
+    card,
+    updatedUser: {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+      diamonds: user.diamonds,
+      cards: user.cards
+    }
+  });
+});
+
 app.get('/api/user/profile', authenticateToken, (req, res) => {
   const users = getUserData().users || [];
   const user = users.find((u) => u.id === req.user.id);
