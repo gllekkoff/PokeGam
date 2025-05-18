@@ -2,200 +2,502 @@
   "users": [
     {
       "id": 1,
-      "email": "admin@gmail.com",
-      "username": "admin",
-      "password": "$2b$10$KRPZWZqNmcIFIdfC6EuIs.oJZODJx5W6l.gc/O9v.c7Q1c.m5Vo26",
-      "diamonds": 100000000019,
-      "cards": [
-        {
-          "id": 1747587155940,
-          "name": "Rowlet",
-          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
-        }
-      ],
-      "packs_opened": 35,
-      "rare_cards": 0,
-      "collection_value": 0
-    },
-    {
-      "id": 2,
       "email": "dizhak.pn@ucu.edu.ua",
       "username": "yopsa_matb",
-      "password": "$2b$10$TMaOPbAybfXv3HUBEhTjru9XbamnFkz0fivk7dxNE7LLh86SJMBIq",
-      "diamonds": 760,
+      "password": "$2b$10$H9cVpSuerLu2lOrKr8WuQekuyVZZHGOqha7hVNJtZ2OXETJQCt.6W",
+      "diamonds": 122,
       "cards": [
         {
-          "id": 1747580125716,
-          "name": "Rowlet",
-          "imageUrl": "https://images.pokemontcg.io/sm9/1.png"
+          "id": 1747599853276,
+          "name": "Pinsir",
+          "imageUrl": "https://images.pokemontcg.io/sm1/6.png"
         },
         {
-          "id": 1747585587130,
-          "name": "Charmander",
-          "imageUrl": "https://images.pokemontcg.io/base1/46.png"
+          "id": 1747599853397,
+          "name": "Butterfree",
+          "imageUrl": "https://images.pokemontcg.io/sm1/3.png"
         },
         {
-          "id": 1747585591641,
-          "name": "Bulbasaur",
-          "imageUrl": "https://images.pokemontcg.io/base1/44.png"
+          "id": 1747599857597,
+          "name": "Alakazam",
+          "imageUrl": "https://images.pokemontcg.io/base4/1.png"
         },
         {
-          "id": 1747585593914,
-          "name": "Squirtle",
-          "imageUrl": "https://images.pokemontcg.io/base1/63.png"
+          "id": 1747599857562,
+          "name": "Chansey",
+          "imageUrl": "https://images.pokemontcg.io/base4/3.png"
         },
         {
-          "id": 1747585614655,
-          "name": "Pikachu",
-          "imageUrl": "https://images.pokemontcg.io/base1/58.png"
+          "id": 1747599859741,
+          "name": "Kakuna",
+          "imageUrl": "https://images.pokemontcg.io/xy1/4.png"
         },
         {
-          "id": 1747594633202,
-          "name": "Celebi",
-          "imageUrl": "https://images.pokemontcg.io/hgss4/3.png"
+          "id": 1747599860047,
+          "name": "Clefable",
+          "imageUrl": "https://images.pokemontcg.io/base4/5.png"
         },
         {
-          "id": 1747594633671,
-          "name": "Aerodactyl",
-          "imageUrl": "https://images.pokemontcg.io/ex12/1.png"
+          "id": 1747599860050,
+          "name": "Charizard",
+          "imageUrl": "https://images.pokemontcg.io/base4/4.png"
         },
         {
-          "id": 1747594639996,
-          "name": "Cradily δ",
-          "imageUrl": "https://images.pokemontcg.io/ex13/2.png"
+          "id": 1747599860880,
+          "name": "Gyarados",
+          "imageUrl": "https://images.pokemontcg.io/base4/7.png"
         },
         {
-          "id": 1747594640316,
-          "name": "Blaziken FB",
-          "imageUrl": "https://images.pokemontcg.io/pl3/2.png"
+          "id": 1747599861254,
+          "name": "Clefairy",
+          "imageUrl": "https://images.pokemontcg.io/base4/6.png"
         },
         {
-          "id": 1747594644026,
-          "name": "Dialga",
-          "imageUrl": "https://images.pokemontcg.io/dp1/1.png"
-        },
-        {
-          "id": 1747594643825,
-          "name": "Brock's Rhydon",
-          "imageUrl": "https://images.pokemontcg.io/gym1/2.png"
-        },
-        {
-          "id": 1747594649035,
-          "name": "Ampharos",
-          "imageUrl": "https://images.pokemontcg.io/ecard2/H1.png"
-        },
-        {
-          "id": 1747594649777,
+          "id": 1747599863681,
           "name": "Blastoise",
-          "imageUrl": "https://images.pokemontcg.io/dp3/2.png"
+          "imageUrl": "https://images.pokemontcg.io/base4/2.png"
+        },
+        {
+          "id": 1747599866086,
+          "name": "Caterpie",
+          "imageUrl": "https://images.pokemontcg.io/sm1/1.png"
+        },
+        {
+          "id": 1747599875569,
+          "name": "Magneton",
+          "imageUrl": "https://images.pokemontcg.io/base4/9.png"
+        },
+        {
+          "id": 1747600098429,
+          "name": "Paras",
+          "imageUrl": "https://images.pokemontcg.io/sm1/4.png"
+        },
+        {
+          "id": 1747600100517,
+          "name": "Venusaur-EX",
+          "imageUrl": "https://images.pokemontcg.io/xy1/1.png"
+        },
+        {
+          "id": 1747600100192,
+          "name": "Metapod",
+          "imageUrl": "https://images.pokemontcg.io/sm1/2.png"
         }
       ],
-      "packs_opened": 69,
+      "packs_opened": 9,
       "rare_cards": 0,
       "collection_value": 0
+    }
+  ],
+  "cards": [
+    {
+      "id": "sm1-1",
+      "name": "Caterpie",
+      "imageUrl": "https://images.pokemontcg.io/sm1/1.png",
+      "rarity": "Common",
+      "price": 412
+    },
+    {
+      "id": "sm1-2",
+      "name": "Metapod",
+      "imageUrl": "https://images.pokemontcg.io/sm1/2.png",
+      "rarity": "Uncommon",
+      "price": 346
+    },
+    {
+      "id": "sm1-3",
+      "name": "Butterfree",
+      "imageUrl": "https://images.pokemontcg.io/sm1/3.png",
+      "rarity": "Rare",
+      "price": 126
+    },
+    {
+      "id": "sm1-4",
+      "name": "Paras",
+      "imageUrl": "https://images.pokemontcg.io/sm1/4.png",
+      "rarity": "Common",
+      "price": 243
+    },
+    {
+      "id": "sm1-5",
+      "name": "Parasect",
+      "imageUrl": "https://images.pokemontcg.io/sm1/5.png",
+      "rarity": "Rare",
+      "price": 289
+    },
+    {
+      "id": "sm1-6",
+      "name": "Pinsir",
+      "imageUrl": "https://images.pokemontcg.io/sm1/6.png",
+      "rarity": "Uncommon",
+      "price": 465
+    },
+    {
+      "id": "sm1-7",
+      "name": "Surskit",
+      "imageUrl": "https://images.pokemontcg.io/sm1/7.png",
+      "rarity": "Common",
+      "price": 445
+    },
+    {
+      "id": "sm1-8",
+      "name": "Masquerain",
+      "imageUrl": "https://images.pokemontcg.io/sm1/8.png",
+      "rarity": "Rare",
+      "price": 228
+    },
+    {
+      "id": "sm1-9",
+      "name": "Rowlet",
+      "imageUrl": "https://images.pokemontcg.io/sm1/9.png",
+      "rarity": "Common",
+      "price": 220
+    },
+    {
+      "id": "sm1-10",
+      "name": "Dartrix",
+      "imageUrl": "https://images.pokemontcg.io/sm1/10.png",
+      "rarity": "Uncommon",
+      "price": 178
+    },
+    {
+      "id": "base4-1",
+      "name": "Alakazam",
+      "imageUrl": "https://images.pokemontcg.io/base4/1.png",
+      "rarity": "Rare Holo",
+      "price": 353
+    },
+    {
+      "id": "base4-2",
+      "name": "Blastoise",
+      "imageUrl": "https://images.pokemontcg.io/base4/2.png",
+      "rarity": "Rare Holo",
+      "price": 113
+    },
+    {
+      "id": "base4-3",
+      "name": "Chansey",
+      "imageUrl": "https://images.pokemontcg.io/base4/3.png",
+      "rarity": "Rare Holo",
+      "price": 141
+    },
+    {
+      "id": "base4-4",
+      "name": "Charizard",
+      "imageUrl": "https://images.pokemontcg.io/base4/4.png",
+      "rarity": "Rare Holo",
+      "price": 235
+    },
+    {
+      "id": "base4-5",
+      "name": "Clefable",
+      "imageUrl": "https://images.pokemontcg.io/base4/5.png",
+      "rarity": "Rare Holo",
+      "price": 183
+    },
+    {
+      "id": "base4-6",
+      "name": "Clefairy",
+      "imageUrl": "https://images.pokemontcg.io/base4/6.png",
+      "rarity": "Rare Holo",
+      "price": 104
+    },
+    {
+      "id": "base4-7",
+      "name": "Gyarados",
+      "imageUrl": "https://images.pokemontcg.io/base4/7.png",
+      "rarity": "Rare Holo",
+      "price": 317
+    },
+    {
+      "id": "base4-8",
+      "name": "Hitmonchan",
+      "imageUrl": "https://images.pokemontcg.io/base4/8.png",
+      "rarity": "Rare Holo",
+      "price": 278
+    },
+    {
+      "id": "base4-9",
+      "name": "Magneton",
+      "imageUrl": "https://images.pokemontcg.io/base4/9.png",
+      "rarity": "Rare Holo",
+      "price": 108
+    },
+    {
+      "id": "base4-10",
+      "name": "Mewtwo",
+      "imageUrl": "https://images.pokemontcg.io/base4/10.png",
+      "rarity": "Rare Holo",
+      "price": 194
+    },
+    {
+      "id": "xy1-1",
+      "name": "Venusaur-EX",
+      "imageUrl": "https://images.pokemontcg.io/xy1/1.png",
+      "rarity": "Rare Holo EX",
+      "price": 286
+    },
+    {
+      "id": "xy1-2",
+      "name": "M Venusaur-EX",
+      "imageUrl": "https://images.pokemontcg.io/xy1/2.png",
+      "rarity": "Rare Holo EX",
+      "price": 437
+    },
+    {
+      "id": "xy1-3",
+      "name": "Weedle",
+      "imageUrl": "https://images.pokemontcg.io/xy1/3.png",
+      "rarity": "Common",
+      "price": 327
+    },
+    {
+      "id": "xy1-4",
+      "name": "Kakuna",
+      "imageUrl": "https://images.pokemontcg.io/xy1/4.png",
+      "rarity": "Uncommon",
+      "price": 352
     }
   ],
   "packs": [
     {
       "id": 1,
-      "name": "Legacy Pack",
-      "price": 100,
-      "image": "/images/basic-pack.png",
+      "name": "Basic Pack",
+      "price": 0,
       "tag": "Free",
+      "image": "/images/basic-pack.png",
       "cards": [
-        "ex13-2",
-        "ex12-1",
-        "dp1-1",
-        "pl3-2",
-        "swsh35-1",
-        "dp3-2",
-        "ecard2-H1",
-        "gym1-2",
-        "hgss4-3",
-        "ex14-1"
+        {
+          "id": "sm1-1",
+          "name": "Caterpie",
+          "imageUrl": "https://images.pokemontcg.io/sm1/1.png",
+          "rarity": "Common",
+          "price": 412
+        },
+        {
+          "id": "sm1-2",
+          "name": "Metapod",
+          "imageUrl": "https://images.pokemontcg.io/sm1/2.png",
+          "rarity": "Uncommon",
+          "price": 346
+        },
+        {
+          "id": "sm1-3",
+          "name": "Butterfree",
+          "imageUrl": "https://images.pokemontcg.io/sm1/3.png",
+          "rarity": "Rare",
+          "price": 126
+        }
       ]
-    }
-  ],
-  "cards": [
-    {
-      "id": "ex13-2",
-      "name": "Cradily δ",
-      "imageUrl": "https://images.pokemontcg.io/ex13/2.png",
-      "rarity": "Rare Holo",
-      "price": 50,
-      "forSale": true
     },
     {
-      "id": "ex12-1",
-      "name": "Aerodactyl",
-      "imageUrl": "https://images.pokemontcg.io/ex12/1.png",
-      "rarity": "Rare Holo",
-      "price": 50,
-      "forSale": true
+      "id": 2,
+      "name": "Jungle Pack",
+      "price": 0,
+      "tag": "Free",
+      "image": "/images/basic-pack.png",
+      "cards": [
+        {
+          "id": "sm1-4",
+          "name": "Paras",
+          "imageUrl": "https://images.pokemontcg.io/sm1/4.png",
+          "rarity": "Common",
+          "price": 243
+        },
+        {
+          "id": "sm1-5",
+          "name": "Parasect",
+          "imageUrl": "https://images.pokemontcg.io/sm1/5.png",
+          "rarity": "Rare",
+          "price": 289
+        },
+        {
+          "id": "sm1-6",
+          "name": "Pinsir",
+          "imageUrl": "https://images.pokemontcg.io/sm1/6.png",
+          "rarity": "Uncommon",
+          "price": 465
+        }
+      ]
     },
     {
-      "id": "dp1-1",
-      "name": "Dialga",
-      "imageUrl": "https://images.pokemontcg.io/dp1/1.png",
-      "rarity": "Rare Holo",
-      "price": 50,
-      "forSale": true
+      "id": 3,
+      "name": "Starter Blaze",
+      "price": 0,
+      "tag": "Free",
+      "image": "/images/basic-pack.png",
+      "cards": [
+        {
+          "id": "sm1-7",
+          "name": "Surskit",
+          "imageUrl": "https://images.pokemontcg.io/sm1/7.png",
+          "rarity": "Common",
+          "price": 445
+        },
+        {
+          "id": "sm1-8",
+          "name": "Masquerain",
+          "imageUrl": "https://images.pokemontcg.io/sm1/8.png",
+          "rarity": "Rare",
+          "price": 228
+        },
+        {
+          "id": "sm1-9",
+          "name": "Rowlet",
+          "imageUrl": "https://images.pokemontcg.io/sm1/9.png",
+          "rarity": "Common",
+          "price": 220
+        }
+      ]
     },
     {
-      "id": "pl3-2",
-      "name": "Blaziken FB",
-      "imageUrl": "https://images.pokemontcg.io/pl3/2.png",
-      "rarity": "Rare Holo",
-      "price": 50,
-      "forSale": true
+      "id": 4,
+      "name": "Forest Force",
+      "price": 0,
+      "tag": "Free",
+      "image": "/images/basic-pack.png",
+      "cards": [
+        {
+          "id": "sm1-10",
+          "name": "Dartrix",
+          "imageUrl": "https://images.pokemontcg.io/sm1/10.png",
+          "rarity": "Uncommon",
+          "price": 178
+        },
+        {
+          "id": "base4-1",
+          "name": "Alakazam",
+          "imageUrl": "https://images.pokemontcg.io/base4/1.png",
+          "rarity": "Rare Holo",
+          "price": 353
+        },
+        {
+          "id": "base4-2",
+          "name": "Blastoise",
+          "imageUrl": "https://images.pokemontcg.io/base4/2.png",
+          "rarity": "Rare Holo",
+          "price": 113
+        }
+      ]
     },
     {
-      "id": "swsh35-1",
-      "name": "Venusaur V",
-      "imageUrl": "https://images.pokemontcg.io/swsh35/1.png",
-      "rarity": "Rare Holo V",
-      "price": 50,
-      "forSale": true
+      "id": 5,
+      "name": "Elemental Storm",
+      "price": 400,
+      "tag": "Market",
+      "image": "/images/premium-pack.png",
+      "cards": [
+        {
+          "id": "base4-3",
+          "name": "Chansey",
+          "imageUrl": "https://images.pokemontcg.io/base4/3.png",
+          "rarity": "Rare Holo",
+          "price": 141
+        },
+        {
+          "id": "base4-4",
+          "name": "Charizard",
+          "imageUrl": "https://images.pokemontcg.io/base4/4.png",
+          "rarity": "Rare Holo",
+          "price": 235
+        },
+        {
+          "id": "base4-5",
+          "name": "Clefable",
+          "imageUrl": "https://images.pokemontcg.io/base4/5.png",
+          "rarity": "Rare Holo",
+          "price": 183
+        }
+      ]
     },
     {
-      "id": "dp3-2",
-      "name": "Blastoise",
-      "imageUrl": "https://images.pokemontcg.io/dp3/2.png",
-      "rarity": "Rare Holo",
-      "price": 50,
-      "forSale": true
+      "id": 6,
+      "name": "Crystal Pack",
+      "price": 600,
+      "tag": "Market",
+      "image": "/images/premium-pack.png",
+      "cards": [
+        {
+          "id": "base4-6",
+          "name": "Clefairy",
+          "imageUrl": "https://images.pokemontcg.io/base4/6.png",
+          "rarity": "Rare Holo",
+          "price": 104
+        },
+        {
+          "id": "base4-7",
+          "name": "Gyarados",
+          "imageUrl": "https://images.pokemontcg.io/base4/7.png",
+          "rarity": "Rare Holo",
+          "price": 317
+        },
+        {
+          "id": "base4-8",
+          "name": "Hitmonchan",
+          "imageUrl": "https://images.pokemontcg.io/base4/8.png",
+          "rarity": "Rare Holo",
+          "price": 278
+        }
+      ]
     },
     {
-      "id": "ecard2-H1",
-      "name": "Ampharos",
-      "imageUrl": "https://images.pokemontcg.io/ecard2/H1.png",
-      "rarity": "Rare Holo",
-      "price": 50,
-      "forSale": true
+      "id": 7,
+      "name": "Sky Clash",
+      "price": 800,
+      "tag": "Market",
+      "image": "/images/premium-pack.png",
+      "cards": [
+        {
+          "id": "base4-9",
+          "name": "Magneton",
+          "imageUrl": "https://images.pokemontcg.io/base4/9.png",
+          "rarity": "Rare Holo",
+          "price": 108
+        },
+        {
+          "id": "base4-10",
+          "name": "Mewtwo",
+          "imageUrl": "https://images.pokemontcg.io/base4/10.png",
+          "rarity": "Rare Holo",
+          "price": 194
+        },
+        {
+          "id": "xy1-1",
+          "name": "Venusaur-EX",
+          "imageUrl": "https://images.pokemontcg.io/xy1/1.png",
+          "rarity": "Rare Holo EX",
+          "price": 286
+        }
+      ]
     },
     {
-      "id": "gym1-2",
-      "name": "Brock's Rhydon",
-      "imageUrl": "https://images.pokemontcg.io/gym1/2.png",
-      "rarity": "Rare Holo",
-      "price": 50,
-      "forSale": true
-    },
-    {
-      "id": "hgss4-3",
-      "name": "Celebi",
-      "imageUrl": "https://images.pokemontcg.io/hgss4/3.png",
-      "rarity": "Rare Holo",
-      "price": 50,
-      "forSale": true
-    },
-    {
-      "id": "ex14-1",
-      "name": "Banette",
-      "imageUrl": "https://images.pokemontcg.io/ex14/1.png",
-      "rarity": "Rare Holo",
-      "price": 50,
-      "forSale": true
+      "id": 8,
+      "name": "Ancient Legends",
+      "price": 1200,
+      "tag": "Market",
+      "image": "/images/premium-pack.png",
+      "cards": [
+        {
+          "id": "xy1-2",
+          "name": "M Venusaur-EX",
+          "imageUrl": "https://images.pokemontcg.io/xy1/2.png",
+          "rarity": "Rare Holo EX",
+          "price": 437
+        },
+        {
+          "id": "xy1-3",
+          "name": "Weedle",
+          "imageUrl": "https://images.pokemontcg.io/xy1/3.png",
+          "rarity": "Common",
+          "price": 327
+        },
+        {
+          "id": "xy1-4",
+          "name": "Kakuna",
+          "imageUrl": "https://images.pokemontcg.io/xy1/4.png",
+          "rarity": "Uncommon",
+          "price": 352
+        }
+      ]
     }
   ]
 }
