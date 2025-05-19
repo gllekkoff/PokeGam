@@ -5,7 +5,7 @@
       "email": "admin@gmail.com",
       "username": "admin",
       "password": "$2b$10$szHsJ68lLR5MZPtR0qqLg.1behUBArqkx/1JVgierId8ghLEfOLJW",
-      "diamonds": 933200,
+      "diamonds": 932250,
       "cards": [
         {
           "id": 1747617486688,
@@ -365,14 +365,20 @@
           "name": "Cacturne",
           "imageUrl": "https://images.pokemontcg.io/sm7/20_hires.png",
           "rarity": "Uncommon"
+        },
+        {
+          "id": 1747670660210,
+          "name": "Mewtwo & Mew-GX",
+          "imageUrl": "https://images.pokemontcg.io/sm11/242_hires.png",
+          "rarity": "Rare Rainbow"
         }
       ],
       "starredCards": [
         1747617495738
       ],
-      "packs_opened": 179,
-      "rare_cards": 24,
-      "collection_value": 580
+      "packs_opened": 181,
+      "rare_cards": 25,
+      "collection_value": 34890
     },
     {
       "id": 2,

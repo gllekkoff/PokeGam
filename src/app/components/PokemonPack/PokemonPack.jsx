@@ -35,33 +35,20 @@ export default function PokemonPack({ pack, setUser, onAction }) {
       setIsSpinning(true);
       setIsOpening(true);
 
-      let winner;
-      let result;
+      const res = await fetch('http://localhost:8000/api/user/buy-pack', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ packId: pack.id }),
+      });
 
-      try {
-        const res = await fetch('http://localhost:8000/api/user/buy-pack', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ packId: pack.id }),
-        });
-
-        result = await res.json();
-        winner = result.newCards?.[0];
-      } catch (err) {
-        console.error('API Error:', err);
-      }
-
-      if (!winner && pack.cards.length > 0) {
-        const randomIndex = Math.floor(Math.random() * pack.cards.length);
-        winner = pack.cards[randomIndex];
-        result = {
-          newCards: [winner],
-          duplicates: [],
-          packName: pack.name
-        };
+      const result = await res.json();
+      const winner = result.newCards?.[0] || result.duplicates?.[0];
+      
+      if (!winner) {
+        throw new Error('No card received');
       }
 
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -83,8 +70,8 @@ export default function PokemonPack({ pack, setUser, onAction }) {
       setShowUnifiedModal(false);
       setIsOpening(false);
       setResultModal({
-        cards: [...(result.newCards || []), ...(result.duplicates || [])],
-        duplicates: (result.duplicates || []).map(c => c.name),
+        cards: [winner],
+        duplicates: result.duplicates?.map(d => d.name) || [],
         packName: pack.name,
       });
 
@@ -95,11 +82,10 @@ export default function PokemonPack({ pack, setUser, onAction }) {
 
     } catch (err) {
       console.error('General error:', err);
-      const randomIndex = Math.floor(Math.random() * pack.cards.length);
-      const fallbackWinner = pack.cards[randomIndex];
-      setWinningCard(fallbackWinner);
       setIsSpinning(false);
+      setIsStopping(false);
       setIsOpening(false);
+      setShowUnifiedModal(false);
     }
   };
 
@@ -248,9 +234,9 @@ export default function PokemonPack({ pack, setUser, onAction }) {
                   />
                   <div className={styles.cardInfo}>
                     <h4 className={styles.cardName}>
-                      You've got a new card: {card.name}!
+                      You've got {resultModal.duplicates.includes(card.name) ? 'a duplicate' : 'a new'} card: {card.name}!
                     </h4>
-                    {resultModal.duplicates.includes(card.name) && (
+                    {resultModal.duplicates.includes(card.name) && card.reward && (
                       <div className={styles.duplicateInfo}>
                         <span className={styles.duplicateTag}>Duplicate</span>
                         <span className={styles.rewardInfo}>
