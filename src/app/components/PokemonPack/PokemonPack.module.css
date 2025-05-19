@@ -279,7 +279,7 @@
 
 .duplicateMessage {
   font-size: 0.95rem;
-  color: #10b981; /* green */
+  color: #10b981;
   text-align: center;
   margin-top: 0.25rem;
   padding-bottom: 1rem;
@@ -396,32 +396,69 @@
 
 .carouselRow {
   overflow: hidden;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 1rem;
+  width: 100%;
   position: relative;
+  padding: 10px 0;
+  margin-bottom: 10px;
 }
 
 .carouselTrack {
   display: flex;
-  width: fit-content;
-  animation: scrollLoop 20s linear infinite;
+  position: relative;
+  will-change: transform;
+  transform: translateX(0);
 }
 
-.carouselTrack:has(.accelerate) {
-  animation-duration: 1s !important;
+.carouselTrack.spinning {
+  animation: spin 0.8s linear infinite;
+}
+
+.carouselTrack.stopping {
+  animation: slowToStop 2s cubic-bezier(0.33, 1, 0.68, 1) forwards;
 }
 
 .carouselItem {
-  flex: 0 0 auto;
-  margin-right: 1rem;
+  flex: 0 0 110px;
+  padding: 0 5px;
 }
 
-@keyframes scrollLoop {
+.cardImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.carouselTrack.spinning {
+  animation: spin 0.8s linear infinite;
+}
+
+.carouselTrack.stopping {
+  animation: slowToStop 2s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+@keyframes spin {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-550px);
   }
+}
+
+@keyframes slowToStop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(var(--stop-position));
+  }
+}
+
+.indicatorArrow {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid #000;
+  margin: 0 auto 10px;
 }

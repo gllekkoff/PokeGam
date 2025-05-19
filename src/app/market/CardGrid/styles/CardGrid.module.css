@@ -58,7 +58,6 @@
   padding: 0.5rem 1rem;
 }
 
-/* Updated media queries */
 @media (max-width: 1800px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);

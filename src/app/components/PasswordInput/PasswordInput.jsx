@@ -21,7 +21,6 @@ export default function PasswordInput({
   };
 
   const handlePasswordChange = (e) => {
-    // Remove any spaces from input
     const noSpaces = e.target.value.replace(/\s/g, '');
     onChange({ ...e, target: { ...e.target, value: noSpaces } });
   };

@@ -1,45 +1,90 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { Package, Diamond, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '../Button/Button';
 import styles from './PokemonPack.module.css';
 import { useAuth } from '../AuthorizationModule/AuthContext';
-
+import { Diamond, X } from 'lucide-react'
 export default function PokemonPack({ pack, setUser, onAction }) {
-  const [error, setError] = useState('');
   const [resultModal, setResultModal] = useState(null);
   const [showUnifiedModal, setShowUnifiedModal] = useState(false);
   const [notEnoughDiamonds, setNotEnoughDiamonds] = useState(false);
-  const [accelerating, setAccelerating] = useState(false);
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [isStopping, setIsStopping] = useState(false);
+  const [winningCard, setWinningCard] = useState(null);
+  const [stopPosition, setStopPosition] = useState(0);
   const [isOpening, setIsOpening] = useState(false);
   const carouselRef = useRef(null);
+
   const isFree = pack.tag === 'Free';
   const { updateUser, user } = useAuth();
+
+  useEffect(() => {
+    return () => {
+      setIsSpinning(false);
+      setIsStopping(false);
+      setWinningCard(null);
+      setShowUnifiedModal(false);
+    };
+  }, []);
 
   const handleBuyPack = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch('http://localhost:8000/api/user/buy-pack', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ packId: pack.id }),
-      });
+      setShowUnifiedModal(true);
+      setIsSpinning(true);
+      setIsOpening(true);
 
-      const result = await res.json();
+      let winner;
+      let result;
 
-      if (!res.ok) {
-        setError(result.message || 'Something went wrong');
-        setIsOpening(false);
-        return;
+      try {
+        const res = await fetch('http://localhost:8000/api/user/buy-pack', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ packId: pack.id }),
+        });
+
+        result = await res.json();
+        winner = result.newCards?.[0];
+      } catch (err) {
+        console.error('API Error:', err);
       }
 
+      if (!winner && pack.cards.length > 0) {
+        const randomIndex = Math.floor(Math.random() * pack.cards.length);
+        winner = pack.cards[randomIndex];
+        result = {
+          newCards: [winner],
+          duplicates: [],
+          packName: pack.name
+        };
+      }
+
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      const index = pack.cards.findIndex(card => card.name === winner.name);
+      const itemWidth = 110;
+      const containerWidth = carouselRef.current?.offsetWidth || 550;
+      const centerOffset = (containerWidth / 2) - (itemWidth / 2);
+      const stopX = -(index * itemWidth) - (itemWidth * pack.cards.length) + centerOffset;
+      
+      setIsSpinning(false);
+      setIsStopping(true);
+      setStopPosition(stopX);
+      setWinningCard(winner);
+
+      await new Promise(resolve => setTimeout(resolve, 2100));
+
+      setIsStopping(false);
+      setShowUnifiedModal(false);
+      setIsOpening(false);
       setResultModal({
         cards: [...(result.newCards || []), ...(result.duplicates || [])],
-        duplicates: (result.duplicates || []).map((c) => c.name),
+        duplicates: (result.duplicates || []).map(c => c.name),
         packName: pack.name,
       });
 
@@ -47,10 +92,13 @@ export default function PokemonPack({ pack, setUser, onAction }) {
         localStorage.setItem('user', JSON.stringify(result.updatedUser));
         updateUser(result.updatedUser);
       }
+
     } catch (err) {
-      console.error('❌ Buy pack failed:', err);
-      setError('Failed to buy pack');
-    } finally {
+      console.error('General error:', err);
+      const randomIndex = Math.floor(Math.random() * pack.cards.length);
+      const fallbackWinner = pack.cards[randomIndex];
+      setWinningCard(fallbackWinner);
+      setIsSpinning(false);
       setIsOpening(false);
     }
   };
@@ -61,12 +109,13 @@ export default function PokemonPack({ pack, setUser, onAction }) {
 
   const handleConfirmFromUnified = () => {
     if (isOpening) return;
+    
     if (isFree) {
-      startAcceleratedReveal();
+      handleBuyPack();
     } else if (user?.diamonds < pack.price) {
       setNotEnoughDiamonds(true);
     } else {
-      startAcceleratedReveal();
+      handleBuyPack();
     }
   };
 
@@ -122,37 +171,37 @@ export default function PokemonPack({ pack, setUser, onAction }) {
         </div>
       </div>
 
-      {showUnifiedModal && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <button 
-              className={styles.closeButton}
-              onClick={() => setShowUnifiedModal(false)}
-            >
+            {showUnifiedModal && (
+        <div className={styles.modalOverlay} onClick={() => setShowUnifiedModal(false)}>
+          <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+            <button className={styles.closeButton} onClick={() => setShowUnifiedModal(false)}>
               <X size={24} />
             </button>
-            
+
             <h3 className={styles.modalTitle}>Possible Cards in {pack.name}</h3>
 
             <div className={`${styles.carouselRow} ${isFree ? styles.free : styles.market}`}>
-              <div ref={carouselRef} className={styles.carouselTrack}>
-                {[...pack.cards, ...pack.cards].map((card, idx) => (
+              <div
+                ref={carouselRef}
+                className={`${styles.carouselTrack} ${
+                  isSpinning ? styles.spinning : isStopping ? styles.stopping : ''
+                }`}
+                style={
+                  winningCard
+                    ? { '--stop-position': `${stopPosition}px` }
+                    : {}
+                }
+              >
+                {[...pack.cards, ...pack.cards, ...pack.cards].map((card, idx) => (
                   <div key={idx} className={styles.carouselItem}>
-                    <img
-                      src={card.imageUrl}
-                      alt={card.name}
-                      className={styles.cardImage}
-                    />
+                    <img src={card.imageUrl} alt={card.name} className={styles.cardImage} />
                   </div>
                 ))}
               </div>
             </div>
 
-            <Button
-              className={styles.openButton}
-              onClick={handleConfirmFromUnified}
-              disabled={isOpening}
-            >
+            <div className={styles.indicatorArrow} />
+            <Button className={styles.openButton} onClick={handleConfirmFromUnified}>
               {isFree ? 'Open Pack' : 'Buy Pack'}
             </Button>
 

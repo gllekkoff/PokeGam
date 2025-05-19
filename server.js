@@ -266,7 +266,7 @@ app.post('/api/user/buy-card', authenticateToken, (req, res) => {
       username: user.username,
       diamonds: user.diamonds,
       cards: user.cards,
-      starredCards: user.starredCards || [] // Add this
+      starredCards: user.starredCards || []
     }
   });
 });
