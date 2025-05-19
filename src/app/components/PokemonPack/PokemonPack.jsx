@@ -72,7 +72,11 @@ export default function PokemonPack({ pack, setUser, onAction }) {
             pack.tag === 'Free' ? styles.freeGradient : pack.tag === 'Market' ? styles.marketGradient : ''
           }`}
         >
-          <Package size={64} color="white" />
+          <img
+            src={pack.image}
+            alt={pack.name}
+            className={styles.packImage}
+          />
         </div>
         <div className={styles.content}>
           <h3 className={styles.title}>{pack.name}</h3>
