@@ -141,7 +141,6 @@ export default function PokemonPack({ pack, setUser, onAction }) {
 
             <div className={styles.previewBottomRow}>
               {pack.cards.map((card) => {
-                const chance = Math.max(1, Math.floor(100 / pack.cards.length));
                 return (
                   <div key={card.id} className={styles.previewCard}>
                     <img
@@ -149,7 +148,7 @@ export default function PokemonPack({ pack, setUser, onAction }) {
                       alt={card.name}
                       className={styles.modalCardImage}
                     />
-                    <p className={styles.previewCardName}>{chance}%</p>
+                    <p className={styles.previewCardName}>{card.chance}%</p>
                   </div>
                 );
               })}

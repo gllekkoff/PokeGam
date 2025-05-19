@@ -328,7 +328,29 @@ app.get('/api/cards', authenticateToken, (req, res) => {
 
 app.get('/api/packs', authenticateToken, (req, res) => {
   const data = getUserData();
-  res.json(data.packs || []);
+
+  const packsWithChances = data.packs.map(pack => {
+    const totalWeight = pack.cards.reduce((sum, card) => {
+      const rarityData = RARITIES[card.rarity] || { weight: 1 };
+      return sum + rarityData.weight;
+    }, 0);
+
+    const cardsWithChance = pack.cards.map(card => {
+      const rarityData = RARITIES[card.rarity] || { weight: 1 };
+      const chance = ((rarityData.weight / totalWeight) * 100).toFixed(1);
+      return {
+        ...card,
+        chance: parseFloat(chance)
+      };
+    });
+
+    return {
+      ...pack,
+      cards: cardsWithChance
+    };
+  });
+
+  res.json(packsWithChances);
 });
 
 app.get('/api/market', (req, res) => {

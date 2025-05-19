@@ -271,7 +271,7 @@
       "email": "dizhak.pn@ucu.edu.ua",
       "username": "yopsa_matb",
       "password": "$2b$10$VLZo5laHYqPZe.vnkcTpVuwobVYYlkj01f3cv0mOvOmv0uMsbB4o6",
-      "diamonds": 30,
+      "diamonds": 45,
       "cards": [
         {
           "id": 1747641928938,
@@ -313,14 +313,20 @@
           "name": "Lt. Surge's Pikachu",
           "imageUrl": "https://images.pokemontcg.io/gym2/84_hires.png",
           "rarity": "Common"
+        },
+        {
+          "id": 1747651286814,
+          "name": "Dartrix",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV002_hires.png",
+          "rarity": "Rare Shiny"
         }
       ],
       "starredCards": [
         1747641946780
       ],
-      "packs_opened": 6,
-      "rare_cards": 1,
-      "collection_value": 1830
+      "packs_opened": 8,
+      "rare_cards": 2,
+      "collection_value": 3030
     }
   ],
   "cards": [
