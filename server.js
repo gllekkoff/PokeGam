@@ -221,6 +221,18 @@ app.get('/api/user/profile', authenticateToken, (req, res) => {
   });
 });
 
+app.post('/api/user/update-collection-value', authenticateToken, (req, res) => {
+  const { collectionValue } = req.body;
+  const data = getUserData();
+  const user = data.users.find(u => u.id === req.user.id);
+  if (!user) return res.status(404).json({ message: 'User not found' });
+
+  user.collection_value = collectionValue;
+  saveUserData(data);
+
+  res.json({ success: true, updatedUser: user });
+});
+
 app.get('/api/cards', authenticateToken, (req, res) => {
   const data = getUserData();
   res.json(data.cards || []);
@@ -251,3 +263,4 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
+
