@@ -327,6 +327,97 @@
       "packs_opened": 8,
       "rare_cards": 2,
       "collection_value": 3030
+    },
+    {
+      "id": 3,
+      "email": "asd@gmail.com",
+      "username": "asd",
+      "password": "$2b$10$J9FAXWW.fZBuUOHVAzrYhe4MKB3czfwYfDjee9lDC7ND8j0DGKpAi",
+      "diamonds": 70,
+      "cards": [
+        {
+          "id": 1747651620780,
+          "name": "Pangoro",
+          "imageUrl": "https://images.pokemontcg.io/xy3/68_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747651630371,
+          "name": "Centiskorch V",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV108_hires.png",
+          "rarity": "Rare Holo V"
+        },
+        {
+          "id": 1747652043803,
+          "name": "Light Ledian",
+          "imageUrl": "https://images.pokemontcg.io/neo4/24_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747652565518,
+          "name": "Golduck",
+          "imageUrl": "https://images.pokemontcg.io/dp3/28_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747653168863,
+          "name": "Misdreavus",
+          "imageUrl": "https://images.pokemontcg.io/ex7/25_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747653180338,
+          "name": "Mareep",
+          "imageUrl": "https://images.pokemontcg.io/sm8/76_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747653365261,
+          "name": "Mudsdale",
+          "imageUrl": "https://images.pokemontcg.io/sm3/78_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747653368558,
+          "name": "Shuppet",
+          "imageUrl": "https://images.pokemontcg.io/sma/SV16_hires.png",
+          "rarity": "Rare Shiny"
+        },
+        {
+          "id": 1747653371485,
+          "name": "Corvisquire",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV102_hires.png",
+          "rarity": "Rare Shiny"
+        },
+        {
+          "id": 1747653381761,
+          "name": "Makuhita",
+          "imageUrl": "https://images.pokemontcg.io/bw7/82_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747653719457,
+          "name": "Judge",
+          "imageUrl": "https://images.pokemontcg.io/sm8/209_hires.png",
+          "rarity": "Rare Ultra"
+        },
+        {
+          "id": 1747653727076,
+          "name": "Pancham",
+          "imageUrl": "https://images.pokemontcg.io/xy9/71_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747653751695,
+          "name": "Pawniard",
+          "imageUrl": "https://images.pokemontcg.io/bw3/75_hires.png",
+          "rarity": "Common"
+        }
+      ],
+      "starredCards": [],
+      "packs_opened": 29,
+      "rare_cards": 4,
+      "collection_value": 0
     }
   ],
   "cards": [

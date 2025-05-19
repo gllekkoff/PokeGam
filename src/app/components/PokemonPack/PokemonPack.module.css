@@ -408,6 +408,10 @@
   animation: scrollLoop 20s linear infinite;
 }
 
+.carouselTrack:has(.accelerate) {
+  animation-duration: 1s !important;
+}
+
 .carouselItem {
   flex: 0 0 auto;
   margin-right: 1rem;

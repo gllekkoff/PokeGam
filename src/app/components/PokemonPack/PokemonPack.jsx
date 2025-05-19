@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Package, Diamond, X } from 'lucide-react';
 import { Button } from '../Button/Button';
 import styles from './PokemonPack.module.css';
@@ -11,6 +11,9 @@ export default function PokemonPack({ pack, setUser, onAction }) {
   const [resultModal, setResultModal] = useState(null);
   const [showUnifiedModal, setShowUnifiedModal] = useState(false);
   const [notEnoughDiamonds, setNotEnoughDiamonds] = useState(false);
+  const [accelerating, setAccelerating] = useState(false);
+  const [isOpening, setIsOpening] = useState(false);
+  const carouselRef = useRef(null);
   const isFree = pack.tag === 'Free';
   const { updateUser, user } = useAuth();
 
@@ -30,6 +33,7 @@ export default function PokemonPack({ pack, setUser, onAction }) {
 
       if (!res.ok) {
         setError(result.message || 'Something went wrong');
+        setIsOpening(false);
         return;
       }
 
@@ -46,6 +50,8 @@ export default function PokemonPack({ pack, setUser, onAction }) {
     } catch (err) {
       console.error('❌ Buy pack failed:', err);
       setError('Failed to buy pack');
+    } finally {
+      setIsOpening(false);
     }
   };
 
@@ -54,13 +60,27 @@ export default function PokemonPack({ pack, setUser, onAction }) {
   };
 
   const handleConfirmFromUnified = () => {
+    if (isOpening) return;
     if (isFree) {
-      handleBuyPack();
+      startAcceleratedReveal();
     } else if (user?.diamonds < pack.price) {
       setNotEnoughDiamonds(true);
     } else {
-      handleBuyPack();
+      startAcceleratedReveal();
     }
+  };
+
+  const startAcceleratedReveal = () => {
+    setIsOpening(true);
+    setAccelerating(true);
+    if (carouselRef.current) {
+      carouselRef.current.style.animationDuration = '1s';
+    }
+    setTimeout(() => {
+      setShowUnifiedModal(false);
+      handleBuyPack();
+      setAccelerating(false);
+    }, 3000);
   };
 
   return (
@@ -103,7 +123,7 @@ export default function PokemonPack({ pack, setUser, onAction }) {
       </div>
 
       {showUnifiedModal && (
-        <div className={styles.modalOverlay} onClick={() => setShowUnifiedModal(false)}>
+        <div className={styles.modalOverlay}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <button 
               className={styles.closeButton}
@@ -115,26 +135,23 @@ export default function PokemonPack({ pack, setUser, onAction }) {
             <h3 className={styles.modalTitle}>Possible Cards in {pack.name}</h3>
 
             <div className={`${styles.carouselRow} ${isFree ? styles.free : styles.market}`}>
-            <div className={styles.carouselTrack}>
-              {[...pack.cards, ...pack.cards].map((card, idx) => (
-                <div key={idx} className={styles.carouselItem}>
-                  <img
-                    src={card.imageUrl}
-                    alt={card.name}
-                    className={styles.cardImage}
-                  />
-                </div>
-              ))}
-            </div>
-
+              <div ref={carouselRef} className={styles.carouselTrack}>
+                {[...pack.cards, ...pack.cards].map((card, idx) => (
+                  <div key={idx} className={styles.carouselItem}>
+                    <img
+                      src={card.imageUrl}
+                      alt={card.name}
+                      className={styles.cardImage}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
             <Button
               className={styles.openButton}
-              onClick={() => {
-                setShowUnifiedModal(false);
-                handleConfirmFromUnified();
-              }}
+              onClick={handleConfirmFromUnified}
+              disabled={isOpening}
             >
               {isFree ? 'Open Pack' : 'Buy Pack'}
             </Button>
