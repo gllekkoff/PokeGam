@@ -5,7 +5,7 @@
       "email": "admin@gmail.com",
       "username": "admin",
       "password": "$2b$10$szHsJ68lLR5MZPtR0qqLg.1behUBArqkx/1JVgierId8ghLEfOLJW",
-      "diamonds": 934125,
+      "diamonds": 933200,
       "cards": [
         {
           "id": 1747617486688,
@@ -359,12 +359,18 @@
           "name": "Kangaskhan",
           "imageUrl": "https://images.pokemontcg.io/base4/26_hires.png",
           "rarity": "Rare"
+        },
+        {
+          "id": 1747656892979,
+          "name": "Cacturne",
+          "imageUrl": "https://images.pokemontcg.io/sm7/20_hires.png",
+          "rarity": "Uncommon"
         }
       ],
       "starredCards": [
         1747617495738
       ],
-      "packs_opened": 176,
+      "packs_opened": 179,
       "rare_cards": 24,
       "collection_value": 580
     },
