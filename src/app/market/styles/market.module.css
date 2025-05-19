@@ -1,12 +1,14 @@
 .container {
   min-height: 100vh;
   background-color: #f9fafb;
+  width: 100%;
 }
 
 .main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  width: 100%;
 }
 
 .title {
@@ -53,18 +55,22 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
-  padding: 1rem;
+  padding:
+    2rem 0rem 1rem 0rem;
+  width: 100%;
+  place-items: center;
 }
 
 .cardItem {
-  width: 280px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 220px;
   background: white;
   border-radius: 16px;
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   transition: transform 0.2s ease;
 }
 
@@ -279,7 +285,6 @@ button[type="button"]:hover {
   margin: 1rem 0;
 }
 
-/* NEW: Grid display for cards in result/preview modals */
 .modalCardGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -313,4 +318,32 @@ button[type="button"]:hover {
   border: 2px solid red;
   padding: 0.25rem;
   border-radius: 0.75rem;
+}
+
+@media (max-width: 2000px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1800px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1400px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
 }

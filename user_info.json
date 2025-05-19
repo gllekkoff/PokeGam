@@ -92,7 +92,7 @@
       "email": "admin@gmail.com",
       "username": "admin",
       "password": "$2b$10$FPXKcTqk6xAjJ8ZBZxm8MOPmiHddGPRWPz0.TRkcsy6qLT39ONt1m",
-      "diamonds": 220,
+      "diamonds": 2194240,
       "cards": [
         {
           "id": 1747614546401,
@@ -108,15 +108,60 @@
           "id": 1747614541243,
           "name": "Caterpie",
           "imageUrl": "https://images.pokemontcg.io/sm1/1.png"
+        },
+        {
+          "id": 1747614682506,
+          "name": "Clefable",
+          "imageUrl": "https://images.pokemontcg.io/base4/5.png"
+        },
+        {
+          "id": 1747614682290,
+          "name": "Charizard",
+          "imageUrl": "https://images.pokemontcg.io/base4/4.png"
+        },
+        {
+          "id": 1747614681585,
+          "name": "Chansey",
+          "imageUrl": "https://images.pokemontcg.io/base4/3.png"
+        },
+        {
+          "id": 1747614698567,
+          "name": "Clefairy",
+          "imageUrl": "https://images.pokemontcg.io/base4/6.png"
+        },
+        {
+          "id": 1747614696940,
+          "name": "Gyarados",
+          "imageUrl": "https://images.pokemontcg.io/base4/7.png"
+        },
+        {
+          "id": 1747614700327,
+          "name": "Hitmonchan",
+          "imageUrl": "https://images.pokemontcg.io/base4/8.png"
+        },
+        {
+          "id": 1747614708721,
+          "name": "Venusaur-EX",
+          "imageUrl": "https://images.pokemontcg.io/xy1/1.png"
+        },
+        {
+          "id": 1747614715375,
+          "name": "Mewtwo",
+          "imageUrl": "https://images.pokemontcg.io/base4/10.png"
+        },
+        {
+          "id": 1747614708423,
+          "name": "Magneton",
+          "imageUrl": "https://images.pokemontcg.io/base4/9.png"
         }
       ],
       "starredCards": [
         1747614541243,
         1747614546401
       ],
-      "packs_opened": 5,
+      "packs_opened": 16,
       "rare_cards": 0,
-      "collection_value": 0
+      "collection_value": 2730
     }
   ],
   "cards": [
@@ -502,6 +547,66 @@
     },
     {
       "id": 8,
+      "name": "Ancient Legends",
+      "price": 1200,
+      "tag": "Market",
+      "image": "/images/premium-pack.png",
+      "cards": [
+        {
+          "id": "xy1-2",
+          "name": "M Venusaur-EX",
+          "imageUrl": "https://images.pokemontcg.io/xy1/2.png",
+          "rarity": "Rare Holo EX",
+          "price": 437
+        },
+        {
+          "id": "xy1-3",
+          "name": "Weedle",
+          "imageUrl": "https://images.pokemontcg.io/xy1/3.png",
+          "rarity": "Common",
+          "price": 327
+        },
+        {
+          "id": "xy1-4",
+          "name": "Kakuna",
+          "imageUrl": "https://images.pokemontcg.io/xy1/4.png",
+          "rarity": "Uncommon",
+          "price": 352
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Ancient Legends",
+      "price": 1200,
+      "tag": "Market",
+      "image": "/images/premium-pack.png",
+      "cards": [
+        {
+          "id": "xy1-2",
+          "name": "M Venusaur-EX",
+          "imageUrl": "https://images.pokemontcg.io/xy1/2.png",
+          "rarity": "Rare Holo EX",
+          "price": 437
+        },
+        {
+          "id": "xy1-3",
+          "name": "Weedle",
+          "imageUrl": "https://images.pokemontcg.io/xy1/3.png",
+          "rarity": "Common",
+          "price": 327
+        },
+        {
+          "id": "xy1-4",
+          "name": "Kakuna",
+          "imageUrl": "https://images.pokemontcg.io/xy1/4.png",
+          "rarity": "Uncommon",
+          "price": 352
+        }
+      ]
+    },
+    {
+      "id": 10,
       "name": "Ancient Legends",
       "price": 1200,
       "tag": "Market",

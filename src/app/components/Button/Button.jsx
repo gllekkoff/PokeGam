@@ -35,9 +35,4 @@ const Button = React.forwardRef((props, ref) => {
 });
 
 Button.displayName = "Button";
-
-/**
- * Available variants: "default", "destructive", "outline", "secondary", "ghost", "link"
- * Available sizes: "default", "sm", "lg", "icon"
- */
 export { Button };

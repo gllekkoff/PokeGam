@@ -4,7 +4,7 @@
   }
   
   .content {
-    min-height: calc(100vh - 73px);
+    min-height: calc(100vh - 65px);
     display: grid;
     grid-template-columns: 1fr;
     position: relative;
