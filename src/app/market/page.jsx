@@ -184,15 +184,23 @@ export default function MarketPage() {
                 alt={selectedCard.name}
                 className={styles.modalImage}
               />
+              <h3 className={styles.modalTitle}>
+                Are you sure you want to buy:<br />
+                “{selectedCard.name}” for {selectedCard.price}?
+              </h3>
+
               <div className={styles.modalButtons}>
-                <Button className={styles.cancelButton} onClick={() => setShowUnifiedCardModal(false)}>
+                <Button
+                  className={styles.cancelButton}
+                  onClick={() => setShowUnifiedCardModal(false)}
+                >
                   Cancel
                 </Button>
                 <Button
                   className={`${styles.confirmButton} ${styles.buyButton}`}
                   onClick={() => {
+                    handleBuyCard(selectedCard);
                     setShowUnifiedCardModal(false);
-                    setShowCardConfirm(true);
                   }}
                 >
                   Buy
@@ -202,28 +210,6 @@ export default function MarketPage() {
           </div>
         )}
 
-        {showCardConfirm && selectedCard && (
-          <div className={styles.cardModalOverlay}>
-            <div className={styles.cardModal}>
-              <h3 className={styles.modalTitle}>
-                Are you sure you want to buy:<br />
-                “{selectedCard.name}” for {selectedCard.price}?
-              </h3>
-              <div className={styles.modalButtons}>
-                <Button onClick={() => setShowCardConfirm(false)}>Cancel</Button>
-                <Button
-                  className={`${styles.confirmButton} ${styles.buyButton}`}
-                  onClick={() => {
-                    handleBuyCard(selectedCard);
-                    setShowCardConfirm(false);
-                  }}
-                >
-                  Buy
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
 
         {purchaseResult && (
           <div className={styles.cardModalOverlay} onClick={() => setPurchaseResult(null)}>

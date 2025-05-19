@@ -228,3 +228,15 @@
   font-weight: 600;
   margin: 1rem 0;
 }
+
+.duplicateMessage {
+  font-size: 0.95rem;
+  color: #10b981; /* green */
+  text-align: center;
+  margin-top: 0.25rem;
+  padding-bottom: 1rem;
+}
+
+.diamond {
+  color: #10b981;
+}
