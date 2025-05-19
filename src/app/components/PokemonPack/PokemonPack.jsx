@@ -178,11 +178,7 @@ export default function PokemonPack({ pack, setUser, onAction }) {
       {notEnoughDiamonds && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
-            <h3 className={styles.modalTitle}>
-              Are you sure you want to buy:<br />
-              “{pack.name}” for {pack.price}?
-            </h3>
-            <p className={styles.error}>You don’t have enough Diamonds</p>
+            <h2 className={styles.error}>You don’t have enough Diamonds</h2>
             <div className={styles.modalActions}>
               <Button onClick={() => setNotEnoughDiamonds(false)}>Close</Button>
             </div>
@@ -208,6 +204,9 @@ export default function PokemonPack({ pack, setUser, onAction }) {
                     className={styles.modalCardImage}
                   />
                   <p className={styles.modalCardName}>{card.name}</p>
+                  {resultModal.duplicates.includes(card.name) && (
+                    <p className={styles.duplicateMessage}>Duplicate<br></br> +10 <Diamond className={`${styles.diamond}`}></Diamond></p>
+                  )}
                 </div>
               ))}
             </div>
