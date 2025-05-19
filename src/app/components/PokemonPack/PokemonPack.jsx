@@ -10,7 +10,6 @@ export default function PokemonPack({ pack, setUser, onAction }) {
   const [error, setError] = useState('');
   const [resultModal, setResultModal] = useState(null);
   const [showUnifiedModal, setShowUnifiedModal] = useState(false);
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [notEnoughDiamonds, setNotEnoughDiamonds] = useState(false);
   const isFree = pack.tag === 'Free';
   const { updateUser, user } = useAuth();
@@ -60,7 +59,8 @@ export default function PokemonPack({ pack, setUser, onAction }) {
     } else if (user?.diamonds < pack.price) {
       setNotEnoughDiamonds(true);
     } else {
-      setShowConfirmModal(true);
+      // Remove confirmation and directly buy the pack
+      handleBuyPack();
     }
   };
 
@@ -151,35 +151,10 @@ export default function PokemonPack({ pack, setUser, onAction }) {
         </div>
       )}
 
-      {showConfirmModal && (
-        <div className={styles.modalOverlay} onClick={() => setShowConfirmModal(false)}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <h3 className={styles.modalTitle}>
-              Are you sure you want to buy:<br />
-              “{pack.name}” for {pack.price}?
-            </h3>
-            <div className={styles.modalActions}>
-              <Button variant="outline" onClick={() => setShowConfirmModal(false)}>
-                No
-              </Button>
-              <Button
-                className={styles.buyButton}
-                onClick={async () => {
-                  await handleBuyPack();
-                  setShowConfirmModal(false);
-                }}
-              >
-                Yes
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
-
       {notEnoughDiamonds && (
         <div className={styles.modalOverlay} onClick={() => setNotEnoughDiamonds(false)}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <h2 className={styles.error}>You don’t have enough Diamonds</h2>
+            <h2 className={styles.error}>You don't have enough Diamonds</h2>
             <div className={styles.modalActions}>
               <Button onClick={() => setNotEnoughDiamonds(false)}>Close</Button>
             </div>
@@ -191,29 +166,36 @@ export default function PokemonPack({ pack, setUser, onAction }) {
         <div className={styles.modalOverlay} onClick={() => setResultModal(null)}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <h3 className={styles.modalTitle}>You opened {resultModal.packName}!</h3>
-            <div className={styles.modalCardGrid}>
+            <div className={styles.resultCard}>
               {resultModal.cards.map((card, idx) => (
-                <div
-                  key={idx}
-                  className={`${styles.modalCard} ${
-                    resultModal.duplicates.includes(card.name) ? styles.duplicateCard : ''
-                  }`}
-                >
+                <div key={idx} className={styles.bigCard}>
                   <img
                     src={card.imageUrl}
                     alt={card.name}
-                    className={styles.modalCardImage}
+                    className={styles.bigCardImage}
                   />
-                  <p className={styles.modalCardName}>{card.name}</p>
-                  {resultModal.duplicates.includes(card.name) && (
-                    <p className={styles.duplicateMessage}>Duplicate<br></br> +{card.reward} <Diamond className={`${styles.diamond}`}></Diamond></p>
-                  )}
+                  <div className={styles.cardInfo}>
+                    <h4 className={styles.cardName}>
+                      You've got a new card: {card.name}!
+                    </h4>
+                    {resultModal.duplicates.includes(card.name) && (
+                      <div className={styles.duplicateInfo}>
+                        <span className={styles.duplicateTag}>Duplicate</span>
+                        <span className={styles.rewardInfo}>
+                          +{card.reward} <Diamond size={16} className={styles.diamond} />
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <Button 
+                    className={styles.modalCloseButton}
+                    onClick={() => setResultModal(null)}
+                  >
+                    Close
+                  </Button>
                 </div>
               ))}
             </div>
-            <Button className={styles.modalCloseButton} onClick={() => setResultModal(null)}>
-              Close
-            </Button>
           </div>
         </div>
       )}

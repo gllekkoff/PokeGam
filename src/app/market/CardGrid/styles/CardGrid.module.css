@@ -1,0 +1,90 @@
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.cardItem {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  width: 100%;
+  min-width: 240px;
+  max-width: 280px;
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cardImage:hover {
+  transform: scale(1.05);
+}
+
+.ownedCard {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.cardInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.priceIcon {
+  color: var(--sidebar-ring);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.buyButton {
+  padding: 0.5rem 1rem;
+}
+
+/* Updated media queries */
+@media (max-width: 1800px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1400px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cardsContainer {
+    flex-direction: column;
+  }
+  
+  .filterSection {
+    position: relative;
+    width: 100%;
+    top: 0;
+  }
+}

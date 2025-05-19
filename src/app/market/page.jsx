@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation';
 import PokemonPack from '../components/PokemonPack/PokemonPack';
 import Header from '../components/Header/Header';
 import styles from './styles/market.module.css';
-import { Diamond } from 'lucide-react';
 import { Button } from '../components/Button/Button';
 import { useAuth } from '../components/AuthorizationModule/AuthContext';
+import FilterSection from './FilterSection/FilterSection';
+import CardGrid from './CardGrid/CardGrid';
+import CardModal from './CardModal/CardModal';
 
 export default function MarketPage() {
   const router = useRouter();
@@ -19,6 +21,13 @@ export default function MarketPage() {
   const [purchaseResult, setPurchaseResult] = useState(null);
   const [showUnifiedCardModal, setShowUnifiedCardModal] = useState(false);
   const [showCardConfirm, setShowCardConfirm] = useState(false);
+  const [filteredCards, setFilteredCards] = useState([]);
+  const [filters, setFilters] = useState({
+    rarity: 'all',
+    minPrice: '',
+    maxPrice: '',
+    sort: 'default'
+  });
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -56,6 +65,40 @@ export default function MarketPage() {
     loadPacks();
     loadCards();
   }, [router]);
+
+  useEffect(() => {
+    let result = [...cards];
+
+    if (filters.rarity !== 'all') {
+      result = result.filter(card => card.rarity === filters.rarity);
+    }
+
+    if (filters.minPrice !== '') {
+      result = result.filter(card => card.price >= Number(filters.minPrice));
+    }
+    if (filters.maxPrice !== '') {
+      result = result.filter(card => card.price <= Number(filters.maxPrice));
+    }
+
+    switch (filters.sort) {
+      case 'price-asc':
+        result.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-desc':
+        result.sort((a, b) => b.price - a.price);
+        break;
+      case 'name-asc':
+        result.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'name-desc':
+        result.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      default:
+        break;
+    }
+
+    setFilteredCards(result);
+  }, [cards, filters]);
 
   const handleBuyCard = async (card) => {
     const token = localStorage.getItem('token');
@@ -108,6 +151,16 @@ export default function MarketPage() {
     );
   };
 
+  const handleFilterChange = (key, value) => {
+    setFilters(prev => ({
+      ...prev,
+      [key]: value
+    }));
+  };
+
+
+  const rarityOptions = ['all', ...new Set(cards.map(card => card.rarity))];
+
   return (
     <div className={styles.container}>
       <Header />
@@ -140,74 +193,29 @@ export default function MarketPage() {
         )}
 
         {activeTab === 'cards' && (
-          <div className={styles.grid}>
-            {cards.map((card) => (
-              <div
-                key={card.id}
-                className={`${styles.cardItem} ${userOwnsCard(card.name) ? styles.ownedCard : ''}`}
-              >
-                <img
-                  src={card.imageUrl}
-                  alt={card.name}
-                  className={styles.cardImage}
-                  onClick={() => {
-                    if (!userOwnsCard(card.name)) {
-                      setSelectedCard(card);
-                      setShowUnifiedCardModal(true);
-                    }
-                  }}
-                />
-                <div className={styles.cardInfo}>
-                  <div className={styles.price}>
-                    <Diamond size={16} className={styles.priceIcon} />
-                    <span className={styles.priceValue}>{card.price}</span>
-                  </div>
-                  {!userOwnsCard(card.name) && (
-                    <Button className={styles.buyButton} onClick={() => {
-                      setSelectedCard(card);
-                      setShowUnifiedCardModal(true);
-                    }}>
-                      Buy
-                    </Button>
-                  )}
-                </div>
-              </div>
-            ))}
+          <div className={styles.cardsContainer}>
+            <FilterSection 
+              filters={filters}
+              onFilterChange={handleFilterChange}
+              rarityOptions={rarityOptions}
+            />
+            <CardGrid 
+              cards={filteredCards}
+              userOwnsCard={userOwnsCard}
+              onCardSelect={(card) => {
+                setSelectedCard(card);
+                setShowUnifiedCardModal(true);
+              }}
+            />
           </div>
         )}
 
         {showUnifiedCardModal && selectedCard && (
-          <div className={styles.cardModalOverlay}>
-            <div className={styles.cardModal}>
-              <img
-                src={selectedCard.imageUrl}
-                alt={selectedCard.name}
-                className={styles.modalImage}
-              />
-              <h3 className={styles.modalTitle}>
-                Are you sure you want to buy:<br />
-                “{selectedCard.name}” for {selectedCard.price}?
-              </h3>
-
-              <div className={styles.modalButtons}>
-                <Button
-                  className={styles.cancelButton}
-                  onClick={() => setShowUnifiedCardModal(false)}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  className={`${styles.confirmButton} ${styles.buyButton}`}
-                  onClick={() => {
-                    handleBuyCard(selectedCard);
-                    setShowUnifiedCardModal(false);
-                  }}
-                >
-                  Buy
-                </Button>
-              </div>
-            </div>
-          </div>
+          <CardModal 
+            card={selectedCard}
+            onClose={() => setShowUnifiedCardModal(false)}
+            onBuy={handleBuyCard}
+          />
         )}
 
 

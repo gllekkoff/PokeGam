@@ -5,9 +5,9 @@
 }
 
 .main {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem;
   width: 100%;
 }
 
@@ -53,14 +53,50 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+
+.cardsContainer {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+  position: relative;
+  min-height: calc(100vh - 200px);
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  padding:
-    2rem 0rem 1rem 0rem;
+  padding: 2rem 0;
   width: 100%;
   place-items: center;
+}
+
+@media (max-width: 2000px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1600px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardsContainer {
+    flex-direction: column;
+  }
 }
 
 .cardItem {
@@ -164,9 +200,9 @@ button[type="button"]:hover {
 .cardModal {
   background: white;
   border-radius: 16px;
-  padding: 24px;
-  width: 90%;
-  max-width: 500px;
+  padding: 32px;
+  width: 95%;
+  max-width: 600px;
   text-align: center;
 }
 
@@ -178,43 +214,46 @@ button[type="button"]:hover {
 
 .modalImage {
   width: 100%;
-  max-width: 350px;
+  max-width: 450px;
   height: auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
 }
 
 .modalButtons {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
-  max-width: 350px;
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 .modalButtons button {
   flex: 1;
-  padding: 12px;
+  min-width: 160px;
+  padding: 14px 24px;
   border-radius: 8px;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 16px;
   transition: background-color 0.2s;
-}
-
-.modalButtons button:hover {
-  background-color: #5F71F6 !important;
-  color: white;
-}
-
-.cancelButton,
-.confirmButton {
-  background-color: #111827;
-  color: white;
   border: none;
 }
 
+.cancelButton {
+  background-color: #111827;
+  color: white;
+}
+
+.confirmButton {
+  background-color: #111827;
+  color: white;
+}
+
 .cancelButton:hover,
-.confirmButton:hover {
-  background-color: #5F71F6 !important;
+.confirmButton:hover,
+.modalButtons button:hover {
+  background-color: #cf4040 !important;
+  color: white;
 }
 
 .packContent {
@@ -318,32 +357,4 @@ button[type="button"]:hover {
   border: 2px solid red;
   padding: 0.25rem;
   border-radius: 0.75rem;
-}
-
-@media (max-width: 2000px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 1800px;
-  }
-}
-
-@media (max-width: 1600px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1400px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 900px;
-  }
-}
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-  }
 }
