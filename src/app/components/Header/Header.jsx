@@ -5,10 +5,27 @@ import styles from './Header.module.css';
 import { Diamond, Info, Package, ShoppingCart, User, LogIn, LogOut } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../AuthorizationModule/AuthContext';
+import { useState } from 'react';
+import LogoutConfirmation from '../LogoutConfirmation/LogoutConfirmation';
 
 export const Header = () => {
   const pathname = usePathname();
   const { user, logout } = useAuth();
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+
+  const handleLogoutClick = (e) => {
+    e.preventDefault();
+    setShowLogoutConfirm(true);
+  };
+
+  const handleLogoutConfirm = () => {
+    setShowLogoutConfirm(false);
+    logout();
+  };
+
+  const handleLogoutCancel = () => {
+    setShowLogoutConfirm(false);
+  };
 
   const showAuthContent = !!user;
   return (
@@ -43,7 +60,7 @@ export const Header = () => {
           
           {showAuthContent ? (
             pathname === '/profile' ? (
-              <button className={styles.navButton} onClick={logout}>
+              <button className={styles.navButton} onClick={handleLogoutClick}>
                 <LogOut className="w-5 h-5" />
                 <span>Sign Out</span>
               </button>
@@ -61,6 +78,13 @@ export const Header = () => {
           )}
         </nav>
       </div>
+
+      {showLogoutConfirm && (
+        <LogoutConfirmation
+          onConfirm={handleLogoutConfirm}
+          onCancel={handleLogoutCancel}
+        />
+      )}
     </header>
   );
 };
