@@ -73,7 +73,6 @@ export default function ProfilePage() {
 
       if (!response.ok) throw new Error('Failed to update starred cards');
 
-      // Update local state
       setStarredCards(newStarred);
       localStorage.setItem('starredCards', JSON.stringify([...newStarred]));
     } catch (err) {

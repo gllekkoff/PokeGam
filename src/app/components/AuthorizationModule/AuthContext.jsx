@@ -19,12 +19,17 @@ export function AuthProvider({ children }) {
       if (token && savedUser) {
         try {
           const userData = JSON.parse(savedUser);
+          const savedStarredCards = localStorage.getItem('starredCards');
+          if (savedStarredCards) {
+            userData.starredCards = JSON.parse(savedStarredCards);
+          }
           setUser(userData);
           setIsAuthenticated(true);
         } catch (err) {
           console.error('❌ Failed to parse user from localStorage:', err);
           localStorage.removeItem('token');
           localStorage.removeItem('user');
+          localStorage.removeItem('starredCards');
         }
       }
       setIsLoading(false);
@@ -38,9 +43,14 @@ export function AuthProvider({ children }) {
   }
 
   const updateUser = (userData) => {
-    setUser(userData);
+    const currentStarredCards = user?.starredCards || [];
+    const updatedUser = {
+      ...userData,
+      starredCards: userData.starredCards || currentStarredCards
+    };
+    setUser(updatedUser);
     setIsAuthenticated(true);
-    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('user', JSON.stringify(updatedUser));
   };
 
   const register = async (email, password, username) => {
@@ -105,7 +115,15 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, updateUser, login, register, logout }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      isAuthenticated, 
+      isLoading, 
+      login, 
+      logout, 
+      register, 
+      updateUser 
+    }}>
       {children}
     </AuthContext.Provider>
   );

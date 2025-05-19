@@ -86,6 +86,37 @@
       "packs_opened": 9,
       "rare_cards": 0,
       "collection_value": 0
+    },
+    {
+      "id": 2,
+      "email": "admin@gmail.com",
+      "username": "admin",
+      "password": "$2b$10$FPXKcTqk6xAjJ8ZBZxm8MOPmiHddGPRWPz0.TRkcsy6qLT39ONt1m",
+      "diamonds": 220,
+      "cards": [
+        {
+          "id": 1747614546401,
+          "name": "Butterfree",
+          "imageUrl": "https://images.pokemontcg.io/sm1/3.png"
+        },
+        {
+          "id": 1747614540228,
+          "name": "Metapod",
+          "imageUrl": "https://images.pokemontcg.io/sm1/2.png"
+        },
+        {
+          "id": 1747614541243,
+          "name": "Caterpie",
+          "imageUrl": "https://images.pokemontcg.io/sm1/1.png"
+        }
+      ],
+      "starredCards": [
+        1747614541243,
+        1747614546401
+      ],
+      "packs_opened": 5,
+      "rare_cards": 0,
+      "collection_value": 0
     }
   ],
   "cards": [
