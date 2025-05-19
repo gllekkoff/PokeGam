@@ -59,7 +59,6 @@ export default function PokemonPack({ pack, setUser, onAction }) {
     } else if (user?.diamonds < pack.price) {
       setNotEnoughDiamonds(true);
     } else {
-      // Remove confirmation and directly buy the pack
       handleBuyPack();
     }
   };
@@ -115,15 +114,19 @@ export default function PokemonPack({ pack, setUser, onAction }) {
             
             <h3 className={styles.modalTitle}>Possible Cards in {pack.name}</h3>
 
-            <div className={`${styles.previewTopRow} ${isFree ? styles.free : styles.market}`}>
-              {pack.cards.map((card) => (
-                <img
-                  key={card.id}
-                  src={card.imageUrl}
-                  alt={card.name}
-                  className={styles.cardImage}
-                />
+            <div className={`${styles.carouselRow} ${isFree ? styles.free : styles.market}`}>
+            <div className={styles.carouselTrack}>
+              {[...pack.cards, ...pack.cards].map((card, idx) => (
+                <div key={idx} className={styles.carouselItem}>
+                  <img
+                    src={card.imageUrl}
+                    alt={card.name}
+                    className={styles.cardImage}
+                  />
+                </div>
               ))}
+            </div>
+
             </div>
 
             <Button
