@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Package, Diamond } from 'lucide-react';
+import { Package, Diamond, X } from 'lucide-react';
 import { Button } from '../Button/Button';
 import styles from './PokemonPack.module.css';
 import { useAuth } from '../AuthorizationModule/AuthContext';
@@ -104,8 +104,15 @@ export default function PokemonPack({ pack, setUser, onAction }) {
       </div>
 
       {showUnifiedModal && (
-        <div className={styles.modalOverlay}>
+        <div className={styles.modalOverlay} onClick={() => setShowUnifiedModal(false)}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button 
+              className={styles.closeButton}
+              onClick={() => setShowUnifiedModal(false)}
+            >
+              <X size={24} />
+            </button>
+            
             <h3 className={styles.modalTitle}>Possible Cards in {pack.name}</h3>
 
             <div className={`${styles.previewTopRow} ${isFree ? styles.free : styles.market}`}>
@@ -118,6 +125,16 @@ export default function PokemonPack({ pack, setUser, onAction }) {
                 />
               ))}
             </div>
+
+            <Button
+              className={styles.openButton}
+              onClick={() => {
+                setShowUnifiedModal(false);
+                handleConfirmFromUnified();
+              }}
+            >
+              {isFree ? 'Open Pack' : 'Buy Pack'}
+            </Button>
 
             <div className={styles.previewBottomRow}>
               {pack.cards.map((card) => {
@@ -134,29 +151,13 @@ export default function PokemonPack({ pack, setUser, onAction }) {
                 );
               })}
             </div>
-
-            {error && <p className={styles.error}>{error}</p>}
-            <div className={styles.modalActions}>
-              <Button variant="outline" onClick={() => setShowUnifiedModal(false)}>
-                Cancel
-              </Button>
-              <Button
-                className={styles.buyButton}
-                onClick={() => {
-                  setShowUnifiedModal(false);
-                  handleConfirmFromUnified();
-                }}
-              >
-                {isFree ? 'Open' : 'Buy'}
-              </Button>
-            </div>
           </div>
         </div>
       )}
 
       {showConfirmModal && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalContent}>
+        <div className={styles.modalOverlay} onClick={() => setShowConfirmModal(false)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <h3 className={styles.modalTitle}>
               Are you sure you want to buy:<br />
               “{pack.name}” for {pack.price}?
@@ -180,8 +181,8 @@ export default function PokemonPack({ pack, setUser, onAction }) {
       )}
 
       {notEnoughDiamonds && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalContent}>
+        <div className={styles.modalOverlay} onClick={() => setNotEnoughDiamonds(false)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <h2 className={styles.error}>You don’t have enough Diamonds</h2>
             <div className={styles.modalActions}>
               <Button onClick={() => setNotEnoughDiamonds(false)}>Close</Button>

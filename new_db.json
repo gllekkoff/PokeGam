@@ -5,7 +5,7 @@
       "email": "admin@gmail.com",
       "username": "admin",
       "password": "$2b$10$szHsJ68lLR5MZPtR0qqLg.1behUBArqkx/1JVgierId8ghLEfOLJW",
-      "diamonds": 997710,
+      "diamonds": 992585,
       "cards": [
         {
           "id": 1747617486688,
@@ -182,13 +182,88 @@
           "name": "Golduck",
           "imageUrl": "https://images.pokemontcg.io/dp3/28_hires.png",
           "rarity": "Rare"
+        },
+        {
+          "id": 1747642630788,
+          "name": "Lt. Surge's Pikachu",
+          "imageUrl": "https://images.pokemontcg.io/gym2/84_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747643246808,
+          "name": "Lost Blender",
+          "imageUrl": "https://images.pokemontcg.io/sm8/233_hires.png",
+          "rarity": "Rare Secret"
+        },
+        {
+          "id": 1747643430261,
+          "name": "Oranguru",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV098_hires.png",
+          "rarity": "Rare Shiny"
+        },
+        {
+          "id": 1747643556916,
+          "name": "Team Rocket's Trickery",
+          "imageUrl": "https://images.pokemontcg.io/hgss3/78_hires.png",
+          "rarity": "Uncommon"
+        },
+        {
+          "id": 1747643561660,
+          "name": "Swablu",
+          "imageUrl": "https://images.pokemontcg.io/hgss4/78_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747643906352,
+          "name": "Aron",
+          "imageUrl": "https://images.pokemontcg.io/bw6/78_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747643919613,
+          "name": "Misdreavus",
+          "imageUrl": "https://images.pokemontcg.io/ex7/25_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747644157691,
+          "name": "Galarian Cursola",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV050_hires.png",
+          "rarity": "Rare Shiny"
+        },
+        {
+          "id": 1747644163628,
+          "name": "U-Turn Board",
+          "imageUrl": "https://images.pokemontcg.io/sm11/255_hires.png",
+          "rarity": "Rare Secret"
+        },
+        {
+          "id": 1747644165168,
+          "name": "Klinklang",
+          "imageUrl": "https://images.pokemontcg.io/bw1/76_hires.png",
+          "rarity": "Rare Holo"
+        },
+        {
+          "id": 1747644171158,
+          "name": "Gligar",
+          "imageUrl": "https://images.pokemontcg.io/bw7/80_hires.png"
+        },
+        {
+          "id": 1747644191803,
+          "name": "Totodile δ",
+          "imageUrl": "https://images.pokemontcg.io/ex15/67_hires.png"
+        },
+        {
+          "id": 1747644197809,
+          "name": "Skorupi",
+          "imageUrl": "https://images.pokemontcg.io/hgss4/76_hires.png"
         }
       ],
       "starredCards": [
         1747617495738
       ],
-      "packs_opened": 39,
-      "rare_cards": 13,
+      "packs_opened": 58,
+      "rare_cards": 18,
       "collection_value": 580
     },
     {

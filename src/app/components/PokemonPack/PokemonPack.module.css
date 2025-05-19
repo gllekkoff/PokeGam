@@ -85,19 +85,33 @@
 }
 
 .modalContent {
+  position: relative;
   background: white;
   padding: 2rem;
   border-radius: 1rem;
-  max-width: 800px;
-  width: 90%;
+  max-width: 1200px;
+  width: 95%;
+  max-height: 85vh;
+  overflow-y: scroll;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modalContent::-webkit-scrollbar {
+  display: none;
 }
 
 .modalTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.previewBottomRow::-webkit-scrollbar,
+.previewBottomRow::-webkit-scrollbar-thumb {
+  display: none;
 }
 
 .previewTopRow.free {
@@ -108,7 +122,6 @@
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
 }
 
 .previewTopRow.market {
@@ -119,43 +132,67 @@
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+}
+
+.previewTopRow {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: nowrap;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
 }
 
 .previewTopRow img {
-  width: 100px;
+  width: 140px;
   height: auto;
   border-radius: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.previewTopRow img:hover {
+  transform: scale(1.05);
 }
 
 .previewBottomRow {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .previewCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+}
+
+.previewCard img {
+  width: 180px;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.previewCard img:hover {
+  transform: scale(1.05);
 }
 
 .previewCardName {
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
   font-weight: 500;
   color: #111827;
 }
 
 .modalCardGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .modalCard {
@@ -192,8 +229,8 @@
 .modalActions {
   display: flex;
   gap: 1rem;
-  margin-top: 2rem;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .modalCloseButton {
@@ -245,4 +282,41 @@
   width: 100%;
   height: auto;
   object-fit: fill;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.closeButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.openButton {
+  background-color: #111827;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.openButton:hover {
+  background-color: #5F71F6;
 }
