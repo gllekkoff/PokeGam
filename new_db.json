@@ -7390,7 +7390,7 @@
       "name": "Jungle Pack",
       "price": 0,
       "tag": "Free",
-      "image": "/images/basic-pack.png",
+      "image": "/images/jungle-pack.png",
       "cards": [
         {
           "id": "bw6-78",
@@ -7469,7 +7469,7 @@
       "name": "Starter Blaze",
       "price": 0,
       "tag": "Free",
-      "image": "/images/basic-pack.png",
+      "image": "/images/starter-blaze.png",
       "cards": [
         {
           "id": "xyp-XY15",
@@ -7548,7 +7548,7 @@
       "name": "Forest Force",
       "price": 0,
       "tag": "Free",
-      "image": "/images/basic-pack.png",
+      "image": "/images/forest-force.png",
       "cards": [
         {
           "id": "bw8-78",
@@ -7627,7 +7627,7 @@
       "name": "Elemental Storm",
       "price": 400,
       "tag": "Market",
-      "image": "/images/premium-pack.png",
+      "image": "/images/elemental-storm.png",
       "cards": [
         {
           "id": "sm6-19",
@@ -7706,7 +7706,7 @@
       "name": "Crystal Pack",
       "price": 600,
       "tag": "Market",
-      "image": "/images/premium-pack.png",
+      "image": "/images/crystal.png",
       "cards": [
         {
           "id": "neo1-73",
@@ -7785,7 +7785,7 @@
       "name": "Sky Clash",
       "price": 800,
       "tag": "Market",
-      "image": "images/premium-pack.png",
+      "image": "images/sky-clash.png",
       "cards": [
         {
           "id": "bw7-82",
@@ -7864,7 +7864,7 @@
       "name": "Ancient Legends",
       "price": 1200,
       "tag": "Market",
-      "image": "/images/premium-pack.png",
+      "image": "/images/ancient-legends.png",
       "cards": [
         {
           "id": "base4-26",
