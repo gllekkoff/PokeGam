@@ -119,32 +119,40 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
     user.diamonds -= pack.price;
   }
 
-  const drawn = [...pack.cards].sort(() => 0.5 - Math.random()).slice(0, 3);
+  // 🎯 Weighted drop: 0 = 60%, 1 = 30%, 2 = 10%
+  const rand = Math.random();
+  let chosenIndex = 0;
+  if (rand < 0.6) chosenIndex = 0;
+  else if (rand < 0.9) chosenIndex = 1;
+  else chosenIndex = 2;
+
+  const card = pack.cards[chosenIndex];
+
+  const isDuplicate = user.cards.some(
+    c => c.name.toLowerCase() === card.name.toLowerCase()
+  );
+
   const newCards = [];
   const duplicates = [];
 
-  user.cards = user.cards || [];
-
-  for (const card of drawn) {
-    const isDuplicate = user.cards.some(
-      c => c.name.toLowerCase() === card.name.toLowerCase()
-    );
-
-    if (isDuplicate) {
-      user.diamonds += 10;
-      duplicates.push(card);
-    } else {
-      const instance = {
-        id: Date.now() + Math.floor(Math.random() * 10000),
-        name: card.name,
-        imageUrl: card.imageUrl
-      };
-      user.cards.push(instance);
-      newCards.push(instance);
-    }
+  if (isDuplicate) {
+    user.diamonds += 10;
+    duplicates.push(card);
+  } else {
+    const instance = {
+      id: Date.now() + Math.floor(Math.random() * 10000),
+      name: card.name,
+      imageUrl: card.imageUrl,
+    };
+    user.cards.push(instance);
+    newCards.push(instance);
   }
 
   user.packs_opened = (user.packs_opened || 0) + 1;
+
+  if (chosenIndex === 2 && !isDuplicate) {
+    user.rare_cards = (user.rare_cards || 0) + 1;
+  }
 
   saveUserData({ ...data, users });
 
@@ -159,7 +167,8 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
       diamonds: user.diamonds,
       cards: user.cards,
       starredCards: user.starredCards || [],
-      packs_opened: user.packs_opened
+      packs_opened: user.packs_opened,
+      rare_cards: user.rare_cards
     }
   });
 });

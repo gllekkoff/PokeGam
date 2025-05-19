@@ -92,76 +92,107 @@
       "email": "admin@gmail.com",
       "username": "admin",
       "password": "$2b$10$FPXKcTqk6xAjJ8ZBZxm8MOPmiHddGPRWPz0.TRkcsy6qLT39ONt1m",
-      "diamonds": 2194240,
+      "diamonds": 220,
       "cards": [
         {
-          "id": 1747614546401,
-          "name": "Butterfree",
-          "imageUrl": "https://images.pokemontcg.io/sm1/3.png"
-        },
-        {
-          "id": 1747614540228,
-          "name": "Metapod",
-          "imageUrl": "https://images.pokemontcg.io/sm1/2.png"
-        },
-        {
-          "id": 1747614541243,
+          "id": 1747614317815,
+          "email": "as@gmail.com",
+          "username": "as",
+          "password": "$2b$10$Sj3lDd9ND/mNZY3GuLhYAOhS6PLNYtbHba1p6tcRreqR4m7/q/fV.",
+          "diamonds": 522,
+          "cards": [
+            {
+              "id": 1747614319026,
+              "name": "Butterfree",
+              "imageUrl": "https://images.pokemontcg.io/sm1/3.png"
+            },
+            {
+              "id": 1747614311567,
+              "name": "Metapod",
+              "imageUrl": "https://images.pokemontcg.io/sm1/2.png"
+            },
+            {
+              "id": 1747614541243,
+              "name": "Caterpie",
+              "imageUrl": "https://images.pokemontcg.io/sm1/1.png"
+            }
+          ],
+          "starredCards": [
+            1747614541243,
+            1747614546401
+          ],
+          "packs_opened": 5,
           "name": "Caterpie",
           "imageUrl": "https://images.pokemontcg.io/sm1/1.png"
         },
         {
-          "id": 1747614682506,
-          "name": "Clefable",
-          "imageUrl": "https://images.pokemontcg.io/base4/5.png"
+          "id": 1747614598439,
+          "name": "Paras",
+          "imageUrl": "https://images.pokemontcg.io/sm1/4.png"
         },
         {
-          "id": 1747614682290,
-          "name": "Charizard",
-          "imageUrl": "https://images.pokemontcg.io/base4/4.png"
+          "id": 1747614607704,
+          "name": "Parasect",
+          "imageUrl": "https://images.pokemontcg.io/sm1/5.png"
         },
         {
-          "id": 1747614681585,
-          "name": "Chansey",
-          "imageUrl": "https://images.pokemontcg.io/base4/3.png"
+          "id": 1747614617313,
+          "name": "Pinsir",
+          "imageUrl": "https://images.pokemontcg.io/sm1/6.png"
         },
         {
-          "id": 1747614698567,
-          "name": "Clefairy",
-          "imageUrl": "https://images.pokemontcg.io/base4/6.png"
+          "id": 1747614829345,
+          "name": "Dartrix",
+          "imageUrl": "https://images.pokemontcg.io/sm1/10.png"
         },
         {
-          "id": 1747614696940,
-          "name": "Gyarados",
-          "imageUrl": "https://images.pokemontcg.io/base4/7.png"
+          "id": 1747614835200,
+          "name": "Alakazam",
+          "imageUrl": "https://images.pokemontcg.io/base4/1.png"
         },
         {
-          "id": 1747614700327,
-          "name": "Hitmonchan",
-          "imageUrl": "https://images.pokemontcg.io/base4/8.png"
-        },
-        {
-          "id": 1747614708721,
-          "name": "Venusaur-EX",
-          "imageUrl": "https://images.pokemontcg.io/xy1/1.png"
-        },
-        {
-          "id": 1747614715375,
-          "name": "Mewtwo",
-          "imageUrl": "https://images.pokemontcg.io/base4/10.png"
-        },
-        {
-          "id": 1747614708423,
-          "name": "Magneton",
-          "imageUrl": "https://images.pokemontcg.io/base4/9.png"
+          "id": 1747614830824,
+          "name": "Blastoise",
+          "imageUrl": "https://images.pokemontcg.io/base4/2.png"
         }
       ],
-      "starredCards": [
-        1747614541243,
-        1747614546401
-      ],
-      "packs_opened": 16,
+      "packs_opened": 84,
+      "rare_cards": 1,
+      "collection_value": 2525
+    },
+    {
+      "id": 3,
+      "email": "sdc@gmail.com",
+      "username": "sdc",
+      "password": "$2b$10$f3EukmDGCWLduuVA9rMNUe9znSJP4G0WjvX/byeJZGeVjJBAsuwau",
+      "diamonds": 100,
+      "cards": [],
+      "packs_opened": 0,
       "rare_cards": 0,
-      "collection_value": 2730
+      "collection_value": 0
+    },
+    {
+      "id": 4,
+      "email": "roma@gmail.com",
+      "username": "roma",
+      "password": "$2b$10$uhBgROQ.aMP5orE9d2.aZOVHGE04Yv5WQ/yl1RrwGyd8YSKMrNsy6",
+      "diamonds": 120,
+      "cards": [
+        {
+          "id": 1747615050226,
+          "name": "Caterpie",
+          "imageUrl": "https://images.pokemontcg.io/sm1/1.png"
+        },
+        {
+          "id": 1747615056832,
+          "name": "Butterfree",
+          "imageUrl": "https://images.pokemontcg.io/sm1/3.png"
+        }
+      ],
+      "starredCards": [],
+      "packs_opened": 4,
+      "rare_cards": 1,
+      "collection_value": 538
     }
   ],
   "cards": [
@@ -547,66 +578,6 @@
     },
     {
       "id": 8,
-      "name": "Ancient Legends",
-      "price": 1200,
-      "tag": "Market",
-      "image": "/images/premium-pack.png",
-      "cards": [
-        {
-          "id": "xy1-2",
-          "name": "M Venusaur-EX",
-          "imageUrl": "https://images.pokemontcg.io/xy1/2.png",
-          "rarity": "Rare Holo EX",
-          "price": 437
-        },
-        {
-          "id": "xy1-3",
-          "name": "Weedle",
-          "imageUrl": "https://images.pokemontcg.io/xy1/3.png",
-          "rarity": "Common",
-          "price": 327
-        },
-        {
-          "id": "xy1-4",
-          "name": "Kakuna",
-          "imageUrl": "https://images.pokemontcg.io/xy1/4.png",
-          "rarity": "Uncommon",
-          "price": 352
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "name": "Ancient Legends",
-      "price": 1200,
-      "tag": "Market",
-      "image": "/images/premium-pack.png",
-      "cards": [
-        {
-          "id": "xy1-2",
-          "name": "M Venusaur-EX",
-          "imageUrl": "https://images.pokemontcg.io/xy1/2.png",
-          "rarity": "Rare Holo EX",
-          "price": 437
-        },
-        {
-          "id": "xy1-3",
-          "name": "Weedle",
-          "imageUrl": "https://images.pokemontcg.io/xy1/3.png",
-          "rarity": "Common",
-          "price": 327
-        },
-        {
-          "id": "xy1-4",
-          "name": "Kakuna",
-          "imageUrl": "https://images.pokemontcg.io/xy1/4.png",
-          "rarity": "Uncommon",
-          "price": 352
-        }
-      ]
-    },
-    {
-      "id": 10,
       "name": "Ancient Legends",
       "price": 1200,
       "tag": "Market",
