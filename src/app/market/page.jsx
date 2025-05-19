@@ -45,7 +45,7 @@ export default function MarketPage() {
         const data = await res.json();
         setPacks(data);
       } catch (err) {
-        console.error('❌ Failed to load packs:', err);
+        console.error('Failed to load packs:', err);
       }
     };
 
@@ -58,7 +58,7 @@ export default function MarketPage() {
         const data = await res.json();
         setCards(data);
       } catch (err) {
-        console.error('❌ Failed to load cards:', err);
+        console.error('Failed to load cards:', err);
       }
     };
 
@@ -135,7 +135,7 @@ export default function MarketPage() {
         }
       }
     } catch (err) {
-      console.error('❌ Buy card failed:', err);
+      console.error('Buy card failed:', err);
       setPurchaseResult({
         success: false,
         message: 'Failed to buy card',

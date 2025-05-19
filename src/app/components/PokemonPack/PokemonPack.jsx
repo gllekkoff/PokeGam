@@ -48,7 +48,7 @@ export default function PokemonPack({ pack, setUser, onAction }) {
         updateUser(result.updatedUser);
       }
     } catch (err) {
-      console.error('❌ Buy pack failed:', err);
+      console.error('Buy pack failed:', err);
       setError('Failed to buy pack');
     } finally {
       setIsOpening(false);

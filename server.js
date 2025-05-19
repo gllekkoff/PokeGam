@@ -366,11 +366,11 @@ app.get('/api/market', (req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error('💥 Uncaught error:', err.stack);
+  console.error('Uncaught error:', err.stack);
   res.status(500).json({ message: 'Something went wrong!' });
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
 
