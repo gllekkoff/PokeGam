@@ -205,7 +205,7 @@ export default function PokemonPack({ pack, setUser, onAction }) {
                   />
                   <p className={styles.modalCardName}>{card.name}</p>
                   {resultModal.duplicates.includes(card.name) && (
-                    <p className={styles.duplicateMessage}>Duplicate<br></br> +10 <Diamond className={`${styles.diamond}`}></Diamond></p>
+                    <p className={styles.duplicateMessage}>Duplicate<br></br> +{card.reward} <Diamond className={`${styles.diamond}`}></Diamond></p>
                   )}
                 </div>
               ))}

@@ -196,11 +196,36 @@
       "email": "admin1@gmail.com",
       "username": "admin1",
       "password": "$2b$10$E1emXyEY6cybjvdeXZRvlOSkWXrdaoqI.iMH/NdIihgjs4M6hB39C",
-      "diamonds": 100,
-      "cards": [],
+      "diamonds": 180,
+      "cards": [
+        {
+          "id": 1747642978627,
+          "name": "Mareep",
+          "imageUrl": "https://images.pokemontcg.io/sm8/76_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747642976868,
+          "name": "Pangoro",
+          "imageUrl": "https://images.pokemontcg.io/xy3/68_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747642984032,
+          "name": "Light Ledian",
+          "imageUrl": "https://images.pokemontcg.io/neo4/24_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747642988841,
+          "name": "Centiskorch V",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV108_hires.png",
+          "rarity": "Rare Holo V"
+        }
+      ],
       "starredCards": [],
-      "packs_opened": 0,
-      "rare_cards": 0,
+      "packs_opened": 7,
+      "rare_cards": 1,
       "collection_value": 0
     },
     {
