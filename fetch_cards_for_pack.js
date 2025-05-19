@@ -63,8 +63,8 @@ async function fetchCard(cardId) {
     };
 
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(userInfo, null, 2));
-    console.log(`✅ Generated ${OUTPUT_FILE} with ${packs.length} packs and ${fetchedCards.length} global cards.`);
+    console.log(`Generated ${OUTPUT_FILE} with ${packs.length} packs and ${fetchedCards.length} global cards.`);
   } catch (err) {
-    console.error('❌ Failed to fetch cards or write file:', err);
+    console.error('Failed to fetch cards or write file:', err);
   }
 })();

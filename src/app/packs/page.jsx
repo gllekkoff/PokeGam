@@ -39,7 +39,7 @@ export default function PacksPage() {
         const cardsData = await cardsRes.json();
         localStorage.setItem('cards', JSON.stringify(cardsData));
       } catch (err) {
-        console.error('❌ Failed to load packs or cards:', err);
+        console.error('Failed to load packs or cards:', err);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         router.push('/signin');

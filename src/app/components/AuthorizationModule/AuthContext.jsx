@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
           setUser(userData);
           setIsAuthenticated(true);
         } catch (err) {
-          console.error('❌ Failed to parse user from localStorage:', err);
+          console.error('Failed to parse user from localStorage:', err);
           localStorage.removeItem('token');
           localStorage.removeItem('user');
           localStorage.removeItem('starredCards');
