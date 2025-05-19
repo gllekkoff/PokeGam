@@ -5,7 +5,7 @@
       "email": "admin@gmail.com",
       "username": "admin",
       "password": "$2b$10$szHsJ68lLR5MZPtR0qqLg.1behUBArqkx/1JVgierId8ghLEfOLJW",
-      "diamonds": 969945,
+      "diamonds": 992585,
       "cards": [
         {
           "id": 1747617486688,
@@ -257,102 +257,13 @@
           "id": 1747644197809,
           "name": "Skorupi",
           "imageUrl": "https://images.pokemontcg.io/hgss4/76_hires.png"
-        },
-        {
-          "id": 1747644271758,
-          "name": "Drednaw",
-          "imageUrl": "https://images.pokemontcg.io/swsh45/27_hires.png",
-          "rarity": "Rare"
-        },
-        {
-          "id": 1747644348060,
-          "name": "Gym Badge",
-          "imageUrl": "https://images.pokemontcg.io/xyp/XY207_hires.png",
-          "rarity": "Promo"
-        },
-        {
-          "id": 1747644357763,
-          "name": "Machop",
-          "imageUrl": "https://images.pokemontcg.io/base4/78_hires.png",
-          "rarity": "Common"
-        },
-        {
-          "id": 1747644590630,
-          "name": "Nickit",
-          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV081_hires.png",
-          "rarity": "Rare Shiny"
-        },
-        {
-          "id": 1747644708978,
-          "name": "Weepinbell",
-          "imageUrl": "https://images.pokemontcg.io/swsh5/2_hires.png",
-          "rarity": "Uncommon"
-        },
-        {
-          "id": 1747644716815,
-          "name": "Pawniard",
-          "imageUrl": "https://images.pokemontcg.io/bw3/75_hires.png",
-          "rarity": "Common"
-        },
-        {
-          "id": 1747644740195,
-          "name": "Galarian Perrserker",
-          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV087_hires.png",
-          "rarity": "Rare Shiny"
-        },
-        {
-          "id": 1747644793960,
-          "name": "Makuhita",
-          "imageUrl": "https://images.pokemontcg.io/bw7/82_hires.png",
-          "rarity": "Common"
-        },
-        {
-          "id": 1747644927314,
-          "name": "Salazzle",
-          "imageUrl": "https://images.pokemontcg.io/sm5/26_hires.png",
-          "rarity": "Rare"
-        },
-        {
-          "id": 1747645019688,
-          "name": "Zeraora-GX",
-          "imageUrl": "https://images.pokemontcg.io/sm8/201_hires.png",
-          "rarity": "Rare Ultra"
-        },
-        {
-          "id": 1747645052798,
-          "name": "Slowpoke",
-          "imageUrl": "https://images.pokemontcg.io/neo1/73_hires.png",
-          "rarity": "Common"
-        },
-        {
-          "id": 1747645110998,
-          "name": "Mewtwo & Mew-GX",
-          "imageUrl": "https://images.pokemontcg.io/sm11/242_hires.png",
-          "rarity": "Rare Rainbow"
-        },
-        {
-          "id": 1747645114444,
-          "name": "Fennekin",
-          "imageUrl": "https://images.pokemontcg.io/xy1/24_hires.png",
-          "rarity": "Common"
-        },
-        {
-          "id": 1747645155009,
-          "name": "Heatmor",
-          "imageUrl": "https://images.pokemontcg.io/bw5/19_hires.png",
-          "rarity": "Rare"
-        },
-        {
-          "id": 1747646467498,
-          "name": "Lucario",
-          "imageUrl": "https://images.pokemontcg.io/bw8/77_hires.png"
         }
       ],
       "starredCards": [
         1747617495738
       ],
-      "packs_opened": 96,
-      "rare_cards": 22,
+      "packs_opened": 58,
+      "rare_cards": 18,
       "collection_value": 580
     },
     {
@@ -384,12 +295,32 @@
           "name": "Shroomish",
           "imageUrl": "https://images.pokemontcg.io/ex1/69_hires.png",
           "rarity": "Common"
+        },
+        {
+          "id": 1747648337917,
+          "name": "Mareep",
+          "imageUrl": "https://images.pokemontcg.io/sm8/76_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747648343917,
+          "name": "Totodile δ",
+          "imageUrl": "https://images.pokemontcg.io/ex15/67_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747648347371,
+          "name": "Lt. Surge's Pikachu",
+          "imageUrl": "https://images.pokemontcg.io/gym2/84_hires.png",
+          "rarity": "Common"
         }
       ],
-      "starredCards": [],
-      "packs_opened": 3,
+      "starredCards": [
+        1747641946780
+      ],
+      "packs_opened": 6,
       "rare_cards": 1,
-      "collection_value": 1590
+      "collection_value": 1830
     }
   ],
   "cards": [
