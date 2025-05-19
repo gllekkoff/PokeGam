@@ -17,6 +17,8 @@ export default function MarketPage() {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [purchaseResult, setPurchaseResult] = useState(null);
+  const [showUnifiedCardModal, setShowUnifiedCardModal] = useState(false);
+  const [showCardConfirm, setShowCardConfirm] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -101,7 +103,9 @@ export default function MarketPage() {
   const marketPacks = packs.filter((pack) => pack.tag === 'Market');
 
   const userOwnsCard = (cardName) => {
-    return user?.cards?.some((c) => c.name.trim().toLowerCase() === cardName.trim().toLowerCase());
+    return user?.cards?.some(
+      (c) => c.name.trim().toLowerCase() === cardName.trim().toLowerCase()
+    );
   };
 
   return (
@@ -146,7 +150,12 @@ export default function MarketPage() {
                   src={card.imageUrl}
                   alt={card.name}
                   className={styles.cardImage}
-                  onClick={() => !userOwnsCard(card.name) && setSelectedCard(card)}
+                  onClick={() => {
+                    if (!userOwnsCard(card.name)) {
+                      setSelectedCard(card);
+                      setShowUnifiedCardModal(true);
+                    }
+                  }}
                 />
                 <div className={styles.cardInfo}>
                   <div className={styles.price}>
@@ -154,7 +163,10 @@ export default function MarketPage() {
                     <span className={styles.priceValue}>{card.price}</span>
                   </div>
                   {!userOwnsCard(card.name) && (
-                    <Button className={styles.buyButton} onClick={() => setSelectedCard(card)}>
+                    <Button className={styles.buyButton} onClick={() => {
+                      setSelectedCard(card);
+                      setShowUnifiedCardModal(true);
+                    }}>
                       Buy
                     </Button>
                   )}
@@ -164,17 +176,47 @@ export default function MarketPage() {
           </div>
         )}
 
-        {selectedCard && (
-          <div className={styles.cardModalOverlay} onClick={() => setSelectedCard(null)}>
-            <div className={styles.cardModal} onClick={(e) => e.stopPropagation()}>
-              <img src={selectedCard.imageUrl} alt={selectedCard.name} className={styles.modalImage} />
+        {showUnifiedCardModal && selectedCard && (
+          <div className={styles.cardModalOverlay}>
+            <div className={styles.cardModal}>
+              <img
+                src={selectedCard.imageUrl}
+                alt={selectedCard.name}
+                className={styles.modalImage}
+              />
               <div className={styles.modalButtons}>
-                <Button className={styles.cancelButton} onClick={() => setSelectedCard(null)}>
+                <Button className={styles.cancelButton} onClick={() => setShowUnifiedCardModal(false)}>
                   Cancel
                 </Button>
                 <Button
                   className={`${styles.confirmButton} ${styles.buyButton}`}
-                  onClick={() => handleBuyCard(selectedCard)}
+                  onClick={() => {
+                    setShowUnifiedCardModal(false);
+                    setShowCardConfirm(true);
+                  }}
+                >
+                  Buy
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showCardConfirm && selectedCard && (
+          <div className={styles.cardModalOverlay}>
+            <div className={styles.cardModal}>
+              <h3 className={styles.modalTitle}>
+                Are you sure you want to buy:<br />
+                “{selectedCard.name}” for {selectedCard.price}?
+              </h3>
+              <div className={styles.modalButtons}>
+                <Button onClick={() => setShowCardConfirm(false)}>Cancel</Button>
+                <Button
+                  className={`${styles.confirmButton} ${styles.buyButton}`}
+                  onClick={() => {
+                    handleBuyCard(selectedCard);
+                    setShowCardConfirm(false);
+                  }}
                 >
                   Buy
                 </Button>

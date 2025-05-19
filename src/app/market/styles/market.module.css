@@ -65,6 +65,7 @@
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .cardItem:hover {
@@ -108,12 +109,6 @@
   font-size: 1.25rem;
 }
 
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 .footer {
   margin-top: 0.5rem;
   display: flex;
@@ -148,39 +143,7 @@ button[type="button"]:hover {
   width: 100%;
 }
 
-.modalOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 50;
-}
-
-.modal {
-  background: #f4f7fa;
-  padding: 2rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  color: #0f172a;
-}
-
-.modal p {
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.modal strong {
-  font-weight: 600;
-  font-size: 1.4rem;
-}
-
+.modalOverlay,
 .cardModalOverlay {
   position: fixed;
   inset: 0;
@@ -191,12 +154,17 @@ button[type="button"]:hover {
   z-index: 50;
 }
 
+.modal,
 .cardModal {
   background: white;
   border-radius: 16px;
   padding: 24px;
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.cardModal {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -231,22 +199,14 @@ button[type="button"]:hover {
   color: white;
 }
 
-.cancelButton {
-  background-color: #111827;
-  color: white;
-  border: none;
-}
-
-.cancelButton:hover {
-  background-color: #5F71F6 !important;
-}
-
+.cancelButton,
 .confirmButton {
   background-color: #111827;
   color: white;
   border: none;
 }
 
+.cancelButton:hover,
 .confirmButton:hover {
   background-color: #5F71F6 !important;
 }
@@ -305,7 +265,6 @@ button[type="button"]:hover {
   opacity: 0.5;
 }
 
-
 .resultText {
   text-align: center;
   font-size: 1.25rem;
@@ -318,4 +277,40 @@ button[type="button"]:hover {
   font-size: 1.2rem;
   color: red;
   margin: 1rem 0;
+}
+
+/* NEW: Grid display for cards in result/preview modals */
+.modalCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-items: center;
+}
+
+.modalCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.modalCardImage {
+  width: 100px;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modalCardName {
+  margin-top: 0.5rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #0f172a;
+}
+
+.duplicateCard {
+  border: 2px solid red;
+  padding: 0.25rem;
+  border-radius: 0.75rem;
 }

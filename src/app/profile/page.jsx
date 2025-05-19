@@ -13,6 +13,7 @@ export default function ProfilePage() {
   const router = useRouter();
   const { user, updateUser, logout } = useAuth();
   const [cards, setCards] = useState([]);
+  const [allCards, setAllCards] = useState([]);
   const [activeTab, setActiveTab] = useState('collection');
   const [starredCards, setStarredCards] = useState(new Set());
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
@@ -46,14 +47,50 @@ export default function ProfilePage() {
       }
     };
 
+    const loadAllCards = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const res = await fetch('http://localhost:8000/api/cards', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!res.ok) throw new Error('Failed to fetch cards');
+        const data = await res.json();
+        setAllCards(data);
+      } catch (err) {
+        console.error('Failed to fetch all cards:', err);
+      }
+    };
+
     loadProfile();
+    loadAllCards();
   }, [router, updateUser]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token || cards.length === 0 || allCards.length === 0) return;
+
+    const value = cards.reduce((acc, userCard) => {
+      const match = allCards.find(c => c.name === userCard.name);
+      return acc + (match?.price || 0);
+    }, 0);
+
+    fetch('http://localhost:8000/api/user/update-collection-value', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ collectionValue: value }),
+    }).catch(err => console.error('Failed to update collection value:', err));
+  }, [cards, allCards]);
 
   const handleToggleStar = async (cardId) => {
     try {
       const token = localStorage.getItem('token');
       const newStarred = new Set(starredCards);
-      
+
       if (newStarred.has(cardId)) {
         newStarred.delete(cardId);
       } else {
@@ -87,6 +124,13 @@ export default function ProfilePage() {
       return bStarred - aStarred;
     });
   }, [cards, starredCards]);
+
+  const collectionValue = useMemo(() => {
+    return cards.reduce((acc, userCard) => {
+      const matchingCard = allCards.find(c => c.name === userCard.name);
+      return acc + (matchingCard?.price || 0);
+    }, 0);
+  }, [cards, allCards]);
 
   const handleLogoutClick = () => {
     setShowLogoutConfirm(true);
@@ -154,7 +198,7 @@ export default function ProfilePage() {
                 <h3 className={styles.statLabel}>Collection Value</h3>
                 <p className={styles.collectionValue}>
                   <Diamond className={styles.valueDiamond} size={24} />
-                  {user.collection_value}
+                  {collectionValue}
                 </p>
               </div>
             </div>
