@@ -30,7 +30,6 @@ export default function PacksPage() {
         const data = await res.json();
         setPacks(data);
 
-        // ✅ Store card info locally for modal use
         const cardsRes = await fetch('http://localhost:8000/api/cards', {
           headers: {
             Authorization: `Bearer ${token}`,

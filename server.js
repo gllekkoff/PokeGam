@@ -167,13 +167,12 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
   const { packId } = req.body;
   const data = getUserData();
   const users = data.users || [];
-  const cards = data.cards || [];
 
   const user = users.find(u => u.id === req.user.id);
   const pack = data.packs.find(p => p.id === packId);
   
   if (!user || !pack) return res.status(404).json({ message: 'Not found' });
-  if (!cards.length) return res.status(404).json({ message: 'No cards available' });
+  if (!pack.cards?.length) return res.status(404).json({ message: 'Pack has no cards' });
 
   if (pack.tag === 'Market' && user.diamonds < pack.price) {
     return res.status(400).json({ message: 'Not enough diamonds' });
@@ -186,7 +185,7 @@ app.post('/api/user/buy-pack', authenticateToken, (req, res) => {
   const newCards = [];
   const duplicates = [];
 
-  const card = getRandomCard(cards);
+  const card = getRandomCard(pack.cards);
   
   const isDuplicate = user.cards.some(c => c.name.toLowerCase() === card.name.toLowerCase());
   

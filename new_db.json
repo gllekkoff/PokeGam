@@ -5,7 +5,7 @@
       "email": "admin@gmail.com",
       "username": "admin",
       "password": "$2b$10$szHsJ68lLR5MZPtR0qqLg.1behUBArqkx/1JVgierId8ghLEfOLJW",
-      "diamonds": 998200,
+      "diamonds": 997710,
       "cards": [
         {
           "id": 1747617486688,
@@ -21,20 +21,193 @@
           "id": 1747617495738,
           "name": "Magneton",
           "imageUrl": "https://images.pokemontcg.io/base4/9.png"
+        },
+        {
+          "id": 1747641840547,
+          "name": "Ditto V",
+          "imageUrl": "https://images.pokemontcg.io/swsh45/50_hires.png"
+        },
+        {
+          "id": 1747641893905,
+          "name": "Centiskorch",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV019_hires.png",
+          "rarity": "Rare Shiny"
+        },
+        {
+          "id": 1747641894895,
+          "name": "Reshiram & Charizard-GX",
+          "imageUrl": "https://images.pokemontcg.io/sm10/20_hires.png",
+          "rarity": "Rare Holo GX"
+        },
+        {
+          "id": 1747641896020,
+          "name": "Axew",
+          "imageUrl": "https://images.pokemontcg.io/bwp/BW16_hires.png",
+          "rarity": "Promo"
+        },
+        {
+          "id": 1747641892706,
+          "name": "Galarian Mr. Mime",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV020_hires.png",
+          "rarity": "Rare Shiny"
+        },
+        {
+          "id": 1747641894333,
+          "name": "Squirtle",
+          "imageUrl": "https://images.pokemontcg.io/bw8/24_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747641900470,
+          "name": "Psyduck",
+          "imageUrl": "https://images.pokemontcg.io/ex2/73_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747641902167,
+          "name": "Diglett",
+          "imageUrl": "https://images.pokemontcg.io/dp3/85_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747641905243,
+          "name": "Muk & Alolan Muk-GX",
+          "imageUrl": "https://images.pokemontcg.io/sm10/220_hires.png",
+          "rarity": "Rare Rainbow"
+        },
+        {
+          "id": 1747641903900,
+          "name": "Meowth",
+          "imageUrl": "https://images.pokemontcg.io/base4/80_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747641907889,
+          "name": "Diancie ◇",
+          "imageUrl": "https://images.pokemontcg.io/sm6/74_hires.png",
+          "rarity": "Rare Prism Star"
+        },
+        {
+          "id": 1747641909374,
+          "name": "Poké Maniac",
+          "imageUrl": "https://images.pokemontcg.io/sm11/236_hires.png",
+          "rarity": "Rare Ultra"
+        },
+        {
+          "id": 1747641909944,
+          "name": "Molayne",
+          "imageUrl": "https://images.pokemontcg.io/sm10/212_hires.png",
+          "rarity": "Rare Ultra"
+        },
+        {
+          "id": 1747641922364,
+          "name": "Magikarp",
+          "imageUrl": "https://images.pokemontcg.io/sm4/17_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747641923055,
+          "name": "Corsola",
+          "imageUrl": "https://images.pokemontcg.io/dp3/84_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747641924078,
+          "name": "Eldegoss V",
+          "imageUrl": "https://images.pokemontcg.io/swsh2/19_hires.png",
+          "rarity": "Rare Holo V"
+        },
+        {
+          "id": 1747641926956,
+          "name": "Slowpoke & Psyduck-GX",
+          "imageUrl": "https://images.pokemontcg.io/sm11/217_hires.png",
+          "rarity": "Rare Ultra"
+        },
+        {
+          "id": 1747641946705,
+          "name": "Greedent V",
+          "imageUrl": "https://images.pokemontcg.io/swsh45/53_hires.png",
+          "rarity": "Rare Holo V"
+        },
+        {
+          "id": 1747641948631,
+          "name": "Porygon-Z G",
+          "imageUrl": "https://images.pokemontcg.io/pl4/26_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747641960201,
+          "name": "Alakazam V",
+          "imageUrl": "https://images.pokemontcg.io/swshp/SWSH083_hires.png",
+          "rarity": "Promo"
+        },
+        {
+          "id": 1747642275905,
+          "name": "Centiskorch V",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV108_hires.png",
+          "rarity": "Rare Holo V"
+        },
+        {
+          "id": 1747642283349,
+          "name": "Corvisquire",
+          "imageUrl": "https://images.pokemontcg.io/swsh45sv/SV102_hires.png",
+          "rarity": "Rare Shiny"
+        },
+        {
+          "id": 1747642283609,
+          "name": "Shuppet",
+          "imageUrl": "https://images.pokemontcg.io/sma/SV16_hires.png",
+          "rarity": "Rare Shiny"
+        },
+        {
+          "id": 1747642292280,
+          "name": "Mareep",
+          "imageUrl": "https://images.pokemontcg.io/sm8/76_hires.png",
+          "rarity": "Common"
+        },
+        {
+          "id": 1747642292372,
+          "name": "Pangoro",
+          "imageUrl": "https://images.pokemontcg.io/xy3/68_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747642297571,
+          "name": "Light Ledian",
+          "imageUrl": "https://images.pokemontcg.io/neo4/24_hires.png",
+          "rarity": "Rare"
+        },
+        {
+          "id": 1747642301967,
+          "name": "Golduck",
+          "imageUrl": "https://images.pokemontcg.io/dp3/28_hires.png",
+          "rarity": "Rare"
         }
       ],
       "starredCards": [
-        1747617486688
+        1747617495738
       ],
-      "packs_opened": 3,
+      "packs_opened": 39,
+      "rare_cards": 13,
+      "collection_value": 580
+    },
+    {
+      "id": 2,
+      "email": "admin1@gmail.com",
+      "username": "admin1",
+      "password": "$2b$10$E1emXyEY6cybjvdeXZRvlOSkWXrdaoqI.iMH/NdIihgjs4M6hB39C",
+      "diamonds": 100,
+      "cards": [],
+      "starredCards": [],
+      "packs_opened": 0,
       "rare_cards": 0,
-      "collection_value": 660
+      "collection_value": 0
     }
   ],
   "cards": [
     {
       "id": "ex15-67",
-      "name": "Totodile \u03b4",
+      "name": "Totodile δ",
       "imageUrl": "https://images.pokemontcg.io/ex15/67_hires.png",
       "rarity": "Common",
       "price": 90
@@ -363,7 +536,7 @@
     },
     {
       "id": "ex15-68",
-      "name": "Trapinch \u03b4",
+      "name": "Trapinch δ",
       "imageUrl": "https://images.pokemontcg.io/ex15/68_hires.png",
       "rarity": "Common",
       "price": 150
@@ -391,7 +564,7 @@
     },
     {
       "id": "g1-67",
-      "name": "Pok\u00e9 Ball",
+      "name": "Poké Ball",
       "imageUrl": "https://images.pokemontcg.io/g1/67_hires.png",
       "rarity": "Uncommon",
       "price": 180
@@ -748,7 +921,7 @@
     },
     {
       "id": "sm6-74",
-      "name": "Diancie \u25c7",
+      "name": "Diancie ◇",
       "imageUrl": "https://images.pokemontcg.io/sm6/74_hires.png",
       "rarity": "Rare Prism Star",
       "price": 1300
@@ -1007,7 +1180,7 @@
     },
     {
       "id": "g1-68",
-      "name": "Pok\u00e9mon Center Lady",
+      "name": "Pokémon Center Lady",
       "imageUrl": "https://images.pokemontcg.io/g1/68_hires.png",
       "rarity": "Uncommon",
       "price": 240
@@ -1378,7 +1551,7 @@
     },
     {
       "id": "ex15-69",
-      "name": "Trapinch \u03b4",
+      "name": "Trapinch δ",
       "imageUrl": "https://images.pokemontcg.io/ex15/69_hires.png",
       "rarity": "Common",
       "price": 140
@@ -1462,7 +1635,7 @@
     },
     {
       "id": "hgss2-81",
-      "name": "Pok\u00e9mon Circulator",
+      "name": "Pokémon Circulator",
       "imageUrl": "https://images.pokemontcg.io/hgss2/81_hires.png",
       "rarity": "Uncommon",
       "price": 280
@@ -1574,7 +1747,7 @@
     },
     {
       "id": "ex13-81",
-      "name": "Psyduck \u03b4",
+      "name": "Psyduck δ",
       "imageUrl": "https://images.pokemontcg.io/ex13/81_hires.png",
       "rarity": "Common",
       "price": 90
@@ -1812,7 +1985,7 @@
     },
     {
       "id": "swsh3-195",
-      "name": "Pok\u00e9mon Breeder's Nurturing",
+      "name": "Pokémon Breeder's Nurturing",
       "imageUrl": "https://images.pokemontcg.io/swsh3/195_hires.png",
       "rarity": "Rare Rainbow",
       "price": 2200
@@ -2211,7 +2384,7 @@
     },
     {
       "id": "sm11-204",
-      "name": "Pok\u00e9 Maniac",
+      "name": "Poké Maniac",
       "imageUrl": "https://images.pokemontcg.io/sm11/204_hires.png",
       "rarity": "Uncommon",
       "price": 180
@@ -2260,7 +2433,7 @@
     },
     {
       "id": "sm11-205",
-      "name": "Pok\u00e9mon Research Lab",
+      "name": "Pokémon Research Lab",
       "imageUrl": "https://images.pokemontcg.io/sm11/205_hires.png",
       "rarity": "Uncommon",
       "price": 300
@@ -3415,7 +3588,7 @@
     },
     {
       "id": "sm11-236",
-      "name": "Pok\u00e9 Maniac",
+      "name": "Poké Maniac",
       "imageUrl": "https://images.pokemontcg.io/sm11/236_hires.png",
       "rarity": "Rare Ultra",
       "price": 1440
@@ -3464,7 +3637,7 @@
     },
     {
       "id": "sm10-233",
-      "name": "Pok\u00e9gear 3.0",
+      "name": "Pokégear 3.0",
       "imageUrl": "https://images.pokemontcg.io/sm10/233_hires.png",
       "rarity": "Rare Secret",
       "price": 2020
@@ -3779,7 +3952,7 @@
     },
     {
       "id": "ex13-21",
-      "name": "Latias \u03b4",
+      "name": "Latias δ",
       "imageUrl": "https://images.pokemontcg.io/ex13/21_hires.png",
       "rarity": "Rare",
       "price": 390
@@ -3835,7 +4008,7 @@
     },
     {
       "id": "ex11-24",
-      "name": "Mightyena \u03b4",
+      "name": "Mightyena δ",
       "imageUrl": "https://images.pokemontcg.io/ex11/24_hires.png",
       "rarity": "Rare",
       "price": 370
@@ -4150,7 +4323,7 @@
     },
     {
       "id": "ex13-22",
-      "name": "Latios \u03b4",
+      "name": "Latios δ",
       "imageUrl": "https://images.pokemontcg.io/ex13/22_hires.png",
       "rarity": "Rare",
       "price": 410
@@ -4626,7 +4799,7 @@
     },
     {
       "id": "ex15-13",
-      "name": "Arbok \u03b4",
+      "name": "Arbok δ",
       "imageUrl": "https://images.pokemontcg.io/ex15/13_hires.png",
       "rarity": "Rare",
       "price": 350
@@ -5165,7 +5338,7 @@
     },
     {
       "id": "ex14-22",
-      "name": "Kingler \u03b4",
+      "name": "Kingler δ",
       "imageUrl": "https://images.pokemontcg.io/ex14/22_hires.png",
       "rarity": "Rare",
       "price": 450
@@ -5375,7 +5548,7 @@
     },
     {
       "id": "sm12-267",
-      "name": "Lillie's Pok\u00e9 Doll",
+      "name": "Lillie's Poké Doll",
       "imageUrl": "https://images.pokemontcg.io/sm12/267_hires.png",
       "rarity": "Rare Secret",
       "price": 2480
@@ -6418,7 +6591,7 @@
     },
     {
       "id": "swsh45-70",
-      "name": "Pok\u00e9 Kid",
+      "name": "Poké Kid",
       "imageUrl": "https://images.pokemontcg.io/swsh45/70_hires.png",
       "rarity": "Rare Ultra",
       "price": 1400
@@ -7164,7 +7337,7 @@
         },
         {
           "id": "ex15-67",
-          "name": "Totodile \u03b4",
+          "name": "Totodile δ",
           "imageUrl": "https://images.pokemontcg.io/ex15/67_hires.png",
           "rarity": "Common",
           "price": 90
